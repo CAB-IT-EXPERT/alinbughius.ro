@@ -10,12 +10,16 @@ $now = new DateTimeImmutable('2026-09-21 08:00', new DateTimeZone('Europe/Buchar
 $slots = computeAvailableSlots('2026-09-21', 'terapeutic', $services, null, $now);
 verify($slots[0] === '11:00', 'Minimum three-hour notice applies');
 verify(in_array('18:30', $slots, true), 'A 60-minute service plus buffer fits before closing');
-verify(!in_array('19:00', $slots, true), 'Buffer must fit inside working hours');
+verify(in_array('19:00', $slots, true), 'Configured availability is not shortened by service duration');
+verify(in_array('20:00', $slots, true), 'Configured end time is the final selectable start time');
 $record = ['id'=>bin2hex(random_bytes(16)), 'date'=>'2026-09-21', 'time'=>'12:00', 'duration_minutes'=>60, 'buffer_minutes'=>15, 'status'=>'pending'];
 saveRecord($record);
 $blocked = computeAvailableSlots('2026-09-21', 'terapeutic', $services, null, $now);
 verify(!in_array('11:30', $blocked, true) && !in_array('12:00', $blocked, true) && !in_array('12:30', $blocked, true), 'Overlapping starts are removed');
 verify(in_array('13:30', $blocked, true), 'Next valid interval remains available');
+$state = scheduleState($services); $state['weekly']['3'] = ['enabled'=>true,'start'=>'10:00','end'=>'18:00']; saveScheduleState($state);
+$longServiceSlots = computeAvailableSlots('2026-09-23', 'lomi-lomi', $services, null, $now);
+verify(end($longServiceSlots) === '18:00', 'Long services keep the configured final start time');
 $state = scheduleState($services); $state['exceptions']['2026-09-22'] = ['closed'=>true,'start'=>'09:00','end'=>'20:00','note'=>'Concediu']; saveScheduleState($state);
 verify(computeAvailableSlots('2026-09-22', 'terapeutic', $services, null, $now) === [], 'Closed date exception removes all slots');
 $state = scheduleState($services); $state['services']['test-masaj'] = ['name'=>'Masaj test','duration_minutes'=>45,'buffer_minutes'=>15,'price'=>100,'sessions'=>4,'active'=>true,'custom'=>true]; saveScheduleState($state);

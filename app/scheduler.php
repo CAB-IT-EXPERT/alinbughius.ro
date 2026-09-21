@@ -141,7 +141,10 @@ function computeAvailableSlots(string $date, string $serviceId, array $catalog, 
         if ($interval) $blocking[] = $interval;
     }
     $slots = [];
-    for ($cursor = $start; $cursor->modify('+' . ($duration + $buffer) . ' minutes') <= $end; $cursor = $cursor->modify('+' . $step . ' minutes')) {
+    // The configured end represents the final time at which a booking may start.
+    // Duration and buffer still block overlaps, but must not shorten the visible
+    // availability range selected by the administrator.
+    for ($cursor = $start; $cursor <= $end; $cursor = $cursor->modify('+' . $step . ' minutes')) {
         if ($cursor < $earliest) continue;
         $slotEnd = $cursor->modify('+' . ($duration + $buffer) . ' minutes');
         $conflict = false;
