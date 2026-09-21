@@ -1,0 +1,28 @@
+Options -Indexes
+Require all granted
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^\.well-known/acme-challenge/[A-Za-z0-9_-]+$ - [L]
+# Canonical production URL. Preserve paths and query strings.
+RewriteCond %{HTTP_HOST} ^(?:www\.)?alinbughius\.ro(?::\d+)?$ [NC]
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^alinbughius\.ro$ [NC]
+RewriteRule ^ https://alinbughius.ro%{REQUEST_URI} [R=301,L,NE]
+RewriteRule ^index\.html$ https://alinbughius.ro/ [R=301,L]
+RewriteRule ^(?:app|config|storage|vendor|tests|tools)(?:/|$) - [F,L]
+RewriteRule (^|/)\. - [F,L]
+</IfModule>
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/svg+xml "access plus 1 week"
+ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+<FilesMatch "\.(?:ini|log|sqlite|json|md|lock|env|zip|ogg)$">
+Require all denied
+</FilesMatch>

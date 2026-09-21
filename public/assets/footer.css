@@ -1,0 +1,119 @@
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0;
+  color: #f2f8f2;
+  background: #103c32;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 740px;
+  height: 740px;
+  top: -400px;
+  right: -260px;
+  border: 1px solid #a3d6b918;
+  border-radius: 50%;
+  box-shadow: 0 0 0 70px #a3d6b908, 0 0 0 140px #a3d6b905;
+  pointer-events: none;
+}
+.footer-invitation {display:flex;align-items:center;justify-content:space-between;gap:50px;padding:69px 0 62px;border-bottom:1px solid #a3c7b433}
+.footer-invitation .eyebrow {display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:2px;color:#9cc8af;margin-bottom:20px}
+.footer-invitation .eyebrow>span {width:6px;height:6px;border-radius:50%;background:#badfc2;box-shadow:0 0 0 5px #a3d6b912}
+.footer-invitation h2 {font-size:clamp(34px,3.5vw,51px);line-height:1.18;letter-spacing:-1px}
+.footer-invitation h2 em {color:#bfe2c7}
+.footer-booking {display:flex;flex-direction:column;align-items:center;gap:15px;flex-shrink:0}
+.footer-booking .button {min-height:59px;background:#c8e5ce;padding:16px 26px;gap:28px;color:#103c32;font-size:14px}
+.footer-booking .button:hover {background:#e0f0df}
+.footer-booking>span {font-size:11px;color:#a1bdad}
+.footer-main {display:grid;grid-template-columns:1.15fr .9fr 1fr;gap:65px;padding:54px 0 49px}
+.footer .brand {gap:14px;color:#f5f9ef;width:fit-content}
+.footer .brand>img {width:53px;height:53px;border-radius:15px}
+.footer .brand>span {font-size:28px}
+.footer .brand small {font-size:8px;color:#afcbb6;letter-spacing:2.4px;margin-top:7px}
+.footer-brand-column>p {font-size:14px;line-height:1.9;color:#b2c8b9;margin:21px 0 15px}
+.footer-area {display:flex;align-items:center;gap:8px;font-size:12px;color:#a8c4b1}
+.footer-area .icon {width:16px;height:16px;color:#b5d6be}
+.footer-instagram {display:inline-flex;align-items:center;gap:10px;margin-top:24px;font-size:12px;color:#dcE9de}
+.footer-instagram>.icon:first-child {width:18px;height:18px}
+.footer-instagram>.icon:last-child {width:13px;height:13px;color:#a7c2ae;transition:transform .2s}
+.footer-instagram:hover>.icon:last-child {transform:translate(2px,-2px)}
+.footer-main h3 {font:500 11px/1.5 var(--sans);letter-spacing:1.5px;text-transform:uppercase;color:#a1c0ab;margin:5px 0 22px}
+.footer-navigation {display:flex;flex-direction:column;align-items:flex-start}
+.footer-navigation>a,.footer-navigation>button {display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;max-width:238px;font-size:13px;line-height:1.6;color:#e0eae0;padding:10px 0;background:none;border:0;text-align:left;transition:color .2s}
+.footer-navigation>a>.icon,.footer-navigation>button>.icon {width:13px;height:13px;color:#8fad99;transition:transform .2s}
+.footer-navigation>a:hover,.footer-navigation>button:hover,.footer-email:hover {color:#bde9c4}
+.footer-navigation>a:hover>.icon,.footer-navigation>button:hover>.icon {transform:translate(2px,-2px)}
+.footer-contact-column {min-width:0}
+.footer-phone {display:flex;align-items:center;gap:21px;width:fit-content;font-size:30px;line-height:1.3;letter-spacing:-.7px;color:#eaf2e5}
+.footer-phone>.icon {width:20px;height:20px;color:#a5c6af}
+.footer-email {display:inline-block;font-size:13px;color:#b2cdb9;margin-top:12px;overflow-wrap:anywhere}
+.footer-whatsapp {display:flex;align-items:center;gap:12px;margin-top:26px;padding:17px 16px;border:1px solid #a6c9b33b;border-radius:11px;background:#ffffff04;transition:background .25s,border-color .25s}
+.footer-whatsapp:hover {background:#ffffff0c;border-color:#b6d6bf70}
+.footer-chat-icon {color:#bddec5}
+.footer-chat-icon .icon {width:25px;height:25px}
+.footer-whatsapp strong {display:block;font-size:12px;font-weight:500;color:#e8f1e5}
+.footer-whatsapp small {display:block;font-size:10px;line-height:1.6;margin-top:4px;color:#a4bfae}
+.footer-whatsapp>.icon {width:16px;height:16px;margin-left:auto;color:#a8c9b2}
+.footer-bottom {display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0 27px;border-top:1px solid #a3c7b429;font-size:11px;color:#93af9f}
+.footer-bottom>a:hover {color:#e6f0e4}
+.footer-credit {display:flex;align-items:center;gap:5px}
+.footer-credit strong {color:#c8dacb;font-weight:600;letter-spacing:.5px}
+.footer-credit .icon {width:12px;height:12px;margin-left:3px}
+.footer :focus-visible {outline-color:#bfe2c7}
+@media(max-width:1100px){
+  .footer-main{gap:38px;grid-template-columns:1fr .85fr 1.1fr}
+  .footer-invitation{gap:30px}
+  .footer-invitation h2{font-size:40px}
+  .footer-phone{font-size:26px}
+  .footer-whatsapp{padding:14px 12px;gap:10px}
+  .footer-whatsapp small{font-size:9px}
+}
+@media(max-width:800px){
+  .footer-invitation{padding:48px 0;align-items:flex-start;flex-direction:column;gap:27px}
+  .footer-booking{align-items:flex-start;gap:12px}
+  .footer-main{grid-template-columns:1fr 1fr;gap:39px 32px;padding:42px 0}
+  .footer-brand-column{grid-column:1/-1}
+  .footer-brand-column>p{margin-top:17px}
+  .footer-instagram{margin-top:18px}
+  .footer-bottom{flex-wrap:wrap;font-size:10px;gap:12px 22px}
+  .footer-bottom>span{width:100%}
+}
+@media(max-width:700px){.footer{padding-bottom:74px}.footer-invitation h2{font-size:38px}.footer-invitation .eyebrow{font-size:9px;letter-spacing:1.5px}.footer-main{grid-template-columns:1fr;gap:34px}.footer-brand-column{grid-column:auto}.footer-navigation>a,.footer-navigation>button{max-width:none;font-size:14px;padding:10px 0}.footer-main h3{margin:0 0 14px}.footer-contact-column{padding-top:28px;border-top:1px solid #a3c7b424}.footer-phone{font-size:31px}.footer-email{font-size:14px}.footer-whatsapp{padding:18px;margin-top:21px}.footer-whatsapp strong{font-size:13px}.footer-whatsapp small{font-size:11px}.footer-booking .button{min-height:54px;font-size:13px}.footer-bottom{padding:23px 0}.footer-bottom>span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.footer a,.footer button,.footer .icon{transition:none!important}.footer a:hover .icon,.footer button:hover .icon{transform:none!important}}
+@media(max-width:700px){
+  .footer{text-align:center}
+  .footer-invitation{align-items:center;gap:30px}
+  .footer-invitation .eyebrow{justify-content:center;line-height:1.8}
+  .footer-invitation h2{font-size:clamp(32px,8.2vw,43px);line-height:1.2}
+  .footer-booking{align-items:center;width:100%}
+  .footer-booking .button{min-width:235px;max-width:100%}
+  .footer-main{gap:39px}
+  .footer .brand{margin-inline:auto;justify-content:center;text-align:left}
+  .footer-brand-column>p{margin:23px auto 18px}
+  .footer-area{justify-content:center}
+  .footer-instagram{justify-content:center;margin-top:24px}
+  .footer-navigation{align-items:center}
+  .footer-navigation>a,.footer-navigation>button{width:auto;justify-content:center;text-align:center;gap:10px;padding:12px 0}
+  .footer-navigation>a>.icon,.footer-navigation>button>.icon{width:12px;height:12px}
+  .footer-contact-column{padding-top:34px}
+  .footer-phone{margin:0 auto;justify-content:center;gap:13px}
+  .footer-email{display:block;width:fit-content;margin:15px auto 0}
+  .footer-whatsapp{justify-content:center;gap:12px;padding:19px 14px;max-width:380px;margin:27px auto 0;text-align:left}
+  .footer-whatsapp>.icon{margin-left:2px;flex-shrink:0}
+  .footer-whatsapp strong{font-size:12px}
+  .footer-whatsapp small{font-size:10px}
+  .footer-bottom{justify-content:center;gap:15px 22px}
+  .footer-bottom>span{text-align:center;line-height:1.8}
+  .footer-credit{justify-content:center}
+}
+.agency-signature{background:#f8fafc;border-top:1px solid #e8edf1;padding:23px 20px;display:flex;justify-content:center}
+.agency-signature>a{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:32px;color:#182230;transition:opacity .2s}
+.agency-signature>a>span{font-size:11px;font-weight:400;letter-spacing:.1px;color:#788391;margin-right:1px}
+.agency-signature img{width:32px;height:32px;object-fit:contain}
+.agency-signature strong{font-size:14px;font-weight:600;letter-spacing:-.15px;margin-left:-3px;color:#182230}
+.agency-signature>a:hover{opacity:.78}
+.agency-signature>a:focus-visible{outline-color:#008779}
+@media(max-width:700px){.footer{padding-bottom:0}.agency-signature{padding-bottom:calc(95px + env(safe-area-inset-bottom))}}

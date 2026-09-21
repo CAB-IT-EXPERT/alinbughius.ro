@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /confirmare.php
+Sitemap: https://alinbughius.ro/sitemap.xml

@@ -1,0 +1,12 @@
+/config/local.php
+/storage/*
+!/storage/.gitkeep
+/tools/composer.phar
+/.runtime/
+/release/
+/node_modules/
+/site-old/
+/*.zip
+/WhatsApp*
+__pycache__/
+*.py[cod]
