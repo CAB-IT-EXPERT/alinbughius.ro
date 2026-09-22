@@ -8,7 +8,7 @@ require APP_ROOT . '/app/mailer.php';
 $checks = 0;
 function check(bool $condition, string $message): void { global $checks; $checks++; if (!$condition) throw new RuntimeException($message); }
 $now = new DateTimeImmutable('2026-09-20 12:00');
-$input = ['service' => 'terapeutic', 'plan' => 'single', 'name' => 'Test Client', 'email' => 'test@example.com', 'phone' => '0773 000 000', 'date' => '2026-09-25', 'time' => '15:30', 'zone' => 'sector-1', 'privacy' => '1', 'price' => '1'];
+$input = ['service' => 'terapeutic', 'plan' => 'single', 'sessions' => '1', 'name' => 'Test Client', 'email' => 'test@example.com', 'phone' => '0773 000 000', 'date' => '2026-09-25', 'time' => '15:30', 'zone' => 'sector-1', 'privacy' => '1', 'price' => '1'];
 $result = validateBooking($input, $bookingServices, $now);
 check($result['price'] === 200, 'A booking always uses the single-session price');
 check($result['total'] === 230, 'Travel is charged once for one booking');
@@ -16,7 +16,11 @@ check(validateBooking(array_replace($input, ['zone' => 'sector-2']), $services, 
 check(validateBooking(array_replace($input, ['service' => 'anticelulitic']), $services, $now)['total'] === 200, 'Anticellulite single-session price and travel');
 check(validateBooking(array_replace($input, ['plan' => 'single']), $services, $now)['total'] === 230, 'Individual visit price');
 check(validateBooking(array_replace($input, ['plan' => 'package']), $bookingServices, $now)['plan'] === 'single', 'Submitted package values cannot change a booking');
-foreach ([['email' => ''], ['email' => "x@example.com\r\nBcc: y@example.com"], ['email' => ['test']], ['service' => 'invalid'], ['date' => '2026-02-30'], ['date' => '2026-09-01'], ['date' => '2028-01-01'], ['time' => '99:00'], ['phone' => 'abc'], ['zone' => 'remote'], ['name' => '<script>'], ['privacy' => '']] as $invalid) {
+$multi = validateBooking(array_replace($input, ['sessions' => '2']), $bookingServices, $now);
+check($multi['plan'] === 'multi' && $multi['sessions'] === 2, 'Two consecutive sessions are recorded explicitly');
+check($multi['total'] === 430, 'Two sessions are charged plus one travel fee');
+check(validateBooking(array_replace($input, ['sessions' => '2', 'zone' => 'sector-2']), $bookingServices, $now)['total'] === 400, 'Travel is not duplicated between consecutive sessions');
+foreach ([['email' => ''], ['email' => "x@example.com\r\nBcc: y@example.com"], ['email' => ['test']], ['service' => 'invalid'], ['sessions' => '0'], ['sessions' => '3'], ['sessions' => ['2']], ['date' => '2026-02-30'], ['date' => '2026-09-01'], ['date' => '2028-01-01'], ['time' => '99:00'], ['phone' => 'abc'], ['zone' => 'remote'], ['name' => '<script>'], ['privacy' => '']] as $invalid) {
     try { validateBooking(array_replace($input, $invalid), $services, $now); throw new RuntimeException('Invalid input accepted: ' . json_encode($invalid)); } catch (InvalidArgumentException $expected) { $checks++; }
 }
 foreach ($services as $service) check($service['package'] === (int) round($service['price'] * $service['sessions'] * .9), 'Consistent discount for ' . $service['name']);
@@ -25,6 +29,8 @@ $receipt = bookingEmail($record, 'receipt', $config); $owner = bookingEmail($rec
 check(!str_contains($receipt['text'], $record['manage_token']), 'Private link is never sent to client');
 check(str_contains($owner['text'], $record['manage_token']), 'Owner has confirmation link');
 check(str_contains($receipt['text'], 'intervalul este reținut'), 'Receipt explains that the selected interval is held');
+$multiReceipt = bookingEmail($multi + ['id' => bin2hex(random_bytes(16)), 'created_at' => date(DATE_ATOM), 'status' => 'pending', 'manage_token' => bin2hex(random_bytes(32)), 'delivery' => []], 'receipt', $config);
+check(str_contains($multiReceipt['text'], '2 sesiuni') && str_contains($multiReceipt['text'], 'Pauză între sesiuni'), 'Email explains the multi-session booking');
 saveRecord($record); deliverBooking($record, $config);
 check(!empty($record['delivery']['owner']) && !empty($record['delivery']['receipt']), 'Both initial mails delivered');
 check(loadRecord($record['id'])['status'] === 'pending', 'New booking remains pending');

@@ -131,6 +131,7 @@
     refreshExportPreview();
     const manualForm = manualDialog.querySelector('.manual-booking-form');
     const serviceInput = manualDialog.querySelector('#manual-service');
+    const sessionsInput = manualDialog.querySelector('#manual-sessions');
     const dateInput = manualDialog.querySelector('#manual-date');
     const timeInput = manualDialog.querySelector('#manual-time');
     const amountInput = manualDialog.querySelector('#manual-amount');
@@ -149,13 +150,25 @@
     manualDialog.querySelectorAll('[data-manual-close]').forEach(button => button.addEventListener('click', closeManual));
     manualDialog.addEventListener('click', event => { if (event.target === manualDialog) closeManual(); });
     manualDialog.addEventListener('cancel', event => { event.preventDefault(); closeManual(); });
+    const syncManualSessions = () => {
+      const option = serviceInput?.selectedOptions[0];
+      const maximum = Math.max(1, Number.parseInt(option?.dataset.maxSessions || '1', 10) || 1);
+      const previous = Math.min(maximum, Math.max(1, Number.parseInt(sessionsInput?.value || '1', 10) || 1));
+      sessionsInput?.replaceChildren(...Array.from({length: maximum}, (_, index) => new Option(index ? `${index + 1} sesiuni consecutive` : '1 sesiune', String(index + 1), false, index + 1 === previous)));
+      if (sessionsInput) sessionsInput.disabled = !serviceInput?.value;
+    };
+    const syncManualAmount = () => {
+      const price = Number.parseInt(serviceInput?.selectedOptions[0]?.dataset.price || '0', 10) || 0;
+      const sessions = Math.max(1, Number.parseInt(sessionsInput?.value || '1', 10) || 1);
+      if (amountInput) amountInput.value = String(price * sessions);
+    };
     const loadManualSlots = async () => {
-      const service = serviceInput?.value || ''; const date = dateInput?.value || '';
-      timeInput.replaceChildren(new Option(service && date ? 'Se încarcă…' : 'Alege serviciul și data', ''));
+      const service = serviceInput?.value || ''; const date = dateInput?.value || ''; const sessions = sessionsInput?.value || '';
+      timeInput.replaceChildren(new Option(service && sessions && date ? 'Se încarcă…' : 'Alege serviciul, sesiunile și data', ''));
       timeInput.disabled = true;
-      if (!service || !date) { slotHelp.textContent = 'Sunt afișate numai orele libere.'; return; }
+      if (!service || !sessions || !date) { slotHelp.textContent = 'Sunt afișate numai orele în care încap toate sesiunile.'; return; }
       try {
-        const response = await fetch(`/api/availability.php?service=${encodeURIComponent(service)}&date=${encodeURIComponent(date)}`, {headers:{Accept:'application/json'}});
+        const response = await fetch(`/api/availability.php?service=${encodeURIComponent(service)}&date=${encodeURIComponent(date)}&sessions=${encodeURIComponent(sessions)}`, {headers:{Accept:'application/json'}});
         const payload = await response.json();
         const slots = response.ok && payload.ok && Array.isArray(payload.slots) ? payload.slots : [];
         timeInput.replaceChildren(new Option(slots.length ? 'Alege ora' : 'Nu există ore libere', ''));
@@ -168,11 +181,12 @@
       }
     };
     serviceInput?.addEventListener('change', () => {
-      const price = serviceInput.selectedOptions[0]?.dataset.price;
-      if (price !== undefined) amountInput.value = price;
+      syncManualSessions(); syncManualAmount();
       loadManualSlots();
     });
+    sessionsInput?.addEventListener('change', () => { syncManualAmount(); loadManualSlots(); });
     dateInput?.addEventListener('change', loadManualSlots);
+    syncManualSessions(); syncManualAmount();
     manualForm?.addEventListener('submit', () => { if (submitButton) { submitButton.disabled = true; submitButton.textContent = 'Se adaugă…'; } });
   }
   const crmList = document.querySelector('#crm-list');
@@ -341,19 +355,25 @@
     const serviceMeta = card.querySelector('.booking-person p')?.textContent.trim() || '';
     const serviceName = serviceMeta.split('·')[0]?.trim() || 'Masaj';
     const summaryStatus = card.querySelector('summary .status');
-    const dateLabel = originalForm.querySelector('label:nth-of-type(1)');
-    const timeLabel = originalForm.querySelector('label:nth-of-type(2)');
-    const statusLabel = originalForm.querySelector('label:nth-of-type(3)');
-    const notesLabel = originalForm.querySelector('.notes');
     const dateInput = originalForm.querySelector('[name="date"]');
     const timeInput = originalForm.querySelector('[name="time"]');
+    const sessionsInput = originalForm.querySelector('[name="sessions"]');
     const statusSelect = originalForm.querySelector('[name="status"]');
+    const dateLabel = dateInput?.closest('label');
+    const timeLabel = timeInput?.closest('label');
+    const sessionsLabel = sessionsInput?.closest('label');
+    const statusLabel = statusSelect?.closest('label');
+    const notesLabel = originalForm.querySelector('.notes');
     const saveButton = originalForm.querySelector('[type="submit"]');
-    if (!dateLabel || !timeLabel || !statusLabel || !notesLabel || !dateInput || !timeInput || !statusSelect || !saveButton) return;
+    if (!dateLabel || !timeLabel || !sessionsLabel || !statusLabel || !notesLabel || !dateInput || !timeInput || !sessionsInput || !statusSelect || !saveButton) return;
+    const sessionsValue = Math.max(1, Number.parseInt(sessionsInput.value || financial.sessions || '1', 10) || 1);
+    const unitPrice = Math.max(0, Number(financial.unit_price) || 0);
+    const travel = Math.max(0, Number(financial.travel) || 0);
     card.dataset.source = sourceValue;
     card.dataset.search = normalizeSearch([
       card.dataset.search, serviceName, valueAfterLabel(clientGrid, 'Zonă'), valueAfterLabel(clientGrid, 'Referință'),
       dateSearchTerms(dateInput.value), timeInput.value, `ora ${timeInput.value}`, amountValue, `${amountValue} lei`,
+      sessionsValue, `${sessionsValue} sesiuni`,
       paymentValue === 'paid' ? 'încasat plătit achitat' : 'neîncasat neplătit de încasat',
       sourceValue === 'manual' ? 'manual introdus manual telefonic' : 'din site online website',
       statusSelect.selectedOptions[0]?.textContent || ''
@@ -417,8 +437,8 @@
     const scheduleHeading = el('div', 'crm-panel-heading');
     scheduleHeading.append(el('span', 'crm-panel-kicker', 'PLANIFICARE'), el('h3', '', 'Momentul și starea'));
     const scheduleFields = el('div', 'crm-schedule-fields');
-    dateLabel.classList.add('crm-field'); timeLabel.classList.add('crm-field'); statusLabel.classList.add('crm-field', 'crm-status-field');
-    scheduleFields.append(dateLabel, timeLabel);
+    dateLabel.classList.add('crm-field'); timeLabel.classList.add('crm-field'); sessionsLabel.classList.add('crm-field'); statusLabel.classList.add('crm-field', 'crm-status-field');
+    scheduleFields.append(dateLabel, timeLabel, sessionsLabel);
 
     const fieldTitle = el('span', 'crm-field-title', 'Stare');
     const statusChoices = el('div', 'crm-status-choices');
@@ -469,7 +489,7 @@
     const facts = el('section', 'crm-context-card crm-facts');
     const factTitle = el('h3', '', 'Rezumat'); facts.append(factTitle);
     const factValues = {};
-    [['Serviciu', serviceName], ['Zonă', valueAfterLabel(clientGrid, 'Zonă')], ['Cost', `${amountValue.toLocaleString('ro-RO')} lei`], ['Încasare', paymentValue === 'paid' ? 'Încasat' : 'Neîncasat'], ['Referință', valueAfterLabel(clientGrid, 'Referință')]].forEach(([label, value]) => {
+    [['Serviciu', serviceName], ['Sesiuni', sessionsValue === 1 ? '1 sesiune' : `${sessionsValue} sesiuni`], ['Zonă', valueAfterLabel(clientGrid, 'Zonă')], ['Cost', `${amountValue.toLocaleString('ro-RO')} lei`], ['Încasare', paymentValue === 'paid' ? 'Încasat' : 'Neîncasat'], ['Referință', valueAfterLabel(clientGrid, 'Referință')]].forEach(([label, value]) => {
       const row = el('div', 'crm-fact'); const strong = el('strong', '', value); row.append(el('span', '', label), strong); facts.append(row); factValues[label] = strong;
     });
     const hint = el('section', 'crm-context-hint');
@@ -478,6 +498,14 @@
     body.append(workspace, context);
 
     amountInput.addEventListener('input', () => { const amount = Math.max(0, Number(amountInput.value) || 0); factValues.Cost.textContent = `${amount.toLocaleString('ro-RO')} lei`; });
+    sessionsInput.addEventListener('change', () => {
+      const sessions = Math.max(1, Number.parseInt(sessionsInput.value || '1', 10) || 1);
+      amountInput.value = String(unitPrice * sessions + travel);
+      amountInput.dispatchEvent(new Event('input'));
+      factValues.Sesiuni.textContent = sessions === 1 ? '1 sesiune' : `${sessions} sesiuni`;
+      subtitle.textContent = `${serviceName} · ${timeInput.value || '—'} · ${sessions === 1 ? '1 sesiune' : `${sessions} sesiuni`}`;
+      updateDateSummary();
+    });
     paymentChoices.querySelectorAll('button').forEach(choice => choice.addEventListener('click', () => {
       paymentInput.value = choice.dataset.paymentValue;
       paymentChoices.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button === choice)));
@@ -504,7 +532,8 @@
     const updateDateSummary = () => {
       const parsed = new Date(`${dateInput.value}T12:00:00`);
       liveDate.textContent = Number.isNaN(parsed.getTime()) ? dateInput.value : new Intl.DateTimeFormat('ro-RO', {weekday:'long', day:'numeric', month:'long'}).format(parsed);
-      liveTime.textContent = `${timeInput.value || '—'} · ${serviceName}`;
+      const sessions = Math.max(1, Number.parseInt(sessionsInput.value || '1', 10) || 1);
+      liveTime.textContent = `${timeInput.value || '—'} · ${serviceName} · ${sessions === 1 ? '1 sesiune' : `${sessions} sesiuni`}`;
     };
     dateInput.addEventListener('change', updateDateSummary); timeInput.addEventListener('change', updateDateSummary); updateDateSummary();
 
@@ -618,8 +647,6 @@
       const fields = card.querySelector('.service-fields');
       const note = card.querySelector(':scope > p');
       const activeInput = switchLabel?.querySelector('input[type="checkbox"]');
-      const sessionInput = fields?.querySelector('input[name$="[sessions]"]');
-      sessionInput?.closest('label')?.remove();
       if (!originalTop || !switchLabel || !source || !nameLabel || !nameInput || !fields || !note || !activeInput) return;
 
       card.style.setProperty('--service-index', String(Math.min(index, 9)));
@@ -643,21 +670,24 @@
       card.replaceChildren(top, body);
 
       const duration = fields.querySelector('input[name$="[duration]"]');
+      const sessionBreak = fields.querySelector('input[name$="[session_break]"]');
       const buffer = fields.querySelector('input[name$="[buffer]"]');
       const price = fields.querySelector('input[name$="[price]"]');
+      const maxSessions = fields.querySelector('input[name$="[max_booking_sessions]"]');
       const refreshCard = () => {
         const isActive = activeInput.checked;
         status.textContent = isActive ? 'Activ' : 'Ascuns';
         status.className = `service-live-state ${isActive ? 'active' : 'inactive'}`;
         title.textContent = nameInput.value.trim() || 'Serviciu fără nume';
-        meta.textContent = `${duration?.value || 0} min + ${buffer?.value || 0} min pauză · ${price?.value || 0} lei`;
+        const maximum = Math.max(1, Number.parseInt(maxSessions?.value || '1', 10) || 1);
+        meta.textContent = `${duration?.value || 0} min / sesiune · max. ${maximum} ${maximum === 1 ? 'sesiune' : 'sesiuni'} · ${price?.value || 0} lei`;
         expand.setAttribute('aria-label', `Editează ${title.textContent}`);
         updateServiceCount();
       };
       const toggleCard = () => setServiceExpanded(card, !card.classList.contains('is-expanded'));
       expand.addEventListener('click', toggleCard);
       top.addEventListener('click', event => { if (!event.target.closest('button,label,input')) toggleCard(); });
-      [nameInput, duration, buffer, price].forEach(input => input?.addEventListener('input', () => { refreshCard(); card.classList.add('has-changes'); }));
+      [nameInput, duration, sessionBreak, buffer, price, maxSessions].forEach(input => input?.addEventListener('input', () => { refreshCard(); card.classList.add('has-changes'); }));
       activeInput.addEventListener('change', () => { refreshCard(); card.classList.add('has-changes'); });
       refreshCard();
     });
@@ -667,7 +697,7 @@
     const saveButton = serviceForm?.querySelector('.save-services');
     if (saveButton && serviceForm) {
       const saveBar = el('div', 'service-save-bar');
-      const copy = el('div'); copy.append(el('strong', '', 'Modificări în servicii'), el('span', '', 'Durata și pauza actualizează automat orele disponibile.'));
+      const copy = el('div'); copy.append(el('strong', '', 'Modificări în servicii'), el('span', '', 'Duratele, ambele pauze și limita de sesiuni actualizează automat calendarul.'));
       saveButton.textContent = 'Salvează modificările';
       saveBar.append(copy, saveButton); serviceGrid.after(saveBar);
       serviceForm.addEventListener('submit', () => { saveButton.disabled = true; saveButton.textContent = 'Se salvează…'; });
@@ -676,7 +706,6 @@
     const addSection = document.querySelector('.add-service');
     const addForm = addSection?.querySelector('form');
     if (addSection && addForm) {
-      addForm.querySelector('input[name="sessions"]')?.closest('label')?.remove();
       const addIntro = addSection.querySelector(':scope > div');
       const hidden = [...addForm.querySelectorAll(':scope > input[type="hidden"]')];
       const fields = [...addForm.querySelectorAll(':scope > label')];
@@ -689,7 +718,7 @@
       header.append(mark, heading, close);
       const body = el('div', 'editor-dialog-body');
       const info = el('div', 'editor-info-card');
-      info.append(el('span', '', '01'), el('div', '', 'Completează numele, durata, pauza și prețul. Serviciul va fi activ din momentul salvării.'));
+      info.append(el('span', '', '01'), el('div', '', 'Completează durata unei sesiuni, pauza dintre sesiuni, pauza finală, prețul și limita de sesiuni. Serviciul va fi activ din momentul salvării.'));
       const fieldGrid = el('div', 'service-add-fields'); fields.forEach(label => fieldGrid.append(label));
       body.append(info, fieldGrid);
       const footer = el('footer', 'editor-dialog-footer');

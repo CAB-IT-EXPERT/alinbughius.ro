@@ -48,6 +48,7 @@
   let submitted = false;
   let availabilityController;
   let availabilityTimer;
+  const sessionInput = $('#booking-sessions');
   const fetchToken = async () => {
     tokenPromise = fetch('/api/token.php', {credentials:'same-origin', cache:'no-store'}).then(async response => { if (!response.ok) throw new Error('Formularul nu poate fi pregătit acum. Reîncearcă sau sună la 0773 919 071.'); const data = await response.json(); $('#csrf').value = data.csrf; $('#request-id').value = data.request_id; return data; });
     return tokenPromise;
@@ -81,7 +82,8 @@
     $('#available-days').replaceChildren(); $('#available-times').replaceChildren();
     $('#booking-date').value = ''; $('#booking-time').value = ''; availabilityStatus('Încărcăm intervalele disponibile…');
     try {
-      const response = await fetch(`/api/availability.php?service=${encodeURIComponent($('#service').value)}`, {cache:'no-store', signal:availabilityController.signal});
+      const sessions = Math.max(1, Number(sessionInput?.value) || 1);
+      const response = await fetch(`/api/availability.php?service=${encodeURIComponent($('#service').value)}&sessions=${sessions}`, {cache:'no-store', signal:availabilityController.signal});
       const data = await response.json();
       if (!response.ok || !data.ok) throw new Error(data.message || 'Calendarul nu este disponibil momentan.');
       if (!data.days.length) { availabilityStatus('Nu există intervale libere în perioada următoare. Sună-l pe Alin pentru o variantă personalizată.'); return; }
@@ -104,20 +106,34 @@
       if (error.name !== 'AbortError') availabilityStatus(error.message || 'Calendarul nu a putut fi încărcat. Reîncearcă.');
     }
   };
+  const syncSessionOptions = (preserve = false) => {
+    const option = $('#service').selectedOptions[0];
+    if (!option || !sessionInput) return;
+    const maximum = Math.max(1, Number(option.dataset.maxBookingSessions) || 1);
+    const previous = preserve ? Math.min(maximum, Math.max(1, Number(sessionInput.value) || 1)) : 1;
+    sessionInput.replaceChildren();
+    for (let count = 1; count <= maximum; count += 1) sessionInput.append(new Option(count === 1 ? '1 sesiune' : `${count} sesiuni`, String(count)));
+    sessionInput.value = String(previous);
+  };
   const updateEstimate = () => {
     const option = $('#service').selectedOptions[0];
     const zone = $('#zone').value;
     const transport = zone && !['sector-2', 'sector-3'].includes(zone) ? 30 : 0;
     const base = Number(option.dataset.price);
-    $('#estimate-label').textContent = `O ședință · ${option.dataset.duration}`;
-    $('#estimate-price').textContent = String(base + transport);
-    $('#estimate-note').textContent = !zone ? 'Alege zona pentru calculul deplasării.' : transport ? `${base} lei masajul + 30 lei deplasare.` : 'Deplasarea este inclusă în zona aleasă.';
+    const sessions = Math.max(1, Number(sessionInput?.value) || 1);
+    const sessionWord = sessions === 1 ? 'sesiune' : 'sesiuni';
+    const between = Math.max(0, Number(option.dataset.sessionBreak) || 0);
+    const subtotal = base * sessions;
+    $('#estimate-label').textContent = `${sessions} ${sessionWord} · ${option.dataset.duration} fiecare`;
+    $('#estimate-price').textContent = String(subtotal + transport);
+    const pauseNote = sessions > 1 ? ` · pauză ${between} min între sesiuni` : '';
+    $('#estimate-note').textContent = !zone ? `${sessions} × ${base} lei${pauseNote}. Alege zona pentru deplasare.` : transport ? `${sessions} × ${base} lei + 30 lei deplasare${pauseNote}.` : `${sessions} × ${base} lei · deplasare inclusă${pauseNote}.`;
   };
   $$('[data-book]').forEach(button => button.addEventListener('click', () => {
     if (menu.getAttribute('aria-expanded') === 'true') setMenu(false, false);
-    if (submitted) { form.reset(); form.hidden = false; $('#booking-success').hidden = true; $('#form-status').textContent = ''; tokenPromise = null; submitted = false; }
+    if (submitted) { form.reset(); syncSessionOptions(); form.hidden = false; $('#booking-success').hidden = true; $('#form-status').textContent = ''; tokenPromise = null; submitted = false; }
     if (button.dataset.book) $('#service').value = button.dataset.book;
-    updateEstimate(); dialog.showModal(); document.body.classList.add('modal-open'); loadAvailability();
+    syncSessionOptions(); updateEstimate(); dialog.showModal(); document.body.classList.add('modal-open'); loadAvailability();
     if (!tokenPromise) fetchToken().catch(error => { tokenPromise = null; $('#form-status').textContent = error.message; });
     clearInterval(availabilityTimer); availabilityTimer = setInterval(() => { if (dialog.open) loadAvailability(true); }, 30000);
   }));
@@ -126,8 +142,9 @@
     modal.addEventListener('close', () => { document.body.classList.remove('modal-open'); if (modal === dialog) { clearInterval(availabilityTimer); availabilityController?.abort(); } });
     modal.addEventListener('click', event => { if (event.target === modal) { const rect = modal.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) modal.close(); } });
   });
-  $$('#service, #zone', form).forEach(field => field.addEventListener('change', updateEstimate));
-  $('#service')?.addEventListener('change', () => loadAvailability());
+  $('#zone')?.addEventListener('change', updateEstimate);
+  $('#service')?.addEventListener('change', () => { syncSessionOptions(); updateEstimate(); loadAvailability(); });
+  sessionInput?.addEventListener('change', () => { updateEstimate(); loadAvailability(); });
   form?.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;

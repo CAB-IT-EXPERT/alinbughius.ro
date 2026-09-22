@@ -25,12 +25,12 @@ Deschide `http://127.0.0.1:8077/`. Scriptul activează OpenSSL pentru PHP și fo
 
 ## Fluxul programării și CRM
 
-- Vizitatorul alege serviciul pentru o singură ședință, apoi numai una dintre zilele și orele libere calculate în timp real. Completează nume, telefon, **e-mail obligatoriu**, zonă și informarea de contact.
-- Fiecare programare reprezintă o singură ședință. Prețul este recalculat pe server, iar deplasarea se adaugă o singură dată atunci când zona o cere.
+- Vizitatorul alege serviciul și numărul de sesiuni consecutive permis pentru acel serviciu, apoi numai una dintre zilele și orele libere calculate în timp real. Completează nume, telefon, **e-mail obligatoriu**, zonă și informarea de contact.
+- Prețul este recalculat pe server ca tarif per sesiune × număr de sesiuni, iar deplasarea se adaugă o singură dată atunci când zona o cere. Timpul blocat este `durată × sesiuni + pauză între sesiuni × (sesiuni - 1) + pauză finală`.
 - În momentul trimiterii, serverul verifică din nou calendarul sub blocare exclusivă și reține intervalul. Două cereri nu pot ocupa aceeași oră, chiar dacă sunt trimise simultan.
 - Alin primește solicitarea pe `bughius_alin@yahoo.com`, de la `contact@alinbughius.ro`. Vizitatorul primește dovada înregistrării, apoi confirmarea finală.
 - Mesajul lui Alin conține un link privat de confirmare. Deschiderea linkului nu confirmă nimic; Alin apasă explicit butonul, apoi clientul primește confirmarea pe e-mail. Linkul este valabil 30 de zile și nu trebuie distribuit.
-- `/admin/` oferă dashboard, CRM cu programări, căutare, stări, reprogramare și notițe interne, program săptămânal, excepții/concedii, durate și pauze pe serviciu, servicii personalizate și schimbarea parolei.
+- `/admin/` oferă dashboard, CRM cu programări, căutare, stări, reprogramare și notițe interne, program săptămânal, excepții/concedii, durată, pauză între sesiuni, pauză finală și limită de sesiuni pe serviciu, servicii personalizate și schimbarea parolei.
 - Contul inițial este `admin` / `admin`; parola poate fi schimbată oricând din secțiunea Securitate, fără blocarea accesului la CRM. Autentificarea are limitare de încercări, sesiune separată, cookie `HttpOnly`/`SameSite=Strict`, regenerarea sesiunii și CSRF.
 - Calendarul, contul și programările sunt fișiere JSON private, scrise atomic și protejate cu lock-uri exclusive. Soluția este potrivită volumului actual; pentru echipă, mai multe locații sau trafic mare se recomandă migrare la o bază de date relațională.
 - Solicitările au protecție CSRF, limitare de frecvență și deduplicare. Nu există plată online.
@@ -82,4 +82,4 @@ node --check public/assets/video.js
 
 Suita PHP capturează e-mailurile în `.runtime/` și nu trimite mesaje reale. Pentru testul HTTP folosește **un server separat**, cu `APP_MAIL_CAPTURE=1` și `APP_STORAGE_DIR` setat la `.runtime/test-http`, pe portul 8078, apoi rulează `node tests/http-test.mjs`. Nu activa captura pe site-ul live.
 
-Testele verifică validarea, reducerile, deplasarea, livrarea către ambele adrese, scenariile de eroare, deduplicarea, calendarul și suprapunerile, excepțiile, serviciile personalizate, protecția linkului privat, confirmarea și accesul CRM.
+Testele verifică validarea, sesiunile consecutive, calculul prețului și al pauzelor, deplasarea, livrarea către ambele adrese, scenariile de eroare, deduplicarea, calendarul și suprapunerile, excepțiile, serviciile personalizate, protecția linkului privat, confirmarea și accesul CRM.

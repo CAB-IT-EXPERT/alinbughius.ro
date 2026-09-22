@@ -27,6 +27,7 @@ with zipfile.ZipFile(path) as archive:
     assert all(f'name="{sheet}"' in workbook for sheet in ("Rezumat", "Analize", "Programari"))
     data = archive.read("xl/worksheets/sheet3.xml").decode("utf-8")
     assert "Manual" in data and "Din site" in data
+    assert "Sesiuni" in data and "Pauză între sesiuni" in data and "Timp blocat total" in data
     assert "manage_token" not in data and "privacy_token" not in data
     assert "autoFilter" in data and "state=\"frozen\"" in data
     summary = archive.read("xl/worksheets/sheet1.xml").decode("utf-8")

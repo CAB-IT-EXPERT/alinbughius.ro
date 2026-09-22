@@ -22,7 +22,7 @@ const availability = await availabilityResponse.json();
 assert.ok(availability.days.length && availability.days[0].slots.length);
 const future = availability.days[0].date;
 const availableTime = availability.days[0].slots[0];
-const payload = {csrf:token.csrf,request_id:token.request_id,service:'terapeutic',plan:'single',date:future,time:availableTime,name:'Client Test Local',email:'client-test@example.com',phone:'0773000000',zone:'sector-1',privacy:'1',website:'',price:'1'};
+const payload = {csrf:token.csrf,request_id:token.request_id,service:'terapeutic',plan:'single',sessions:'1',date:future,time:availableTime,name:'Client Test Local',email:'client-test@example.com',phone:'0773000000',zone:'sector-1',privacy:'1',website:'',price:'1'};
 await new Promise(resolve => setTimeout(resolve, 2100));
 assert.equal((await post('/api/booking.php', {...payload,email:''})).status, 422);
 assert.equal((await post('/api/booking.php', {...payload,date:'2020-01-01'})).status, 422);

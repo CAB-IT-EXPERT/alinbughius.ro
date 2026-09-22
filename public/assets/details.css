@@ -107,3 +107,15 @@
   .mobile-actions>a .icon{width:34px;height:34px;padding:8px}
   .mobile-actions .mobile-whatsapp img{width:34px;height:34px}
 }
+
+/* Accentele principale din hero, mărite și îngroșate pentru lizibilitate. */
+.hero .eyebrow{font-size:13.2px;font-weight:700}
+.hero-description{font-size:20.4px;font-weight:600}
+.hero-location{font-size:15.6px;font-weight:600}
+.hero-social-proof .proof-label{font-size:13px;font-weight:600}
+@media(max-width:700px){
+  .hero .eyebrow{font-size:10.8px;font-weight:700}
+  .hero-description{font-size:18px;font-weight:600}
+  .hero-location{font-size:13.2px;font-weight:600}
+  .hero-social-proof .proof-label{font-size:12px;font-weight:600}
+}

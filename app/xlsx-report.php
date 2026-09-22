@@ -161,6 +161,9 @@ function normalizedReportRecords(array $records): array {
         $record['amount'] = max(0, (int) ($record['amount'] ?? $record['total'] ?? 0));
         $record['payment_status'] = in_array(($record['payment_status'] ?? ''), ['paid', 'unpaid'], true) ? $record['payment_status'] : 'unpaid';
         $record['source'] = in_array(($record['source'] ?? ''), ['site', 'manual'], true) ? $record['source'] : (str_contains((string) ($record['internal_notes'] ?? ''), 'demonstrativă') ? 'manual' : 'site');
+        $record['sessions'] = max(1, (int) ($record['sessions'] ?? 1));
+        $record['session_break_minutes'] = max(0, (int) ($record['session_break_minutes'] ?? 0));
+        $record['buffer_minutes'] = max(0, (int) ($record['buffer_minutes'] ?? 0));
         $result[] = $record;
     }
     usort($result, static fn(array $a, array $b): int => strcmp(($b['date'] ?? '') . ' ' . ($b['time'] ?? ''), ($a['date'] ?? '') . ' ' . ($a['time'] ?? '')));
@@ -333,7 +336,7 @@ function buildAppointmentXlsx(array $inputRecords, ?string $selectedPeriodLabel 
     $dataRows[] = xlsxRow(1, [], 12);
     $dataRows[] = xlsxRow(2, [xlsxCell('A2', 'Toate programările', 1)], 27);
     $dataRows[] = xlsxRow(3, [xlsxCell('A3', 'Export complet din CRM · ' . $generated->format('d.m.Y H:i'), 2)], 21);
-    $headers = ['Referință', 'Sursă', 'Creată la', 'Data', 'Ora', 'Client', 'Telefon', 'E-mail', 'Zonă / adresă', 'Serviciu', 'Durată (min)', 'Pauză (min)', 'Stare', 'Cost (lei)', 'Încasare', 'Notițe interne', 'Actualizată la', 'ID intern'];
+    $headers = ['Referință', 'Sursă', 'Creată la', 'Data', 'Ora', 'Client', 'Telefon', 'E-mail', 'Zonă / adresă', 'Serviciu', 'Durată / sesiune (min)', 'Pauză finală (min)', 'Stare', 'Cost (lei)', 'Încasare', 'Notițe interne', 'Actualizată la', 'ID intern', 'Sesiuni', 'Pauză între sesiuni (min)', 'Timp blocat total (min)', 'Tarif / sesiune (lei)'];
     $headerCells = [];
     foreach ($headers as $index => $header) $headerCells[] = xlsxCell(xlsxColumn($index + 1) . '4', $header, 4);
     $dataRows[] = xlsxRow(4, $headerCells, 34);
@@ -365,11 +368,15 @@ function buildAppointmentXlsx(array $inputRecords, ?string $selectedPeriodLabel 
             xlsxCell('P' . $row, (string) ($record['internal_notes'] ?? ''), 26),
             xlsxCell('Q' . $row, $updated, $dateTimeStyle),
             xlsxCell('R' . $row, (string) $record['id'], $normal),
+            xlsxCell('S' . $row, (int) $record['sessions'], 27),
+            xlsxCell('T' . $row, (int) $record['session_break_minutes'], 27),
+            xlsxCell('U' . $row, (int) ($record['duration_minutes'] ?? 0) * (int) $record['sessions'] + (int) $record['session_break_minutes'] * max(0, (int) $record['sessions'] - 1) + (int) $record['buffer_minutes'], 27),
+            xlsxCell('V' . $row, (int) ($record['price'] ?? 0), $moneyStyle),
         ];
         $dataRows[] = xlsxRow($row, $cells, 31);
     }
     $dataLast = max(5, 4 + count($records));
-    $dataXml = xlsxSheet([14, 13, 19, 13, 10, 24, 16, 28, 25, 23, 14, 13, 17, 15, 16, 38, 19, 35], $dataRows, ['A2:R2', 'A3:R3'], 'A4:R' . $dataLast, 4, 2, '71847B');
+    $dataXml = xlsxSheet([14, 13, 19, 13, 10, 24, 16, 28, 25, 23, 21, 18, 17, 15, 16, 38, 19, 35, 11, 22, 20, 19], $dataRows, ['A2:V2', 'A3:V3'], 'A4:V' . $dataLast, 4, 2, '71847B');
 
     $zip = new XlsxZipBuilder();
     $zip->add('[Content_Types].xml', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/><Override PartName="/xl/drawings/drawing1.xml" ContentType="application/vnd.openxmlformats-officedocument.drawing+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/worksheets/sheet2.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/worksheets/sheet3.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>');

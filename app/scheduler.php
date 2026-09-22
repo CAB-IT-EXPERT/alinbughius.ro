@@ -13,7 +13,9 @@ function defaultScheduleState(array $catalog): array {
         $serviceRows[$id] = [
             'name' => $service['name'],
             'duration_minutes' => (int) ($service['minutes'] ?? 60),
+            'session_break_minutes' => 15,
             'buffer_minutes' => 15,
+            'max_booking_sessions' => 2,
             'price' => (int) $service['price'],
             'sessions' => (int) $service['sessions'],
             'active' => true,
@@ -48,7 +50,24 @@ function scheduleState(array $catalog): array {
     $decoded['settings'] = array_replace($defaults['settings'], is_array($decoded['settings'] ?? null) ? $decoded['settings'] : []);
     $decoded['weekly'] = array_replace($defaults['weekly'], is_array($decoded['weekly'] ?? null) ? $decoded['weekly'] : []);
     $decoded['exceptions'] = is_array($decoded['exceptions'] ?? null) ? $decoded['exceptions'] : [];
-    $decoded['services'] = array_replace($defaults['services'], is_array($decoded['services'] ?? null) ? $decoded['services'] : []);
+    $storedServices = is_array($decoded['services'] ?? null) ? $decoded['services'] : [];
+    $normalizedServices = [];
+    foreach (array_unique(array_merge(array_keys($defaults['services']), array_keys($storedServices))) as $id) {
+        $fallback = $defaults['services'][$id] ?? [
+            'name' => (string) $id,
+            'duration_minutes' => 60,
+            'session_break_minutes' => 15,
+            'buffer_minutes' => 15,
+            'max_booking_sessions' => 2,
+            'price' => 0,
+            'sessions' => 1,
+            'active' => true,
+            'custom' => true,
+        ];
+        $stored = is_array($storedServices[$id] ?? null) ? $storedServices[$id] : [];
+        $normalizedServices[$id] = array_replace($fallback, $stored);
+    }
+    $decoded['services'] = $normalizedServices;
     return $decoded;
 }
 
@@ -70,13 +89,24 @@ function bookingServices(array $catalog): array {
             'name' => (string) ($row['name'] ?? ($base['name'] ?? $id)),
             'duration' => $minutes . ' min',
             'minutes' => $minutes,
+            'session_break_minutes' => max(0, min(180, (int) ($row['session_break_minutes'] ?? 15))),
             'buffer_minutes' => max(0, min(180, (int) ($row['buffer_minutes'] ?? 15))),
+            'max_booking_sessions' => max(1, min(10, (int) ($row['max_booking_sessions'] ?? 2))),
             'price' => $price,
             'sessions' => $sessions,
             'package' => (int) round($price * $sessions * .9),
         ]);
     }
     return $result;
+}
+
+function bookingBlockedMinutes(array $service, int $sessions): int {
+    $maxSessions = max(1, min(10, (int) ($service['max_booking_sessions'] ?? 2)));
+    if ($sessions < 1 || $sessions > $maxSessions) throw new InvalidArgumentException('Alege un număr valid de sesiuni pentru serviciul selectat.');
+    $duration = max(15, (int) ($service['minutes'] ?? $service['duration_minutes'] ?? 60));
+    $between = max(0, (int) ($service['session_break_minutes'] ?? 15));
+    $after = max(0, (int) ($service['buffer_minutes'] ?? 15));
+    return $duration * $sessions + $between * max(0, $sessions - 1) + $after;
 }
 
 function bookingRecords(): array {
@@ -109,11 +139,14 @@ function recordInterval(array $record): ?array {
     $duration = (int) ($record['duration_minutes'] ?? 0);
     if ($duration <= 0 && preg_match('/(\d+)/', (string) ($record['duration'] ?? ''), $match)) $duration = (int) $match[1];
     $duration = $duration > 0 ? $duration : 60;
+    $sessions = max(1, (int) ($record['sessions'] ?? 1));
+    $between = max(0, (int) ($record['session_break_minutes'] ?? 15));
     $buffer = max(0, (int) ($record['buffer_minutes'] ?? 15));
-    return [$start, $start->modify('+' . ($duration + $buffer) . ' minutes')];
+    $blocked = $duration * $sessions + $between * max(0, $sessions - 1) + $buffer;
+    return [$start, $start->modify('+' . $blocked . ' minutes')];
 }
 
-function computeAvailableSlots(string $date, string $serviceId, array $catalog, ?string $excludeId = null, ?DateTimeImmutable $now = null): array {
+function computeAvailableSlots(string $date, string $serviceId, array $catalog, ?string $excludeId = null, ?DateTimeImmutable $now = null, int $sessions = 1): array {
     $state = scheduleState($catalog);
     $bookable = bookingServices($catalog);
     if (!isset($bookable[$serviceId])) return [];
@@ -130,8 +163,7 @@ function computeAvailableSlots(string $date, string $serviceId, array $catalog, 
     $end = DateTimeImmutable::createFromFormat('!Y-m-d H:i', $date . ' ' . $hours['end'], $timezone);
     if (!$start || !$end || $end <= $start) return [];
     $service = $bookable[$serviceId];
-    $duration = (int) $service['minutes'];
-    $buffer = (int) $service['buffer_minutes'];
+    $blockedMinutes = bookingBlockedMinutes($service, $sessions);
     $step = max(1, min(480, (int) $state['settings']['slot_step_minutes']));
     $earliest = $now->modify('+' . (int) $state['settings']['minimum_notice_minutes'] . ' minutes');
     $blocking = [];
@@ -146,7 +178,7 @@ function computeAvailableSlots(string $date, string $serviceId, array $catalog, 
     // availability range selected by the administrator.
     for ($cursor = $start; $cursor <= $end; $cursor = $cursor->modify('+' . $step . ' minutes')) {
         if ($cursor < $earliest) continue;
-        $slotEnd = $cursor->modify('+' . ($duration + $buffer) . ' minutes');
+        $slotEnd = $cursor->modify('+' . $blockedMinutes . ' minutes');
         $conflict = false;
         foreach ($blocking as [$busyStart, $busyEnd]) {
             if ($cursor < $busyEnd && $slotEnd > $busyStart) { $conflict = true; break; }
@@ -156,7 +188,7 @@ function computeAvailableSlots(string $date, string $serviceId, array $catalog, 
     return $slots;
 }
 
-function availableDays(string $serviceId, array $catalog, int $limit = 24, ?DateTimeImmutable $now = null): array {
+function availableDays(string $serviceId, array $catalog, int $limit = 24, ?DateTimeImmutable $now = null, int $sessions = 1): array {
     $state = scheduleState($catalog);
     $timezone = new DateTimeZone('Europe/Bucharest');
     $now ??= new DateTimeImmutable('now', $timezone);
@@ -165,7 +197,7 @@ function availableDays(string $serviceId, array $catalog, int $limit = 24, ?Date
     $days = [];
     for ($offset = 0; $offset <= (int) $state['settings']['horizon_days'] && count($days) < $limit; $offset++) {
         $date = $now->setTime(0, 0)->modify('+' . $offset . ' days');
-        $slots = computeAvailableSlots($date->format('Y-m-d'), $serviceId, $catalog, null, $now);
+        $slots = computeAvailableSlots($date->format('Y-m-d'), $serviceId, $catalog, null, $now, $sessions);
         if (!$slots) continue;
         $days[] = ['date' => $date->format('Y-m-d'), 'weekday' => $dayNames[(int) $date->format('w')], 'label' => $date->format('j') . ' ' . $monthNames[(int) $date->format('n')], 'slots' => $slots];
     }
@@ -173,7 +205,7 @@ function availableDays(string $serviceId, array $catalog, int $limit = 24, ?Date
 }
 
 function assertSlotAvailable(array $record, array $catalog, ?string $excludeId = null): void {
-    $slots = computeAvailableSlots($record['date'], $record['service_id'], $catalog, $excludeId);
+    $slots = computeAvailableSlots($record['date'], $record['service_id'], $catalog, $excludeId, null, max(1, (int) ($record['sessions'] ?? 1)));
     if (!in_array($record['time'], $slots, true)) throw new InvalidArgumentException('Intervalul ales nu mai este disponibil. Alege o altă oră din calendar.');
 }
 

@@ -29,7 +29,7 @@ function validateBooking(array $input, array $services, ?DateTimeImmutable $now 
         if (isset($input[$key]) && !is_string($input[$key])) throw new InvalidArgumentException('Verifică datele completate în formular.');
         return trim($input[$key] ?? '');
     };
-    $serviceId = $read('service'); $plan = 'single';
+    $serviceId = $read('service');
     if (!isset($services[$serviceId])) throw new InvalidArgumentException('Alege un serviciu din listă.');
     $name = $read('name'); $email = $read('email'); $phone = $read('phone');
     if (strlen($name) < 2 || strlen($name) > 100 || preg_match('/[\x00-\x1f\x7f<>]/', $name)) throw new InvalidArgumentException('Completează numele tău, între 2 și 100 de caractere.');
@@ -44,10 +44,14 @@ function validateBooking(array $input, array $services, ?DateTimeImmutable $now 
     if (!isset($zones[$zone])) throw new InvalidArgumentException('Alege zona în care are loc ședința.');
     if ($read('privacy') !== '1') throw new InvalidArgumentException('Te rugăm să citești informarea privind datele personale și să bifezi acordul de contact.');
     $service = $services[$serviceId];
-    $sessions = 1;
-    $price = $service['price'];
+    $sessionsRaw = $read('sessions');
+    if (!preg_match('/^[1-9]\d*$/D', $sessionsRaw)) throw new InvalidArgumentException('Alege numărul de sesiuni.');
+    $sessions = (int) $sessionsRaw;
+    $maxSessions = max(1, min(10, (int) ($service['max_booking_sessions'] ?? 2)));
+    if ($sessions > $maxSessions) throw new InvalidArgumentException('Numărul de sesiuni depășește limita serviciului selectat.');
+    $price = (int) $service['price'];
     $travel = in_array($zone, ['sector-2', 'sector-3'], true) ? 0 : 30;
-    return ['name' => $name, 'email' => $email, 'phone' => $phone, 'service_id' => $serviceId, 'service' => $service['name'], 'duration' => $service['duration'], 'duration_minutes' => (int) ($service['minutes'] ?? 60), 'buffer_minutes' => (int) ($service['buffer_minutes'] ?? 15), 'plan' => $plan, 'sessions' => $sessions, 'price' => $price, 'travel_per_visit' => $travel, 'total' => $price + $travel, 'zone' => $zones[$zone], 'date' => $date, 'time' => $time, 'privacy_version' => '2026-09-21'];
+    return ['name' => $name, 'email' => $email, 'phone' => $phone, 'service_id' => $serviceId, 'service' => $service['name'], 'duration' => $service['duration'], 'duration_minutes' => (int) ($service['minutes'] ?? 60), 'session_break_minutes' => (int) ($service['session_break_minutes'] ?? 15), 'buffer_minutes' => (int) ($service['buffer_minutes'] ?? 15), 'plan' => $sessions === 1 ? 'single' : 'multi', 'sessions' => $sessions, 'price' => $price, 'travel_per_visit' => $travel, 'total' => $price * $sessions + $travel, 'zone' => $zones[$zone], 'date' => $date, 'time' => $time, 'privacy_version' => '2026-09-22'];
 }
 
 function applyRateLimit(string $ip, string $email): bool {

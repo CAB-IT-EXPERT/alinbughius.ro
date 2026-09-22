@@ -49,17 +49,17 @@ const bookingId = /name="id" value="([a-f0-9]{32})"/.exec(bookings)?.[1];
 const bookingDate = /name="date" value="([0-9-]+)"/.exec(bookings)?.[1];
 const bookingTime = /name="time" value="([0-9:]+)"/.exec(bookings)?.[1];
 assert.ok(bookingId && bookingDate && bookingTime);
-assert.equal((await post('/admin/?view=bookings', {csrf,action:'update_booking',id:bookingId,date:bookingDate,time:bookingTime,status:'confirmed',amount:'275',payment_status:'paid',internal_notes:'Test financiar'})).status, 303);
+assert.equal((await post('/admin/?view=bookings', {csrf,action:'update_booking',id:bookingId,date:bookingDate,time:bookingTime,sessions:'1',status:'confirmed',amount:'275',payment_status:'paid',internal_notes:'Test financiar'})).status, 303);
 bookings = await (await request('/admin/?view=bookings', {redirect:'follow'})).text();
 const financialPayload = JSON.parse(/<template id="booking-financial-data">([\s\S]*?)<\/template>/.exec(bookings)?.[1] || '{}');
-assert.deepEqual(financialPayload[bookingId], {amount:275,payment_status:'paid',source:'site'});
+assert.equal(financialPayload[bookingId].amount, 275); assert.equal(financialPayload[bookingId].payment_status, 'paid'); assert.equal(financialPayload[bookingId].source, 'site'); assert.equal(financialPayload[bookingId].sessions, 1);
 
 const manualAvailability = await (await fetch(origin + '/api/availability.php?service=relaxare')).json();
 assert.ok(manualAvailability.ok && manualAvailability.days.some(day => day.slots.length));
 const manualDay = manualAvailability.days.find(day => day.slots.length);
 const manualResponse = await post('/admin/?view=bookings', {
   csrf, action:'add_manual_booking', name:'Client Manual Test', phone:'0773111222', email:'', zone:'Sector 2',
-  service_id:'relaxare', date:manualDay.date, time:manualDay.slots[0], amount:'310', payment_status:'unpaid', status:'confirmed',
+  service_id:'relaxare', sessions:'1', date:manualDay.date, time:manualDay.slots[0], amount:'310', payment_status:'unpaid', status:'confirmed',
   internal_notes:'Programare introdusă telefonic în testul automat.'
 });
 assert.equal(manualResponse.status, 303);
@@ -68,7 +68,7 @@ assert.ok(manualId);
 bookings = await (await request('/admin/?view=bookings', {redirect:'follow'})).text();
 assert.match(bookings, /Client Manual Test/);
 const updatedFinancialPayload = JSON.parse(/<template id="booking-financial-data">([\s\S]*?)<\/template>/.exec(bookings)?.[1] || '{}');
-assert.deepEqual(updatedFinancialPayload[manualId], {amount:310,payment_status:'unpaid',source:'manual'});
+assert.equal(updatedFinancialPayload[manualId].amount, 310); assert.equal(updatedFinancialPayload[manualId].payment_status, 'unpaid'); assert.equal(updatedFinancialPayload[manualId].source, 'manual'); assert.equal(updatedFinancialPayload[manualId].sessions, 1);
 
 const financialDashboard = await (await request('/admin/?view=dashboard', {redirect:'follow'})).text();
 assert.match(financialDashboard, /Încasați[\s\S]*275<i> lei<\/i>/);

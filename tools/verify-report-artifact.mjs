@@ -14,7 +14,7 @@ workbook.recalculate();
 const sheets = await workbook.inspect({kind:'sheet', include:'id,name'});
 const summary = await workbook.inspect({kind:'table', range:'Rezumat!A1:L20', include:'values,formulas', tableMaxRows:20, tableMaxCols:12});
 const analysis = await workbook.inspect({kind:'formula', sheetId:'Analize', range:'A1:J30', maxChars:5000, options:{maxResults:100}});
-const details = await workbook.inspect({kind:'table', range:'Programari!A1:R8', include:'values,formulas', tableMaxRows:8, tableMaxCols:18});
+const details = await workbook.inspect({kind:'table', range:'Programari!A1:V8', include:'values,formulas', tableMaxRows:8, tableMaxCols:22});
 const errors = await workbook.inspect({kind:'match', searchTerm:'#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!', options:{useRegex:true,maxResults:300}, summary:'final formula error scan'});
 console.log(sheets.ndjson);
 console.log(summary.ndjson);
@@ -22,7 +22,7 @@ console.log(analysis.ndjson);
 console.log(details.ndjson);
 console.log(errors.ndjson);
 
-for (const [sheetName, range] of [['Rezumat','A1:L20'], ['Analize','A1:J16'], ['Programari','A1:R8']]) {
+for (const [sheetName, range] of [['Rezumat','A1:L20'], ['Analize','A1:J16'], ['Programari','A1:V8']]) {
   const preview = await workbook.render({sheetName, range, scale:1.4, format:'png'});
   const filename = path.join(previewDir, `${sheetName.toLowerCase()}.png`);
   await fs.writeFile(filename, new Uint8Array(await preview.arrayBuffer()));

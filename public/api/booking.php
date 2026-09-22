@@ -29,7 +29,7 @@ try {
         } finally { flock($calendar, LOCK_UN); fclose($calendar); }
     } else {
         // A retry can only resend the original request, never silently replace its recipient/details.
-        foreach (['name', 'email', 'phone', 'service_id', 'plan', 'date', 'time', 'zone'] as $key) {
+        foreach (['name', 'email', 'phone', 'service_id', 'plan', 'sessions', 'date', 'time', 'zone'] as $key) {
             if ($record[$key] !== $data[$key]) jsonResponse(['ok' => false, 'message' => 'Această cerere a fost deja înregistrată. Pentru alte detalii, redeschide formularul sau contactează-l pe Alin.'], 409);
         }
     }
