@@ -119,3 +119,52 @@
   .hero-location{font-size:13.2px;font-weight:600}
   .hero-social-proof .proof-label{font-size:12px;font-weight:600}
 }
+
+/* Hero gallery: autoplay in viewport, touch swipe and mouse drag. */
+.hero-gallery{isolation:isolate;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.hero-gallery.is-dragging{cursor:grabbing}
+.hero-gallery-track{position:relative;z-index:1;display:flex;width:100%;height:100%;will-change:transform;transform:translate3d(0,0,0);transition:transform .58s cubic-bezier(.22,1,.36,1)}
+.hero-gallery.is-dragging .hero-gallery-track{transition:none}
+.hero-gallery-slide{position:relative;flex:0 0 100%;width:100%;height:100%;margin:0;overflow:hidden;background:#315f50}
+.hero-gallery-slide img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 50%;pointer-events:none;-webkit-user-drag:none;transform:scale(1.015);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.hero-gallery-slide.is-active img{transform:scale(1)}
+.hero-gallery-slide--profile img{object-position:center 28%}
+.hero-gallery::after{z-index:2;background:linear-gradient(180deg,#06271d0c 35%,#06271dba 100%)}
+.hero-gallery .hero-portrait-caption{z-index:4;pointer-events:none}
+.hero-gallery .portrait-video-link{pointer-events:auto}
+.hero-gallery-arrow{position:absolute;z-index:5;top:50%;display:grid;place-items:center;width:48px;height:48px;margin-top:-24px;padding:0;border:1px solid #ffffff75;border-radius:50%;background:#f8fff0d9;color:#164b3c;box-shadow:0 10px 30px #061e1740;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:.94;transition:transform .25s cubic-bezier(.22,1,.36,1),background .2s,box-shadow .2s,opacity .2s}
+.hero-gallery-arrow:hover{background:#fff;box-shadow:0 14px 36px #061e1752;transform:scale(1.08)}
+.hero-gallery-arrow:active{transform:scale(.94)}
+.hero-gallery-arrow:focus-visible,.hero-gallery-dots button:focus-visible{outline:3px solid #c8f4dc;outline-offset:3px}
+.hero-gallery-arrow .icon{width:20px;height:20px;stroke-width:1.9}
+.hero-gallery-prev{left:18px}
+.hero-gallery-prev .icon{transform:rotate(180deg)}
+.hero-gallery-next{right:18px}
+.hero-gallery-dots{position:absolute;z-index:5;top:17px;left:50%;display:flex;align-items:center;gap:3px;padding:5px 7px;border:1px solid #ffffff45;border-radius:99px;background:#092f2780;box-shadow:0 7px 20px #041b1630;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform:translateX(-50%)}
+.hero-gallery-dots button{display:grid;place-items:center;width:24px;height:20px;padding:6px;border:0;background:transparent;cursor:pointer}
+.hero-gallery-dots button span{display:block;width:7px;height:7px;border-radius:99px;background:#ffffff8a;transition:width .3s cubic-bezier(.22,1,.36,1),background .25s}
+.hero-gallery-dots button[aria-current=true] span{width:22px;background:#fff}
+.hero-gallery-count{position:absolute;z-index:5;top:18px;right:18px;display:flex;align-items:center;gap:7px;min-width:63px;padding:7px 10px;border:1px solid #ffffff40;border-radius:99px;background:#092f2778;color:#d7e6de;font-size:9px;line-height:1;letter-spacing:1px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hero-gallery-count b{color:#fff;font-size:11px;font-weight:600}
+.hero-gallery-count i{display:block;width:12px;height:1px;background:#ffffff70}
+.hero-gallery .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+@media(max-width:700px){
+  .hero-gallery-arrow{width:44px;height:44px;margin-top:-22px;border-color:#ffffff66;background:#f8fff0e8}
+  .hero-gallery-prev{left:11px}.hero-gallery-next{right:11px}
+  .hero-gallery-arrow .icon{width:18px;height:18px}
+  .hero-gallery-dots{top:14px;padding:4px 6px}
+  .hero-gallery-dots button{width:21px;height:19px;padding:6px 5px}
+  .hero-gallery-dots button[aria-current=true] span{width:18px}
+  .hero-gallery-count{top:15px;right:13px;min-width:56px;padding:6px 8px;font-size:8px}
+  .hero-gallery-count b{font-size:10px}
+  .hero-gallery-slide img{object-position:center 49%}
+  .hero-gallery-slide--profile img{object-position:center 28%}
+}
+@media(max-width:370px){
+  .hero-gallery-arrow{width:40px;height:40px;margin-top:-20px}
+  .hero-gallery-prev{left:8px}.hero-gallery-next{right:8px}
+  .hero-gallery-count{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-gallery-track,.hero-gallery-slide img,.hero-gallery-arrow,.hero-gallery-dots button span{transition:none!important}
+}

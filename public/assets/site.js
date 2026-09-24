@@ -162,6 +162,201 @@
   });
   $$('[data-lightbox]').forEach(link => link.addEventListener('click', event => { event.preventDefault(); $('#diploma-image').src = link.href; $('#diploma-image').alt = `Diplomă ${link.dataset.caption}`; $('#diploma-caption').textContent = link.dataset.caption; $('#image-dialog').showModal(); document.body.classList.add('modal-open'); }));
 
+  const heroGallery = $('[data-hero-gallery]');
+  if (heroGallery) {
+    const track = $('[data-hero-track]', heroGallery);
+    const slides = $$('[data-hero-slide]', heroGallery);
+    const dots = $$('[data-hero-dot]', heroGallery);
+    const currentLabel = $('[data-hero-current]', heroGallery);
+    const status = $('[data-hero-status]', heroGallery);
+    const previous = $('[data-hero-prev]', heroGallery);
+    const next = $('[data-hero-next]', heroGallery);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const slideCount = slides.length;
+    let index = 0;
+    let position = 1;
+    let timer = 0;
+    let resumeTimer = 0;
+    let transitionTimer = 0;
+    let isVisible = false;
+    let isHovering = false;
+    let hasFocus = false;
+    let isDragging = false;
+    let isTransitioning = false;
+    let pointerId = null;
+    let startX = 0;
+    let startY = 0;
+    let dragX = 0;
+
+    const stopAutoplay = () => {
+      window.clearInterval(timer);
+      timer = 0;
+    };
+    const canAutoplay = () => isVisible && !reduceMotion.matches && !isHovering && !hasFocus && !isDragging && document.visibilityState === 'visible';
+    const startAutoplay = () => {
+      stopAutoplay();
+      if (!canAutoplay()) return;
+      timer = window.setInterval(() => move(1, false), 1800);
+    };
+    const scheduleAutoplay = (delay = 3500) => {
+      stopAutoplay();
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(startAutoplay, delay);
+    };
+    const updateInterface = (announce = false) => {
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === index;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+      dots.forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === index)));
+      if (currentLabel) currentLabel.textContent = String(index + 1).padStart(2, '0');
+      if (announce && status) status.textContent = `Fotografia ${index + 1} din ${slideCount}`;
+    };
+    const setTrackPosition = (animate = true) => {
+      if (!animate) track.style.transition = 'none';
+      else track.style.removeProperty('transition');
+      track.style.transform = `translate3d(${-position * 100}%,0,0)`;
+      if (!animate) {
+        track.getBoundingClientRect();
+        track.style.removeProperty('transition');
+      }
+    };
+    const settleLoop = () => {
+      if (position > slideCount) position = ((position - 1) % slideCount) + 1;
+      else if (position < 1) position = ((position - 1) % slideCount + slideCount) % slideCount + 1;
+      else return;
+      setTrackPosition(false);
+      [...track.children].forEach(slide => slide.classList.remove('is-active'));
+      track.children[position]?.classList.add('is-active');
+    };
+    const completeTransition = () => {
+      window.clearTimeout(transitionTimer);
+      transitionTimer = 0;
+      isTransitioning = false;
+      settleLoop();
+    };
+    const move = (direction, announce = true) => {
+      if (isTransitioning || slideCount < 2) return;
+      isTransitioning = true;
+      position += direction;
+      index = (index + direction + slideCount) % slideCount;
+      [...track.children].forEach(slide => slide.classList.remove('is-active'));
+      track.children[position]?.classList.add('is-active');
+      setTrackPosition(true);
+      updateInterface(announce);
+      window.clearTimeout(transitionTimer);
+      transitionTimer = window.setTimeout(completeTransition, 750);
+      if (announce) scheduleAutoplay();
+    };
+    const goTo = target => {
+      if (isTransitioning || target === index) return;
+      index = target;
+      position = target + 1;
+      [...track.children].forEach(slide => slide.classList.remove('is-active'));
+      track.children[position]?.classList.add('is-active');
+      setTrackPosition(true);
+      updateInterface(true);
+      isTransitioning = true;
+      window.clearTimeout(transitionTimer);
+      transitionTimer = window.setTimeout(completeTransition, 750);
+      scheduleAutoplay();
+    };
+
+    if (slideCount > 1) {
+      const before = slides[slideCount - 1].cloneNode(true);
+      const after = slides[0].cloneNode(true);
+      before.removeAttribute('data-hero-slide');
+      after.removeAttribute('data-hero-slide');
+      before.setAttribute('aria-hidden', 'true');
+      after.setAttribute('aria-hidden', 'true');
+      before.classList.remove('is-active');
+      after.classList.remove('is-active');
+      track.prepend(before);
+      track.append(after);
+      setTrackPosition(false);
+      updateInterface();
+
+      track.addEventListener('transitionend', event => {
+        if (event.target !== track || event.propertyName !== 'transform') return;
+        completeTransition();
+      });
+      previous?.addEventListener('click', () => move(-1));
+      next?.addEventListener('click', () => move(1));
+      dots.forEach(dot => dot.addEventListener('click', () => goTo(Number(dot.dataset.heroDot))));
+      heroGallery.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        move(event.key === 'ArrowLeft' ? -1 : 1);
+      });
+
+      heroGallery.addEventListener('pointerdown', event => {
+        if (event.button !== 0 || event.target.closest('button, a')) return;
+        pointerId = event.pointerId;
+        startX = event.clientX;
+        startY = event.clientY;
+        dragX = 0;
+        isDragging = true;
+        isTransitioning = false;
+        window.clearTimeout(transitionTimer);
+        heroGallery.classList.add('is-dragging');
+        heroGallery.setPointerCapture?.(pointerId);
+        stopAutoplay();
+        window.clearTimeout(resumeTimer);
+      });
+      heroGallery.addEventListener('pointermove', event => {
+        if (!isDragging || event.pointerId !== pointerId) return;
+        dragX = event.clientX - startX;
+        const dragY = event.clientY - startY;
+        if (Math.abs(dragY) > Math.abs(dragX) && Math.abs(dragY) > 10) return;
+        const width = heroGallery.clientWidth || 1;
+        track.style.transform = `translate3d(${(-position * width) + dragX}px,0,0)`;
+      });
+      const finishDrag = (event, cancelled = false) => {
+        if (!isDragging || (event.pointerId !== undefined && event.pointerId !== pointerId)) return;
+        const width = heroGallery.clientWidth || 1;
+        const threshold = Math.min(95, Math.max(42, width * .12));
+        isDragging = false;
+        heroGallery.classList.remove('is-dragging');
+        heroGallery.releasePointerCapture?.(pointerId);
+        pointerId = null;
+        track.style.removeProperty('transition');
+        if (!cancelled && Math.abs(dragX) >= threshold) move(dragX < 0 ? 1 : -1);
+        else {
+          setTrackPosition(true);
+          scheduleAutoplay();
+        }
+        dragX = 0;
+      };
+      heroGallery.addEventListener('pointerup', event => finishDrag(event));
+      heroGallery.addEventListener('pointercancel', event => finishDrag(event, true));
+      heroGallery.addEventListener('lostpointercapture', event => finishDrag(event, true));
+
+      heroGallery.addEventListener('mouseenter', () => { isHovering = true; stopAutoplay(); });
+      heroGallery.addEventListener('mouseleave', () => { isHovering = false; scheduleAutoplay(1800); });
+      heroGallery.addEventListener('focusin', () => { hasFocus = true; stopAutoplay(); });
+      heroGallery.addEventListener('focusout', event => {
+        if (heroGallery.contains(event.relatedTarget)) return;
+        hasFocus = false;
+        scheduleAutoplay();
+      });
+      document.addEventListener('visibilitychange', () => document.visibilityState === 'visible' ? startAutoplay() : stopAutoplay());
+      reduceMotion.addEventListener('change', () => reduceMotion.matches ? stopAutoplay() : startAutoplay());
+
+      if ('IntersectionObserver' in window) {
+        const galleryObserver = new IntersectionObserver(entries => {
+          isVisible = entries[0]?.isIntersecting && entries[0].intersectionRatio >= .32;
+          if (isVisible) startAutoplay();
+          else stopAutoplay();
+        }, {threshold:[0, .32, .65]});
+        galleryObserver.observe(heroGallery);
+      } else {
+        isVisible = true;
+        startAutoplay();
+      }
+    }
+  }
+
   // Progressive enhancement: content stays visible without JS or with reduced motion.
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (!motionPreference.matches && 'IntersectionObserver' in window) {
