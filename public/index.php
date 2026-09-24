@@ -44,11 +44,11 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/refined.css?v=2">
   <link rel="stylesheet" href="/assets/experience.css?v=1">
   <link rel="stylesheet" href="/assets/footer.css?v=1">
-  <link rel="stylesheet" href="/assets/details.css?v=7">
+  <link rel="stylesheet" href="/assets/details.css?v=9">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
   <script src="/assets/site.js?v=5" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
-  <script src="/assets/carousel.js?v=2" defer></script>
+  <script src="/assets/carousel.js?v=3" defer></script>
   <script src="/assets/measurement.js?v=2" defer></script>
 </head>
 <body>
@@ -107,11 +107,20 @@ function icon(string $name, string $class = ''): string {
       <div class="section-heading compact"><div><p class="eyebrow">OAMENI REALI. EXPERIENȚE REALE.</p><h2>Ei au simțit <em>diferența.</em></h2></div><a class="google-review-link" href="<?= e($reviewsUrl) ?>" target="_blank" rel="noopener noreferrer"><img src="/assets/google-g.png" alt="Google" width="23" height="23"><span>Citește recenziile</span><?= icon('diagonal') ?></a></div>
       <div class="reviews-carousel" role="region" aria-roledescription="carusel" aria-label="Părerile clienților">
       <div class="reviews-grid" id="reviews-track" tabindex="0" aria-label="Recenzii Google. Glisează sau folosește săgețile pentru a le explora.">
-        <?php foreach ([['Ion Mai Antal', 'IA', 'Sunt foarte mulțumit de ședințele făcute în ultmii 2 ani. Felicitări încă o dată!'], ['Ana Vaduva', 'AV', 'Mă simt de fiecare dată cu forțe proaspete după un ritual de relaxare și detensionare. Recomand cu drag!'], ['Alina Lapanja', 'AL', 'Masajul pentru relaxare făcut ca la carte, mi-a dat stare de bine. Recomand cu căldură!']] as $review): ?>
+        <?php foreach ([
+          ['Ion Mai Antal', 'IA', 'Sunt foarte mulțumit de ședințele făcute în ultmii 2 ani. Felicitări încă o dată!'],
+          ['Ana Vaduva', 'AV', 'Mă simt de fiecare dată cu forțe proaspete după un ritual de relaxare și detensionare. Recomand cu drag!'],
+          ['Alina Lapanja', 'AL', 'Masajul pentru relaxare făcut ca la carte, mi-a dat stare de bine. Recomand cu căldură!'],
+          ['Lavinia Gheorghiu', 'LG', 'Recomand să încercați o terapie cu Alin! Tehnicile pe care le cunoaște sunt foarte diferite față de ceea ce am mai încercat și a meritat pe deplin. Recomand'],
+          ['Mitrofan Laura', 'ML', 'Am avut o experiență foarte plăcută. A venit punctual, a creat o atmosferă relaxantă și profesionistă iar masajul a fost exact ce aveam nevoie pentru durerile de spate de la birou. După ședință m-am simțit relaxată si revigorata. Recomand cu încredere!'],
+          ['Alina Necula', 'AN', 'Am fost foarte mulțumita de serviciile oferite. Maseurul a demonstrat profesionalism, atenție și o bună cunoaștere a tehnicilor de masaj. Ședința a fost relaxantă și eficientă. Recomand cu încredere. Chiar aveam nevoie de un astfel de masaj!'],
+          ['Ana-Maria Iordache', 'AI', 'O experienta excelenta. Masajul propriu-zis a fost exact ce aveam nevoie, o combinație perfectă între presiune fermă și mișcări relaxante. Alin a lucrat în mod special pe zona spatelui și a umerilor, unde acumulam cel mai mult stres. Daca suferi de dureri de spate, cervicale recomand cu incredere.'],
+          ['IULIA LOREDANA Ganceanu', 'IG', 'O experiență excelentă de la început până la final. Masajul a fost exact ce aveam nevoie – realizat cu atenție, tehnică foarte bună și multă grijă pentru client. Recomand cu încredere tuturor celor care vor să se relaxeze cu adevărat.'],
+        ] as $review): ?>
         <figure class="review"><div class="review-top"><div class="stars" aria-label="5 din 5 stele">★★★★★</div><img src="/assets/google-g.png" alt="Google" width="24" height="24"></div><blockquote>„<?= e($review[2]) ?>”</blockquote><figcaption><span class="review-avatar"><?= e($review[1]) ?></span><span><?= e($review[0]) ?><small>Recenzie de la client</small></span><?= icon('check') ?></figcaption></figure>
         <?php endforeach; ?>
       </div>
-      <div class="reviews-controls" hidden><span class="reviews-counter" aria-live="polite"><strong>01</strong><span>/ 03</span></span><div class="reviews-dots" aria-label="Alege pagina de recenzii"></div><div class="reviews-arrows"><button type="button" data-review-prev aria-label="Recenzia precedentă" aria-controls="reviews-track"><?= icon('arrow') ?></button><button type="button" data-review-next aria-label="Recenzia următoare" aria-controls="reviews-track"><?= icon('arrow') ?></button></div></div>
+      <div class="reviews-controls" hidden><span class="reviews-counter"><strong>01</strong><span>/ 08</span></span><div class="reviews-dots" aria-label="Alege pagina de recenzii"></div><div class="reviews-arrows"><button type="button" data-review-prev aria-label="Recenzia precedentă" aria-controls="reviews-track"><?= icon('arrow') ?></button><button type="button" data-review-next aria-label="Recenzia următoare" aria-controls="reviews-track"><?= icon('arrow') ?></button></div></div>
       </div>
     </div>
   </section>

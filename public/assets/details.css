@@ -7,7 +7,8 @@
 .trust-item p{font-size:11px;line-height:1.6;margin-top:5px;color:#7a8b77}
 .trust-item:hover{transform:translateY(-3px);box-shadow:0 7px 20px #183e2412}
 .reviews-carousel{min-width:0}
-.reviews-grid{overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain}
+.reviews-grid{display:flex;gap:23px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:2px;padding:4px 2px 10px;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain}
+.reviews-grid .review{flex:0 0 calc((100% - 46px)/3);min-width:0;margin:0;scroll-snap-align:start}
 .reviews-grid::-webkit-scrollbar{display:none;width:0;height:0}
 .reviews-grid.is-draggable{cursor:grab;touch-action:auto;-webkit-overflow-scrolling:touch}
 .reviews-grid.is-draggable img{-webkit-user-drag:none;user-select:none}
@@ -21,6 +22,8 @@
 .reviews-dots button::before{content:'';width:6px;height:6px;border-radius:10px;background:#cbd8c3;transition:width .3s,background .3s}
 .reviews-dots button[aria-current=true]{width:38px}
 .reviews-dots button[aria-current=true]::before{width:23px;background:#346e50}
+.reviews-carousel.is-autoplaying .reviews-dots button[aria-current=true]::before{animation:reviewProgress 5s linear both;transform-origin:left center}
+@keyframes reviewProgress{from{transform:scaleX(.16);opacity:.55}to{transform:scaleX(1);opacity:1}}
 .reviews-arrows{display:flex;align-items:center;gap:9px}
 .reviews-arrows button{display:grid;place-items:center;width:41px;height:41px;border-radius:50%;border:1px solid #d7e2d0;background:#f5f9f1;color:#315b3e;transition:background .2s,border-color .2s}
 .reviews-arrows button:hover:not(:disabled){background:#e2edd9;border-color:#b4caaa}
@@ -28,7 +31,7 @@
 .reviews-arrows button>.icon{width:18px;height:18px}
 .reviews-arrows button:first-child>.icon{transform:rotate(180deg)}
 @media(max-width:1100px){.trust-strip>.container{gap:13px}.trust-item{padding:18px 13px;gap:10px}.trust-strip .trust-icon{width:40px;height:40px}.trust-item h3{font-size:12px}.trust-item p{font-size:10px}}
-@media(max-width:900px){.trust-item{flex-direction:column;text-align:center;padding:22px 12px;gap:13px}.trust-item h3{font-size:13px}.trust-item p{font-size:10px}.reviews-grid{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px}.review{flex:0 0 calc((100% - 22px)/2);scroll-snap-align:start;margin:0}.review blockquote{min-height:110px}.reviews-carousel .review{transition:box-shadow .25s,transform .25s}}
+@media(max-width:900px){.trust-item{flex-direction:column;text-align:center;padding:22px 12px;gap:13px}.trust-item h3{font-size:13px}.trust-item p{font-size:10px}.reviews-grid{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px}.reviews-grid .review{flex:0 0 calc((100% - 22px)/2);scroll-snap-align:start;margin:0}.review blockquote{min-height:110px}.reviews-carousel .review{transition:box-shadow .25s,transform .25s}}
 @media(max-width:700px){
   .trust-strip>.container{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:24px 0}
   .trust-item{padding:22px 10px 20px;gap:13px;border-radius:13px;box-shadow:0 3px 10px #23422708}
@@ -37,14 +40,14 @@
   .trust-item h3{font-size:12px;line-height:1.5}
   .trust-item p{font-size:10px;line-height:1.6;margin-top:6px}
   .reviews-grid{gap:16px;margin-inline:-2px;padding:4px 2px 10px;scroll-padding-inline:2px}
-  .review{flex-basis:calc(100% - 20px);padding:26px;min-height:260px;border-radius:16px}
+  .reviews-grid .review{flex-basis:calc(100% - 20px);padding:26px;min-height:260px;border-radius:16px}
   .review blockquote{min-height:100px;font-size:15px;line-height:1.9}
   .review figcaption{margin-top:26px}
   .review-top img{width:24px;height:24px}
   .reviews-controls{padding-top:16px;gap:15px}
 }
-@media(max-width:370px){.trust-strip>.container{gap:10px}.trust-item{padding:20px 8px;gap:12px}.trust-item h3{font-size:11px}.trust-item p{font-size:9px}.review{padding:23px;flex-basis:calc(100% - 15px)}.review blockquote{font-size:14px}.reviews-arrows button{width:37px;height:37px}.reviews-counter{font-size:10px;min-width:53px}}
-@media(prefers-reduced-motion:reduce){.trust-item,.reviews-dots button::before,.reviews-arrows button{transition:none}.trust-item:hover{transform:none}}
+@media(max-width:370px){.trust-strip>.container{gap:10px}.trust-item{padding:20px 8px;gap:12px}.trust-item h3{font-size:11px}.trust-item p{font-size:9px}.reviews-grid .review{padding:23px;flex-basis:calc(100% - 15px)}.review blockquote{font-size:14px}.reviews-arrows button{width:37px;height:37px}.reviews-counter{font-size:10px;min-width:53px}}
+@media(prefers-reduced-motion:reduce){.trust-item,.reviews-dots button::before,.reviews-arrows button{transition:none}.reviews-carousel.is-autoplaying .reviews-dots button[aria-current=true]::before{animation:none}.trust-item:hover{transform:none}}
 .nav-mobile-heading,.nav-order,.nav-arrow,.nav-mobile-footer,.header nav .nav-video-link,.menu-backdrop{display:none}
 @media(max-width:700px){
   body.menu-open{overflow:hidden}
