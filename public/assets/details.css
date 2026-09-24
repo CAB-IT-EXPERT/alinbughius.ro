@@ -44,7 +44,15 @@
   .review blockquote{min-height:100px;font-size:15px;line-height:1.9}
   .review figcaption{margin-top:26px}
   .review-top img{width:24px;height:24px}
-  .reviews-controls{padding-top:16px;gap:15px}
+  .reviews-carousel{overflow:hidden}
+  .reviews-controls{padding-top:16px;gap:8px;min-width:0}
+  .reviews-counter{min-width:48px;gap:5px}
+  .reviews-dots{flex:1;min-width:0;gap:0}
+  .reviews-dots button{flex:0 1 16px;width:16px;height:41px}
+  .reviews-dots button[aria-current=true]{flex-basis:28px;width:28px}
+  .reviews-dots button::before{width:5px;height:5px}
+  .reviews-dots button[aria-current=true]::before{width:18px}
+  .reviews-arrows{flex:0 0 auto;gap:6px}
 }
 @media(max-width:370px){.trust-strip>.container{gap:10px}.trust-item{padding:20px 8px;gap:12px}.trust-item h3{font-size:11px}.trust-item p{font-size:9px}.reviews-grid .review{padding:23px;flex-basis:calc(100% - 15px)}.review blockquote{font-size:14px}.reviews-arrows button{width:37px;height:37px}.reviews-counter{font-size:10px;min-width:53px}}
 @media(prefers-reduced-motion:reduce){.trust-item,.reviews-dots button::before,.reviews-arrows button{transition:none}.reviews-carousel.is-autoplaying .reviews-dots button[aria-current=true]::before{animation:none}.trust-item:hover{transform:none}}
