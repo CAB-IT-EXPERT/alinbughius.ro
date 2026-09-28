@@ -4,8 +4,9 @@
   if (location.hostname !== 'alinbughius.ro' || !['/', '/index.php'].includes(location.pathname)) return;
   window.dataLayer = window.dataLayer || [];
   const gtag = function () { window.dataLayer.push(arguments); };
-  const account = 'AW-11103141014';
-  const conversion = `${account}/sLiECKP109YZEJb5sa4p`;
+  const account = 'AW-18478963280';
+  const legacyAccount = 'AW-11103141014';
+  const legacyConversion = `${legacyAccount}/sLiECKP109YZEJb5sa4p`;
   const pageUrl = new URL('https://alinbughius.ro/');
   // Preserve campaign attribution, but never forward arbitrary query fields.
   const incoming = new URL(location.href);
@@ -25,6 +26,14 @@
     page_referrer: '',
     page_title: 'Alin Bughius · Masaj la domiciliu'
   });
+  // Keep the previously installed account active until its campaign is retired.
+  gtag('config', legacyAccount, {
+    allow_ad_personalization_signals: false,
+    allow_google_signals: false,
+    page_location: pageUrl.href,
+    page_referrer: '',
+    page_title: 'Alin Bughius · Masaj la domiciliu'
+  });
   const script = document.createElement('script');
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${account}`;
@@ -38,6 +47,6 @@
     if (url.protocol !== 'tel:' && !(url.protocol === 'https:' && url.hostname === 'wa.me')) return;
     // Preserve the old site's contact-click conversion, not a new booking event.
     // Navigation continues immediately, even if Google is blocked/unavailable.
-    gtag('event', 'conversion', {send_to: conversion, transport_type: 'beacon'});
+    gtag('event', 'conversion', {send_to: legacyConversion, transport_type: 'beacon'});
   });
 })();

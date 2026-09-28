@@ -196,7 +196,7 @@
     const startAutoplay = () => {
       stopAutoplay();
       if (!canAutoplay()) return;
-      timer = window.setInterval(() => move(1, false), 2000);
+      timer = window.setInterval(() => move(1, false), 1700);
     };
     const scheduleAutoplay = (delay = 3500) => {
       stopAutoplay();

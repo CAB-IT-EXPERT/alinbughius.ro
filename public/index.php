@@ -46,10 +46,10 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/footer.css?v=1">
   <link rel="stylesheet" href="/assets/details.css?v=10">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
-  <script src="/assets/site.js?v=5" defer></script>
+  <script src="/assets/site.js?v=6" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
-  <script src="/assets/measurement.js?v=2" defer></script>
+  <script src="/assets/measurement.js?v=3" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#continut">Sari la conținut</a>
@@ -82,14 +82,17 @@ function icon(string $name, string $class = ''): string {
             <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-1.webp" alt="Ședință de masaj terapeutic realizată de Alin Bughius" width="1086" height="1448" loading="lazy" draggable="false"></figure>
             <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-2.webp" alt="Mobilizare asistată în timpul unei ședințe de masaj" width="1087" height="1447" loading="lazy" draggable="false"></figure>
             <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-3.webp" alt="Alin Bughius în timpul unui masaj de relaxare" width="1086" height="1448" loading="lazy" draggable="false"></figure>
+            <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-4.webp" alt="Masaj terapeutic pentru zona cervicală realizat de Alin Bughius" width="1086" height="1448" loading="lazy" draggable="false"></figure>
+            <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-5.webp" alt="Ședință de reflexoterapie realizată de Alin Bughius" width="1152" height="2048" loading="lazy" draggable="false"></figure>
+            <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-6.webp" alt="Masaj de relaxare la domiciliu realizat de Alin Bughius" width="1152" height="2048" loading="lazy" draggable="false"></figure>
           </div>
           <button class="hero-gallery-arrow hero-gallery-prev" type="button" data-hero-prev aria-label="Fotografia precedentă"><?= icon('arrow') ?></button>
           <button class="hero-gallery-arrow hero-gallery-next" type="button" data-hero-next aria-label="Fotografia următoare"><?= icon('arrow') ?></button>
           <div class="hero-gallery-dots" role="group" aria-label="Alege fotografia">
-            <?php for ($photo = 1; $photo <= 4; $photo++): ?><button type="button" data-hero-dot="<?= $photo - 1 ?>" aria-label="Fotografia <?= $photo ?> din 4" aria-current="<?= $photo === 1 ? 'true' : 'false' ?>"><span></span></button><?php endfor; ?>
+            <?php for ($photo = 1; $photo <= 7; $photo++): ?><button type="button" data-hero-dot="<?= $photo - 1 ?>" aria-label="Fotografia <?= $photo ?> din 7" aria-current="<?= $photo === 1 ? 'true' : 'false' ?>"><span></span></button><?php endfor; ?>
           </div>
-          <span class="hero-gallery-count" aria-hidden="true"><b data-hero-current>01</b><i></i>04</span>
-          <p class="sr-only" data-hero-status aria-live="polite">Fotografia 1 din 4</p>
+          <span class="hero-gallery-count" aria-hidden="true"><b data-hero-current>01</b><i></i>07</span>
+          <p class="sr-only" data-hero-status aria-live="polite">Fotografia 1 din 7</p>
           <div class="hero-portrait-caption"><span><small>TERAPEUTUL TĂU</small><strong>Alin Bughius</strong><span>Cu grijă pentru oameni, din 2018.</span></span><a href="#in-miscare" class="portrait-video-link" aria-label="Vezi videoclipurile cu Alin în timpul ședințelor"><span aria-hidden="true">▶</span>Vezi cum lucrez</a></div>
         </div>
       </div>
