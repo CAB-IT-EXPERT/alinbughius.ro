@@ -179,3 +179,99 @@
 @media(prefers-reduced-motion:reduce){
   .hero-gallery-track,.hero-gallery-slide img,.hero-gallery-arrow,.hero-gallery-dots button span{transition:none!important}
 }
+
+/* Immersive homepage hero: pale mint palette and full-bleed photographic slider. */
+.home-page .header{background:#e8f5eeed;border-bottom-color:#d7e9df;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.hero--immersive{isolation:isolate;min-height:690px;background:#e3f3ea;color:#104a3e;overflow:hidden}
+.hero--immersive .hero-visual{position:absolute;inset:0;display:block;width:100%;height:100%;padding:0;margin:0}
+.hero--immersive .hero-photo{width:100%;height:100%;max-width:none;border-radius:0;background:#d9eee3;box-shadow:none}
+.hero--immersive .hero-gallery-slide{background:#d9eee3}
+.hero--immersive .hero-gallery-slide img{object-position:center 52%;filter:saturate(.88) contrast(.97) brightness(1.035)}
+.hero--immersive .hero-gallery-slide--relaxation img{object-position:center 53%}
+.hero--immersive .hero-gallery-slide--profile img{object-position:center 31%}
+.hero--immersive .hero-gallery::after{inset:0;z-index:2;background:linear-gradient(90deg,rgba(229,246,237,.99) 0%,rgba(229,246,237,.965) 35%,rgba(229,246,237,.84) 55%,rgba(229,246,237,.43) 76%,rgba(229,246,237,.18) 100%),linear-gradient(180deg,rgba(232,247,239,.58),rgba(214,238,226,.22))}
+.hero--immersive .hero-grid{position:relative;z-index:3;display:flex;align-items:center;min-height:690px;padding-top:54px;padding-bottom:58px;pointer-events:none}
+.hero--immersive .hero-copy{width:min(680px,61%);pointer-events:auto}
+.hero--immersive .hero .eyebrow,.hero--immersive .eyebrow{color:#195f50;text-shadow:0 1px 0 #f5fff9}
+.hero--immersive .eyebrow>span{background:#58a98c}
+.hero--immersive h1{color:#0d453a;text-shadow:0 1px 0 #f7fff9}
+.hero--immersive h1 em{color:#278b70}
+.hero--immersive .hero-description,.hero--immersive .hero-location,.hero--immersive .hero-price>span:last-child,.hero--immersive .proof-label{color:#174f43}
+.hero--immersive .hero-description{max-width:650px;font-weight:500}
+.hero--immersive .hero-location{display:flex;align-items:center;gap:10px;margin-top:19px}
+.hero--immersive .hero-location .icon{width:23px;height:23px;color:#1a6e5b}
+.hero--immersive .hero-location span{color:#47786c}
+.hero--immersive .hero-price>strong{font-size:47px;color:#0d453a}
+.hero--immersive .hero-price strong span{font-size:24px}
+.hero--immersive .hero-price>span:last-child{font-size:15px}
+.hero--immersive .hero-price b{font-size:18px;font-weight:600;color:#104a3e}
+.hero--immersive .price-divider{height:57px;background:#478d79}
+.hero--immersive .button-mint{background:#bfead8;border-color:#a9dcc7;box-shadow:0 12px 34px #1c5f4820}
+.hero--immersive .button-mint:hover{background:#afe3ce}
+.hero--immersive .hero-actions .text-link{color:#12493e}
+.hero--immersive .hero-social-proof{padding:10px 15px 10px 10px;border:1px solid #ffffff69;border-radius:999px;background:#e9f8f0b8;box-shadow:0 12px 34px #194d3b12;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hero--immersive .google-proof-icon{display:grid;place-items:center;width:45px;height:45px;border-radius:50%;background:#fff;box-shadow:0 5px 16px #1c4b3917}
+.hero--immersive .google-proof-icon img{width:27px;height:27px}
+.hero--immersive .hero-social-proof>.icon{color:#2b745f}
+.hero--immersive .hero-portrait-caption{display:none}
+.hero--immersive .hero-gallery-dots{top:22px;left:auto;right:102px;transform:none;background:#e7f6eeba;border-color:#ffffffa8;box-shadow:0 8px 25px #1a503d17}
+.hero--immersive .hero-gallery-dots button span{background:#3a755f6b}
+.hero--immersive .hero-gallery-dots button[aria-current=true] span{background:#1d6d58}
+.hero--immersive .hero-gallery-count{top:23px;right:25px;background:#e7f6eeba;border-color:#ffffff9c;color:#467d6c;box-shadow:0 8px 25px #1a503d17}
+.hero--immersive .hero-gallery-count b{color:#155846}
+.hero--immersive .hero-gallery-count i{background:#4f8c7966}
+.hero--immersive .hero-gallery-arrow{top:50%;background:#eefaf3db;border-color:#ffffffc7;color:#155846;box-shadow:0 12px 32px #0f3f3024}
+.hero--immersive .hero-gallery-prev{left:auto;right:86px}
+.hero--immersive .hero-gallery-next{right:24px}
+
+@media(max-width:900px){
+  .hero--immersive{min-height:650px}
+  .hero--immersive .hero-grid{min-height:650px;padding-top:45px;padding-bottom:48px}
+  .hero--immersive .hero-copy{width:min(640px,74%)}
+  .hero--immersive .hero-gallery::after{background:linear-gradient(90deg,rgba(229,246,237,.99),rgba(229,246,237,.92) 52%,rgba(229,246,237,.46) 82%,rgba(229,246,237,.22))}
+}
+
+@media(max-width:700px){
+  .home-page .header{background:#e9f6efef}
+  .hero--immersive{min-height:max(720px,calc(100svh - 119px))}
+  .hero--immersive .hero-grid{display:block;min-height:max(720px,calc(100svh - 119px));padding-top:34px;padding-bottom:106px}
+  .hero--immersive .hero-copy{width:100%}
+  .hero--immersive .hero-gallery::after{background:linear-gradient(180deg,rgba(231,247,239,.99) 0%,rgba(228,245,236,.96) 34%,rgba(226,244,234,.78) 49%,rgba(220,240,229,.46) 63%,rgba(211,235,223,.19) 82%,rgba(202,230,216,.12) 100%)}
+  .hero--immersive .hero-gallery-slide img{object-position:center 54%;filter:saturate(.9) contrast(.97) brightness(1.04)}
+  .hero--immersive .hero-gallery-slide--relaxation img{object-position:43% 58%}
+  .hero--immersive .hero-gallery-slide--profile img{object-position:center 27%}
+  .hero--immersive .eyebrow{font-size:10.8px;letter-spacing:1.35px;margin-bottom:18px}
+  .hero--immersive h1{font-size:clamp(49px,13vw,58px);line-height:1.035;letter-spacing:-1.7px}
+  .hero--immersive h1 em{display:block;margin-top:7px;font-size:.82em;letter-spacing:-1.1px;white-space:nowrap}
+  .hero--immersive .hero-description{max-width:355px;margin-top:21px;font-size:18px;line-height:1.75;font-weight:500}
+  .hero--immersive .hero-location{margin-top:18px;font-size:13.2px;gap:8px}
+  .hero--immersive .hero-location .icon{width:20px;height:20px}
+  .hero--immersive .hero-price{margin-top:22px;gap:15px}
+  .hero--immersive .hero-price>strong{font-size:43px}
+  .hero--immersive .hero-price strong span{font-size:21px}
+  .hero--immersive .hero-price>span:last-child{font-size:12px;line-height:1.45}
+  .hero--immersive .hero-price b{font-size:16px}
+  .hero--immersive .price-divider{height:49px}
+  .hero--immersive .hero-actions{margin-top:24px;gap:18px}
+  .hero--immersive .hero-actions .button{min-height:55px;padding:14px 18px;font-size:13px;border-radius:10px}
+  .hero--immersive .hero-actions .text-link{max-width:none;font-size:12px;white-space:nowrap}
+  .hero--immersive .hero-social-proof{margin-top:26px;padding:8px 13px 8px 8px;gap:10px}
+  .hero--immersive .google-proof-icon{width:42px;height:42px}
+  .hero--immersive .google-proof-icon img{width:25px;height:25px}
+  .hero--immersive .hero-social-proof .proof-label{font-size:11px}
+  .hero--immersive .hero-gallery-dots{top:auto;right:50%;bottom:22px;transform:translateX(50%);padding:4px 6px}
+  .hero--immersive .hero-gallery-count{display:none}
+  .hero--immersive .hero-gallery-arrow{top:auto;bottom:18px;width:42px;height:42px;margin:0}
+  .hero--immersive .hero-gallery-prev{left:17px}
+  .hero--immersive .hero-gallery-next{right:17px}
+}
+
+@media(max-width:390px){
+  .hero--immersive .hero-grid{padding-top:29px}
+  .hero--immersive h1{font-size:clamp(45px,12.7vw,51px)}
+  .hero--immersive .hero-description{font-size:16.5px;line-height:1.68}
+  .hero--immersive .hero-location{font-size:12px}
+  .hero--immersive .hero-actions{gap:12px}
+  .hero--immersive .hero-actions .button{padding-inline:14px;font-size:12px}
+  .hero--immersive .hero-actions .text-link{font-size:11px}
+}
