@@ -1,7 +1,6 @@
 /* The supplied 1024 × 1536 reference is the mobile composition grid.
    Photography stays separate from all interactive, selectable HTML content. */
 @font-face{font-family:'DM Sans Reference';src:url('/assets/fonts/dm-sans-500.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
-.home-page .topline{display:none}
 .home-page .header{background:#e3f3ea;border:0;box-shadow:none}
 .hero--reference{isolation:isolate;background:#e1f2e8;color:#073f34}
 .hero--reference .hero-visual{position:absolute;inset:0 0 0 35%;display:block;width:auto;height:100%;margin:0;padding:0;pointer-events:none;animation:none}
