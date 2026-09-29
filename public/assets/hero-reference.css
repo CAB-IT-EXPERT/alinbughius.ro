@@ -1,0 +1,137 @@
+/* The supplied 1024 × 1536 reference is the mobile composition grid.
+   Photography stays separate from all interactive, selectable HTML content. */
+@font-face{font-family:'DM Sans Reference';src:url('/assets/fonts/dm-sans-500.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
+.home-page .topline{display:none}
+.home-page .header{background:#e3f3ea;border:0;box-shadow:none}
+.hero--reference{isolation:isolate;background:#e1f2e8;color:#073f34}
+.hero--reference .hero-visual{position:absolute;inset:0 0 0 35%;display:block;width:auto;height:100%;margin:0;padding:0;pointer-events:none;animation:none}
+.hero--reference .hero-static-photo{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;background:none;box-shadow:none}
+.hero--reference .hero-static-photo>img{position:absolute;right:0;bottom:-7%;width:100%;height:auto;max-width:none;object-fit:contain;filter:none}
+.hero--reference .hero-static-photo::after{background:linear-gradient(90deg,#e1f2e8 0%,#e1f2e8a3 20%,transparent 53%)}
+.hero--reference .hero-grid{position:relative;z-index:2;display:block;min-height:740px;padding-block:56px 45px}
+.hero--reference .hero-copy{width:min(680px,61%)}
+.hero--reference .hero-copy>*{animation:none}
+.hero--reference .eyebrow{color:#26715b}
+.hero--reference .eyebrow>span{background:#70b49b}
+.hero--reference h1{font-size:68px;line-height:1.02;letter-spacing:-1.4px;color:#003f34;text-shadow:none}
+.hero-heading-main{display:block}
+.hero--reference h1 em{margin-top:6px;color:#328866}
+.hero--reference .hero-description{margin-top:25px;max-width:610px;font-family:'DM Sans Reference',var(--sans);font-size:20px;line-height:1.6;font-weight:500;color:#124d41}
+.hero--reference .hero-actions .button,.hero--reference .hero-actions .text-link,.hero--reference .hero-social-proof .proof-label{font-family:'DM Sans Reference',var(--sans);font-weight:500}
+.hero--reference .hero-location{margin-top:21px;gap:12px;font-size:16px;font-weight:600;color:#124d41}
+.hero--reference .hero-location>.icon{width:22px;height:25px;color:#124d41}
+.hero--reference .hero-location>span{margin:0 2px;color:#124d41}
+.hero--reference .hero-price{gap:28px;margin-top:25px;color:#003f34}
+.hero--reference .hero-price>strong{font-size:56px;line-height:1;color:#003f34;letter-spacing:-1.3px}
+.hero--reference .hero-price strong span{color:#124d41;font-size:27px;letter-spacing:0}
+.hero--reference .hero-price>.price-divider{height:48px;background:#468d76}
+.hero--reference .hero-price>span:last-child{color:#124d41;font-size:17px;line-height:1.35}
+.hero--reference .hero-price b{color:#073f34;font-size:20px;font-weight:600}
+.hero--reference .hero-actions{gap:28px;margin-top:25px}
+.hero--reference .hero-actions .button{min-height:62px;padding:17px 24px;border:0;border-radius:12px;background:#b5e3d2;color:#073f34;box-shadow:none;font-size:17px;font-weight:500;gap:26px}
+.hero--reference .hero-actions .text-link{color:#073f34;max-width:none;font-size:16px;gap:12px}
+.hero--reference .hero-actions .icon{width:22px;height:22px}
+.hero--reference .hero-social-proof{margin-top:32px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;gap:15px;backdrop-filter:none}
+.hero--reference .google-proof-icon{width:50px;height:50px;flex:none;background:#fff;box-shadow:none}
+.hero--reference .google-proof-icon img{width:34px;height:34px}
+.hero--reference .hero-social-proof .stars{font-size:22px;letter-spacing:1px;color:#e4b547;line-height:1}
+.hero--reference .hero-social-proof .proof-label{color:#073f34;font-size:14px;font-weight:500;margin-top:7px;line-height:1.2}
+.hero--reference .hero-social-proof>.icon{display:none}
+.hero-contact-actions{display:flex;align-items:flex-start;gap:28px;margin-top:30px;max-width:570px}
+.hero-contact-actions>a{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-width:60px;gap:5px;font-size:14px;font-weight:600;line-height:1.3}
+.hero-contact-actions .hero-call{color:#1477ba}
+.hero-contact-actions .hero-call>.icon{width:52px;height:52px;padding:14px;border-radius:50%;background:#087ac8;color:#fff;stroke-width:1.8}
+.hero-contact-actions .hero-whatsapp{color:#198c4b}
+.hero-contact-actions .hero-whatsapp>img{width:52px;height:52px}
+.hero-contact-actions>.button{flex:1;min-height:60px;margin-top:3px;border:0;border-radius:13px;background:#134f40;color:#fff;font-size:17px;font-weight:600;gap:19px;white-space:nowrap}
+.hero-contact-actions>.button>.icon{width:25px;height:25px}
+.hero--reference .button:hover{filter:brightness(1.035)}
+.hero-contact-actions>a:focus-visible,.hero--reference .hero-social-proof:focus-visible{outline-offset:6px}
+.therapist-gallery-section{background:linear-gradient(115deg,#0d352d,#1c5545);padding:64px 0;color:#fff}
+.therapist-gallery-layout{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:70px;max-width:1100px}
+.therapist-gallery-intro .eyebrow{color:#b5e7d1;font-size:12px}
+.therapist-gallery-intro h2{font-size:54px;color:#fff}
+.therapist-gallery-intro h2 em{color:#b5e7d1}
+.therapist-gallery-intro>p:last-child{color:#c8dfd3;font-size:17px;margin-top:24px}
+.therapist-gallery{height:auto;aspect-ratio:3/4;max-width:500px;border-radius:22px;box-shadow:0 18px 50px #03251c33}
+.therapist-gallery .hero-gallery-track{position:absolute;inset:0}
+.therapist-gallery .hero-gallery-dots{top:auto;bottom:18px}
+.therapist-gallery .hero-portrait-caption{bottom:68px}
+.therapist-gallery .hero-gallery-count{display:flex}
+
+@media(min-width:701px) and (max-width:1150px){
+  .hero--reference .hero-grid{min-height:690px;padding-block:45px}
+  .hero--reference .hero-copy{width:65%}
+  .hero--reference h1{font-size:54px}
+  .hero--reference .hero-description{font-size:18px}
+  .hero--reference .hero-actions .button{font-size:15px;padding-inline:18px;gap:15px}
+  .hero--reference .hero-actions .text-link{font-size:14px}
+  .hero-contact-actions{gap:18px}
+  .hero-contact-actions>.button{font-size:15px}
+}
+
+@media(max-width:700px){
+  .home-page .header{background:#e3f3ea;container-type:inline-size}
+  .home-page .header-inner{width:90%;height:16.21cqw;min-height:62px;gap:0}
+  .home-page .header .brand{gap:2.9cqw}
+  .home-page .header .brand>img{width:10.16cqw;height:10.16cqw;min-width:39px;min-height:39px}
+  .home-page .header .brand>span{font-size:6.15cqw;letter-spacing:-.13cqw;line-height:1.08;color:#003f34}
+  .home-page .header .brand small{font-size:2.15cqw;letter-spacing:.41cqw;font-weight:600;line-height:1.2;margin-top:1.8cqw}
+  .home-page .menu-toggle{width:9.77cqw;height:9.77cqw;min-width:44px;min-height:44px;border:1px solid #bbdfcf;background:transparent;padding:2.6cqw;box-shadow:none}
+  .home-page .menu-toggle>span{width:4.5cqw;height:1.5px;background:#104a3b}
+  .hero--reference{min-height:0;container-type:inline-size}
+  .hero--reference .hero-visual{inset:0;width:100%;height:100%}
+  .hero--reference .hero-static-photo>img{inset:auto 0 0;width:100%;height:auto;object-fit:contain}
+  .hero--reference .hero-static-photo::after{display:none}
+  .hero--reference .hero-grid{width:87.5%;min-height:133.79cqw;padding-top:3.2cqw;padding-bottom:5.4cqw}
+  .hero--reference .hero-copy{width:100%}
+  /* This latest reference starts directly with the headline. The service
+     descriptor remains available to screen readers and on desktop. */
+  .hero--reference .eyebrow{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  .hero--reference h1{font-size:9.375cqw;line-height:1.01;letter-spacing:-.16cqw;max-width:none}
+  .hero--reference .hero-heading-main{max-width:79cqw}
+  .hero--reference h1 em{margin-top:.9cqw;font-size:9.65cqw;line-height:1.04;letter-spacing:-.12cqw;white-space:nowrap}
+  .hero--reference .hero-description{max-width:80cqw;margin-top:3.2cqw;font-size:3.7cqw;line-height:1.4;letter-spacing:.015cqw;font-weight:500}
+  .hero--reference .hero-description>span{display:block}
+  .hero--reference .hero-location{margin-top:2.6cqw;gap:1.5cqw;font-size:2.95cqw;line-height:1.5;letter-spacing:-.025cqw;white-space:nowrap}
+  .hero--reference .hero-location>.icon{width:3.1cqw;height:3.4cqw}
+  .hero--reference .hero-location>span{margin:0 .5cqw}
+  .hero--reference .hero-price{margin-top:3.5cqw;gap:3.5cqw}
+  .hero--reference .hero-price>strong{font-size:7.8cqw;letter-spacing:-.2cqw;white-space:nowrap}
+  .hero--reference .hero-price strong span{font-size:3.9cqw;margin-left:.25cqw}
+  .hero--reference .hero-price>.price-divider{height:6.6cqw}
+  .hero--reference .hero-price>span:last-child{font-size:2.8cqw;line-height:1.35}
+  .hero--reference .hero-price b{font-size:3.125cqw;font-weight:600}
+  .hero--reference .hero-actions{margin-top:3.8cqw;gap:3.9cqw;flex-wrap:nowrap}
+  .hero--reference .hero-actions .button{width:45.7cqw;min-height:44px;height:10.45cqw;padding:0 3.6cqw;border-radius:1.95cqw;font-size:3cqw;gap:0;justify-content:space-between;flex-shrink:0;font-weight:500}
+  .hero--reference .hero-actions .button>.icon{width:3.4cqw;height:3.4cqw}
+  .hero--reference .hero-actions .text-link{min-height:44px;font-size:2.9cqw;gap:1.9cqw;white-space:nowrap;font-weight:600}
+  .hero--reference .hero-actions .text-link>.icon{width:3.4cqw;height:3.4cqw}
+  .hero--reference .hero-social-proof{margin-top:21.3cqw;margin-left:-1.37cqw;gap:2.3cqw;min-height:8cqw}
+  .hero--reference .google-proof-icon{width:8cqw;height:8cqw}
+  .hero--reference .google-proof-icon img{width:5.4cqw;height:5.4cqw}
+  .hero--reference .hero-social-proof .stars{font-size:3.5cqw;letter-spacing:.15cqw}
+  .hero--reference .hero-social-proof .proof-label{font-size:2.35cqw;line-height:1.25;letter-spacing:-.015cqw;margin-top:.8cqw}
+  .hero-contact-actions{display:grid;grid-template-columns:9.2cqw 5.8cqw 13cqw 10.9cqw minmax(0,1fr);width:90cqw;max-width:none;column-gap:0;align-items:start;margin-top:4.6cqw;margin-left:-1.17cqw}
+  .hero-contact-actions>.hero-whatsapp{grid-column:3}
+  .hero-contact-actions>.button{grid-column:5}
+  .hero-contact-actions>a{min-width:44px;min-height:44px;gap:1cqw;font-size:2.55cqw;line-height:1.3}
+  .hero-contact-actions .hero-call>.icon{width:9cqw;height:9cqw;padding:2.4cqw}
+  .hero-contact-actions .hero-whatsapp>img{width:9cqw;height:9cqw}
+  .hero-contact-actions>.button{width:100%;min-width:0;min-height:44px;height:10.2cqw;margin-top:.6cqw;padding:0 2cqw;border-radius:2.15cqw;font-size:3cqw;gap:2.7cqw;line-height:1.2}
+  .hero-contact-actions>.button>.icon{width:3.6cqw;height:3.6cqw}
+  .home-page.has-reference-hero:not(.hero-passed)>.mobile-actions{visibility:hidden;pointer-events:none;transform:translateY(110%)}
+  .therapist-gallery-section{padding:30px 0 36px}
+  .therapist-gallery-layout{display:block;width:90%}
+  .therapist-gallery-intro h2,.therapist-gallery-intro>p:last-child{display:none}
+  .therapist-gallery-intro .eyebrow{font-size:10px;letter-spacing:1.4px;margin-bottom:20px}
+  .therapist-gallery{width:100%;max-width:500px;margin-inline:auto;aspect-ratio:3/4;border-radius:18px}
+  .therapist-gallery .hero-portrait-caption{bottom:64px}
+  .therapist-gallery .hero-gallery-arrow{width:44px;height:44px}
+  .therapist-gallery .hero-gallery-dots button{height:32px;min-width:28px}
+  .therapist-gallery .hero-gallery-count{font-size:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero--reference *, .hero--reference *::before, .hero--reference *::after{animation:none!important;transition:none!important}
+}

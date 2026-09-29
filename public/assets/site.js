@@ -7,6 +7,16 @@
   const menuBackdrop = $('.menu-backdrop');
   const mobileMenu = window.matchMedia('(max-width:700px)');
   const menuBackground = $$('main, .footer, .mobile-actions, .topline');
+  // The reference hero has its own contact row. Show the fixed mobile row only
+  // after leaving that section, so the two sets of controls never overlap.
+  const referenceHero = $('.hero--reference');
+  if (referenceHero && 'IntersectionObserver' in window) {
+    document.body.classList.add('has-reference-hero');
+    const contactObserver = new IntersectionObserver(([entry]) => {
+      document.body.classList.toggle('hero-passed', entry.boundingClientRect.bottom <= 0);
+    });
+    contactObserver.observe(referenceHero);
+  }
   const setMenu = (open, returnFocus = true) => {
     menu.setAttribute('aria-expanded', String(open));
     menu.setAttribute('aria-label', open ? 'Închide meniul' : 'Deschide meniul');
