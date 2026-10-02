@@ -87,7 +87,7 @@
   .hero--reference .hero-visual{inset:0;width:100%;height:100%}
   /* Keep the client's face clear of the review card on narrow screens. The
      image has the same mint background, so the rightward shift stays seamless. */
-  .hero--reference .hero-static-photo>img{inset:auto -18cqw 0 auto;width:100%;height:auto;object-fit:contain;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw);mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw)}
+  .hero--reference .hero-static-photo>img{inset:auto -15cqw 0 auto;width:96%;height:auto;object-fit:contain;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw);mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw)}
   .hero--reference .hero-static-photo::after{display:none}
   .hero--reference .hero-grid{width:87.5%;min-height:133.79cqw;padding-top:3.2cqw;padding-bottom:5.4cqw}
   .hero--reference .hero-copy{width:100%}
@@ -113,7 +113,7 @@
   .hero--reference .hero-actions .button>.icon{width:3.4cqw;height:3.4cqw}
   .hero--reference .hero-actions .text-link{min-height:44px;font-size:2.9cqw;gap:1.9cqw;white-space:nowrap;font-weight:600}
   .hero--reference .hero-actions .text-link>.icon{width:3.4cqw;height:3.4cqw}
-  .hero--reference .hero-social-proof{margin-top:18.4cqw;margin-left:-1.37cqw;min-height:13.5cqw;padding:1.6cqw 2.2cqw 1.6cqw 1.6cqw;border-radius:4cqw;gap:2.1cqw}
+  .hero--reference .hero-social-proof{margin-top:18.4cqw;margin-left:-1.37cqw;min-height:13.5cqw;padding:1.6cqw 1.4cqw 1.6cqw 1.6cqw;border-radius:4cqw;gap:1.7cqw;background:linear-gradient(90deg,rgba(237,248,242,.97) 0%,rgba(237,248,242,.93) 76%,rgba(237,248,242,.34) 100%);backdrop-filter:none;-webkit-backdrop-filter:none}
   .hero--reference .google-proof-icon{width:9.4cqw;height:9.4cqw}
   .hero--reference .google-proof-icon img{width:6.2cqw;height:6.2cqw}
   .hero--reference .proof-copy{gap:1cqw}
@@ -121,7 +121,7 @@
   .hero--reference .proof-rating strong{font-size:3.55cqw}
   .hero--reference .hero-social-proof .stars{font-size:3.6cqw;letter-spacing:.13cqw}
   .hero--reference .hero-social-proof .proof-label{font-size:2.65cqw;line-height:1.2;letter-spacing:-.015cqw}
-  .hero--reference .hero-social-proof>.icon{width:4.4cqw;height:4.4cqw;margin-left:1cqw}
+  .hero--reference .hero-social-proof>.icon{width:4.4cqw;height:4.4cqw;margin-left:0}
   .hero-contact-actions{display:grid;grid-template-columns:11.5cqw 11.5cqw minmax(0,1fr);width:90cqw;max-width:none;gap:4cqw;align-items:start;margin-top:4.2cqw;margin-left:-1.17cqw}
   .hero-contact-actions>.hero-whatsapp,.hero-contact-actions>.button{grid-column:auto}
   .hero-contact-actions>a{min-width:44px;min-height:44px;gap:1cqw;font-size:2.55cqw;line-height:1.3}
