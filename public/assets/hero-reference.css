@@ -85,7 +85,9 @@
   .home-page .menu-toggle>span{width:4.5cqw;height:1.5px;background:#104a3b}
   .hero--reference{min-height:0;container-type:inline-size}
   .hero--reference .hero-visual{inset:0;width:100%;height:100%}
-  .hero--reference .hero-static-photo>img{inset:auto 0 0;width:100%;height:auto;object-fit:contain}
+  /* Keep the client's face clear of the review card on narrow screens. The
+     image has the same mint background, so the rightward shift stays seamless. */
+  .hero--reference .hero-static-photo>img{inset:auto -18cqw 0 auto;width:100%;height:auto;object-fit:contain;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw);mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw)}
   .hero--reference .hero-static-photo::after{display:none}
   .hero--reference .hero-grid{width:87.5%;min-height:133.79cqw;padding-top:3.2cqw;padding-bottom:5.4cqw}
   .hero--reference .hero-copy{width:100%}
