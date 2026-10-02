@@ -16,7 +16,7 @@
 .hero-heading-main{display:block}
 .hero--reference h1 em{margin-top:6px;color:#328866}
 .hero--reference .hero-description{margin-top:25px;max-width:610px;font-family:'DM Sans Reference',var(--sans);font-size:20px;line-height:1.6;font-weight:500;color:#124d41}
-.hero--reference .hero-actions .button,.hero--reference .hero-actions .text-link,.hero--reference .hero-social-proof .proof-label{font-family:'DM Sans Reference',var(--sans);font-weight:500}
+.hero--reference .hero-actions .button,.hero--reference .hero-actions .text-link,.hero--reference .hero-social-proof{font-family:'DM Sans Reference',var(--sans);font-weight:500}
 .hero--reference .hero-location{margin-top:21px;gap:12px;font-size:16px;font-weight:600;color:#124d41}
 .hero--reference .hero-location>.icon{width:22px;height:25px;color:#124d41}
 .hero--reference .hero-location>span{margin:0 2px;color:#124d41}
@@ -30,20 +30,25 @@
 .hero--reference .hero-actions .button{min-height:62px;padding:17px 24px;border:0;border-radius:12px;background:#b5e3d2;color:#073f34;box-shadow:none;font-size:17px;font-weight:500;gap:26px}
 .hero--reference .hero-actions .text-link{color:#073f34;max-width:none;font-size:16px;gap:12px}
 .hero--reference .hero-actions .icon{width:22px;height:22px}
-.hero--reference .hero-social-proof{margin-top:32px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;gap:15px;backdrop-filter:none}
+.hero--reference .hero-social-proof{margin-top:32px;padding:11px 18px 11px 11px;border:1px solid #94b7aa80;border-radius:24px;background:#edf8f2d9;box-shadow:0 10px 30px #194d3b12;gap:15px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .hero--reference .google-proof-icon{width:50px;height:50px;flex:none;background:#fff;box-shadow:none}
 .hero--reference .google-proof-icon img{width:34px;height:34px}
+.hero--reference .proof-copy{display:grid;gap:5px}
+.hero--reference .proof-rating{display:flex;align-items:center;gap:14px;line-height:1}
+.hero--reference .proof-rating strong{font-size:20px;color:#183f36;white-space:nowrap}
 .hero--reference .hero-social-proof .stars{font-size:22px;letter-spacing:1px;color:#e4b547;line-height:1}
-.hero--reference .hero-social-proof .proof-label{color:#073f34;font-size:14px;font-weight:500;margin-top:7px;line-height:1.2}
-.hero--reference .hero-social-proof>.icon{display:none}
+.hero--reference .hero-social-proof .proof-label{color:#073f34;font-size:14px;font-weight:600;line-height:1.2}
+.hero--reference .hero-social-proof>.icon{display:block;width:25px;height:25px;margin-left:8px;color:#234f45;stroke-width:2}
 .hero-contact-actions{display:flex;align-items:flex-start;gap:28px;margin-top:30px;max-width:570px}
 .hero-contact-actions>a{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-width:60px;gap:5px;font-size:14px;font-weight:600;line-height:1.3}
 .hero-contact-actions .hero-call{color:#1477ba}
 .hero-contact-actions .hero-call>.icon{width:52px;height:52px;padding:14px;border-radius:50%;background:#087ac8;color:#fff;stroke-width:1.8}
 .hero-contact-actions .hero-whatsapp{color:#198c4b}
 .hero-contact-actions .hero-whatsapp>img{width:52px;height:52px}
-.hero-contact-actions>.button{flex:1;min-height:60px;margin-top:3px;border:0;border-radius:13px;background:#134f40;color:#fff;font-size:17px;font-weight:600;gap:19px;white-space:nowrap}
+.hero-contact-actions>.button{flex:1;min-height:60px;margin-top:3px;border:2px solid #f4faf6;border-radius:13px;background:#134f40;color:#fff;font-size:17px;font-weight:600;gap:15px;white-space:nowrap;box-shadow:0 10px 24px #0b3e3020}
 .hero-contact-actions>.button>.icon{width:25px;height:25px}
+.hero-contact-actions>.button>.icon:first-child{width:29px;height:29px}
+.hero-contact-actions .button-divider{width:1px;height:30px;background:#dcebe4b8;flex:none}
 .hero--reference .button:hover{filter:brightness(1.035)}
 .hero-contact-actions>a:focus-visible,.hero--reference .hero-social-proof:focus-visible{outline-offset:6px}
 .therapist-gallery-section{background:linear-gradient(115deg,#0d352d,#1c5545);padding:64px 0;color:#fff}
@@ -106,19 +111,24 @@
   .hero--reference .hero-actions .button>.icon{width:3.4cqw;height:3.4cqw}
   .hero--reference .hero-actions .text-link{min-height:44px;font-size:2.9cqw;gap:1.9cqw;white-space:nowrap;font-weight:600}
   .hero--reference .hero-actions .text-link>.icon{width:3.4cqw;height:3.4cqw}
-  .hero--reference .hero-social-proof{margin-top:21.3cqw;margin-left:-1.37cqw;gap:2.3cqw;min-height:8cqw}
-  .hero--reference .google-proof-icon{width:8cqw;height:8cqw}
-  .hero--reference .google-proof-icon img{width:5.4cqw;height:5.4cqw}
-  .hero--reference .hero-social-proof .stars{font-size:3.5cqw;letter-spacing:.15cqw}
-  .hero--reference .hero-social-proof .proof-label{font-size:2.35cqw;line-height:1.25;letter-spacing:-.015cqw;margin-top:.8cqw}
-  .hero-contact-actions{display:grid;grid-template-columns:9.2cqw 5.8cqw 13cqw 10.9cqw minmax(0,1fr);width:90cqw;max-width:none;column-gap:0;align-items:start;margin-top:4.6cqw;margin-left:-1.17cqw}
-  .hero-contact-actions>.hero-whatsapp{grid-column:3}
-  .hero-contact-actions>.button{grid-column:5}
+  .hero--reference .hero-social-proof{margin-top:18.4cqw;margin-left:-1.37cqw;min-height:13.5cqw;padding:1.6cqw 2.2cqw 1.6cqw 1.6cqw;border-radius:4cqw;gap:2.1cqw}
+  .hero--reference .google-proof-icon{width:9.4cqw;height:9.4cqw}
+  .hero--reference .google-proof-icon img{width:6.2cqw;height:6.2cqw}
+  .hero--reference .proof-copy{gap:1cqw}
+  .hero--reference .proof-rating{gap:2.2cqw}
+  .hero--reference .proof-rating strong{font-size:3.55cqw}
+  .hero--reference .hero-social-proof .stars{font-size:3.6cqw;letter-spacing:.13cqw}
+  .hero--reference .hero-social-proof .proof-label{font-size:2.65cqw;line-height:1.2;letter-spacing:-.015cqw}
+  .hero--reference .hero-social-proof>.icon{width:4.4cqw;height:4.4cqw;margin-left:1cqw}
+  .hero-contact-actions{display:grid;grid-template-columns:11.5cqw 11.5cqw minmax(0,1fr);width:90cqw;max-width:none;gap:4cqw;align-items:start;margin-top:4.2cqw;margin-left:-1.17cqw}
+  .hero-contact-actions>.hero-whatsapp,.hero-contact-actions>.button{grid-column:auto}
   .hero-contact-actions>a{min-width:44px;min-height:44px;gap:1cqw;font-size:2.55cqw;line-height:1.3}
-  .hero-contact-actions .hero-call>.icon{width:9cqw;height:9cqw;padding:2.4cqw}
-  .hero-contact-actions .hero-whatsapp>img{width:9cqw;height:9cqw}
-  .hero-contact-actions>.button{width:100%;min-width:0;min-height:44px;height:10.2cqw;margin-top:.6cqw;padding:0 2cqw;border-radius:2.15cqw;font-size:3cqw;gap:2.7cqw;line-height:1.2}
-  .hero-contact-actions>.button>.icon{width:3.6cqw;height:3.6cqw}
+  .hero-contact-actions .hero-call>.icon{width:10.5cqw;height:10.5cqw;padding:2.7cqw}
+  .hero-contact-actions .hero-whatsapp>img{width:10.5cqw;height:10.5cqw}
+  .hero-contact-actions>.button{width:100%;min-width:0;min-height:48px;height:12cqw;margin-top:0;padding:0 2.2cqw;border-radius:2.4cqw;font-size:3.15cqw;gap:2cqw;line-height:1.2}
+  .hero-contact-actions>.button>.icon{width:4cqw;height:4cqw}
+  .hero-contact-actions>.button>.icon:first-child{width:4.8cqw;height:4.8cqw}
+  .hero-contact-actions .button-divider{height:6cqw}
   .home-page.has-reference-hero:not(.hero-passed)>.mobile-actions{visibility:hidden;pointer-events:none;transform:translateY(110%)}
   .therapist-gallery-section{padding:30px 0 36px}
   .therapist-gallery-layout{display:block;width:90%}
@@ -135,33 +145,13 @@
   .hero--reference *, .hero--reference *::before, .hero--reference *::after{animation:none!important;transition:none!important}
 }
 
-/* Homepage readability pass: all compact text in the opening view is 20% larger. */
+/* Keep the two at-home-service descriptors at the approved size. */
 .home-page .topline{font-size:14.4px}
-.home-page .brand small{font-size:9.6px}
 .hero--reference .eyebrow{font-size:15.84px}
-.hero--reference .hero-description{font-size:24px}
-.hero--reference .hero-location{font-size:19.2px}
-.hero--reference .hero-price strong span{font-size:32.4px}
-.hero--reference .hero-price>span:last-child{font-size:20.4px}
-.hero--reference .hero-price b{font-size:24px}
-.hero--reference .hero-actions .button{font-size:20.4px}
-.hero--reference .hero-actions .text-link{font-size:19.2px}
-.hero--reference .hero-social-proof .proof-label{font-size:16.8px}
-.hero-contact-actions>a{font-size:16.8px}
-.hero-contact-actions>.button{font-size:20.4px}
 .therapist-gallery-intro .eyebrow{font-size:14.4px}
-
-@media(min-width:701px){
-  .home-page .header nav a{font-size:16.8px;white-space:nowrap}
-  .home-page .header-book{font-size:16.8px;white-space:nowrap}
-}
 
 @media(min-width:701px) and (max-width:1150px){
   .home-page .header nav{gap:14px}
-  .hero--reference .hero-description{font-size:21.6px}
-  .hero--reference .hero-actions .button{font-size:18px}
-  .hero--reference .hero-actions .text-link{font-size:16.8px}
-  .hero-contact-actions>.button{font-size:18px}
 }
 
 @media(min-width:701px) and (max-width:820px){
@@ -169,21 +159,6 @@
 }
 
 @media(max-width:700px){
-  .home-page .header .brand small{font-size:2.58cqw}
-  .nav-mobile-heading{font-size:9.6px}
-  .header nav a .nav-order{font-size:10.8px}
   .nav-mobile-footer>span{font-size:10.8px}
-  .hero--reference .hero-description{font-size:4.44cqw}
-  .hero--reference .hero-location{font-size:3.54cqw}
-  .hero--reference .hero-price strong span{font-size:4.68cqw}
-  .hero--reference .hero-price>span:last-child{font-size:3.36cqw}
-  .hero--reference .hero-price b{font-size:3.75cqw}
-  .hero--reference .hero-actions{gap:2.7cqw}
-  .hero--reference .hero-actions .button{width:49.5cqw;padding-inline:2.6cqw;font-size:3.6cqw;white-space:nowrap}
-  .hero--reference .hero-actions .text-link{font-size:3.48cqw}
-  .hero--reference .hero-social-proof .proof-label{font-size:2.82cqw}
-  .hero-contact-actions>a{font-size:3.06cqw}
-  .hero-contact-actions>.button{font-size:3.6cqw}
   .therapist-gallery-intro .eyebrow{font-size:12px}
-  .therapist-gallery .hero-gallery-count{font-size:12px}
 }

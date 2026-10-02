@@ -17,6 +17,7 @@ function icon(string $name, string $class = ''): string {
         'instagram' => '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
         'chat' => '<path d="M21 11.5a9 9 0 0 1-13 8L3 21l1.5-5A9 9 0 1 1 21 11.5Z"/><path d="M8 8c1 4 3 6 7 7l1-2-2-1-1 1-2-2 1-1-1-2Z"/>',
         'calendar' => '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 5h2m4 0h2"/>',
+        'chevron' => '<path d="m9 5 7 7-7 7"/>',
         'home' => '<path d="m3 10 9-7 9 7M5 9v12h14V9m-10 12v-8h6v8"/>',
         'award' => '<circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/>',
         'mail' => '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 6 9 7 9-7"/>',
@@ -46,7 +47,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/footer.css?v=1">
   <link rel="stylesheet" href="/assets/details.css?v=12">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
-  <link rel="stylesheet" href="/assets/hero-reference.css?v=3">
+  <link rel="stylesheet" href="/assets/hero-reference.css?v=4">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
@@ -77,11 +78,11 @@ function icon(string $name, string $class = ''): string {
         <p class="hero-location"><?= icon('pin') ?> București & Ilfov <span>·</span> Echipament inclus</p>
         <div class="hero-price"><strong>200 <span>lei</span></strong><span class="price-divider"></span><span><b>60 de minute</b><br>de masaj terapeutic</span></div>
         <div class="hero-actions"><button class="button button-mint" data-book="terapeutic">Rezervă-ți momentul <?= icon('arrow') ?></button><a class="text-link" href="#servicii">Servicii & prețuri <?= icon('diagonal') ?></a></div>
-        <a href="<?= e($reviewsUrl) ?>" class="hero-social-proof" target="_blank" rel="noopener noreferrer"><span class="google-proof-icon"><img src="/assets/google-g.png" alt="Google" width="25" height="25"></span><span><span class="stars" aria-label="5 stele">★★★★★</span><span class="proof-label">Peste 60 de recenzii pe Google</span></span><?= icon('diagonal') ?></a>
+        <a href="<?= e($reviewsUrl) ?>" class="hero-social-proof" target="_blank" rel="noopener noreferrer"><span class="google-proof-icon"><img src="/assets/google-g.png" alt="Google" width="25" height="25"></span><span class="proof-copy"><span class="proof-rating"><strong>5 / 5</strong><span class="stars" aria-label="5 stele">★★★★★</span></span><span class="proof-label">Peste 65 de recenzii pe Google</span></span><?= icon('chevron') ?></a>
         <div class="hero-contact-actions" aria-label="Contact și programări">
           <a class="hero-call" href="tel:+40773919071"><?= icon('phone') ?><span>Sună</span></a>
           <a class="hero-whatsapp" href="https://wa.me/40773919071" target="_blank" rel="noopener noreferrer"><img src="/assets/whatsapp-logo.svg" alt="" width="90" height="90"><span>WhatsApp</span></a>
-          <button class="button button-dark" data-book>Programează-te <?= icon('calendar') ?></button>
+          <button class="button button-dark hero-booking-button" data-book><?= icon('calendar') ?><span class="button-divider" aria-hidden="true"></span><span>Programează un masaj</span><?= icon('arrow') ?></button>
         </div>
       </div>
     </div>
