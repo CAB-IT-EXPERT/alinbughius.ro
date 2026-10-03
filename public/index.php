@@ -47,7 +47,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/footer.css?v=1">
   <link rel="stylesheet" href="/assets/details.css?v=12">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
-  <link rel="stylesheet" href="/assets/hero-reference.css?v=9">
+  <link rel="stylesheet" href="/assets/hero-reference.css?v=10">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
