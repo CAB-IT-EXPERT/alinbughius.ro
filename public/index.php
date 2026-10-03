@@ -47,7 +47,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/footer.css?v=1">
   <link rel="stylesheet" href="/assets/details.css?v=12">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
-  <link rel="stylesheet" href="/assets/hero-reference.css?v=7">
+  <link rel="stylesheet" href="/assets/hero-reference.css?v=8">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
@@ -72,8 +72,7 @@ function icon(string $name, string $class = ''): string {
     </div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow"><span></span> MASAJ TERAPEUTIC LA DOMICILIU</p>
-        <h1><span class="hero-heading-main">O pauză pentru corp.</span><em>Un bine pentru tine.</em></h1>
+        <h1><span class="hero-service-title">Masaj terapeutic<br>la domiciliu</span><span class="hero-heading-main">Acasă e locul în care</span><em>poți să te relaxezi.</em></h1>
         <p class="hero-description"><span>Lasă tensiunea zilei în urmă. Masaj</span> <span>personalizat, cu Alin Bughius, în</span> <span>confortul casei tale.</span></p>
         <p class="hero-location"><?= icon('pin') ?> București & Ilfov <span>·</span> Echipament inclus</p>
         <div class="hero-price"><strong>200 <span>lei</span></strong><span class="price-divider"></span><span><b>60 de minute</b><br>de masaj terapeutic</span></div>

@@ -13,6 +13,7 @@
 .hero--reference .eyebrow{color:#26715b}
 .hero--reference .eyebrow>span{background:#70b49b}
 .hero--reference h1{font-size:68px;line-height:1.02;letter-spacing:-1.4px;color:#003f34;text-shadow:none}
+.hero-service-title{display:block;max-width:540px;margin-bottom:22px;font-size:50px;line-height:1.02;letter-spacing:-1px}
 .hero-heading-main{display:block}
 .hero--reference h1 em{margin-top:6px;color:#328866}
 .hero--reference .hero-description{margin-top:25px;max-width:610px;font-family:'DM Sans Reference',var(--sans);font-size:20px;line-height:1.6;font-weight:500;color:#124d41}
@@ -67,6 +68,7 @@
   .hero--reference .hero-grid{min-height:690px;padding-block:45px}
   .hero--reference .hero-copy{width:65%}
   .hero--reference h1{font-size:54px}
+  .hero--reference .hero-service-title{font-size:41px;margin-bottom:18px}
   .hero--reference .hero-description{font-size:18px}
   .hero--reference .hero-actions .button{font-size:15px;padding-inline:18px;gap:15px}
   .hero--reference .hero-actions .text-link{font-size:14px}
@@ -87,16 +89,14 @@
   .hero--reference .hero-visual{inset:0;width:100%;height:100%}
   /* Keep the client's face clear of the review card on narrow screens. The
      image has the same mint background, so the rightward shift stays seamless. */
-  .hero--reference .hero-static-photo>img{inset:auto -15cqw 0 auto;width:96%;height:auto;object-fit:contain;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw);mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw)}
+  .hero--reference .hero-static-photo>img{inset:auto -15cqw 0 auto;width:96%;height:auto;object-fit:contain;opacity:.9;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw);mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw)}
   .hero--reference .hero-static-photo::after{display:none}
   .hero--reference .hero-grid{width:87.5%;min-height:133.79cqw;padding-top:3.2cqw;padding-bottom:5.4cqw}
   .hero--reference .hero-copy{width:100%}
-  /* This latest reference starts directly with the headline. The service
-     descriptor remains available to screen readers and on desktop. */
-  .hero--reference .eyebrow{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-  .hero--reference h1{font-size:9.375cqw;line-height:1.01;letter-spacing:-.16cqw;max-width:none}
-  .hero--reference .hero-heading-main{max-width:79cqw}
-  .hero--reference h1 em{margin-top:.9cqw;font-size:9.65cqw;line-height:1.04;letter-spacing:-.12cqw;white-space:nowrap}
+  .hero--reference h1{font-size:7.55cqw;line-height:1.01;letter-spacing:-.12cqw;max-width:none}
+  .hero--reference .hero-service-title{max-width:none;margin-bottom:2.2cqw;font-size:6.75cqw;line-height:1.03;letter-spacing:-.1cqw}
+  .hero--reference .hero-heading-main{max-width:none;white-space:nowrap}
+  .hero--reference h1 em{margin-top:.8cqw;font-size:8.15cqw;line-height:1.04;letter-spacing:-.1cqw;white-space:nowrap}
   .hero--reference .hero-description{max-width:80cqw;margin-top:3.2cqw;font-size:3.7cqw;line-height:1.4;letter-spacing:.015cqw;font-weight:500}
   .hero--reference .hero-description>span{display:block}
   .hero--reference .hero-location{margin-top:2.6cqw;gap:1.5cqw;font-size:2.95cqw;line-height:1.5;letter-spacing:-.025cqw;white-space:nowrap}
@@ -113,7 +113,7 @@
   .hero--reference .hero-actions .button>.icon{width:3.4cqw;height:3.4cqw}
   .hero--reference .hero-actions .text-link{min-height:44px;font-size:2.9cqw;gap:1.9cqw;white-space:nowrap;font-weight:600}
   .hero--reference .hero-actions .text-link>.icon{width:3.4cqw;height:3.4cqw}
-  .hero--reference .hero-social-proof{margin-top:18.4cqw;margin-left:-1.37cqw;min-height:13.5cqw;padding:1.6cqw 1.4cqw 1.6cqw 1.6cqw;border-radius:4cqw;gap:1.7cqw;background:linear-gradient(90deg,rgba(237,248,242,.97) 0%,rgba(237,248,242,.93) 76%,rgba(237,248,242,.34) 100%);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .hero--reference .hero-social-proof{margin-top:18.4cqw;margin-left:-1.37cqw;min-height:13.5cqw;padding:1.6cqw 1.4cqw 1.6cqw 1.6cqw;border-radius:4cqw;gap:1.7cqw;background:linear-gradient(90deg,rgba(237,248,242,.9) 0%,rgba(237,248,242,.82) 76%,rgba(237,248,242,.26) 100%);backdrop-filter:none;-webkit-backdrop-filter:none}
   .hero--reference .google-proof-icon{width:9.4cqw;height:9.4cqw}
   .hero--reference .google-proof-icon img{width:6.2cqw;height:6.2cqw}
   .hero--reference .proof-copy{gap:1cqw}
@@ -141,6 +141,22 @@
   .therapist-gallery .hero-gallery-arrow{width:44px;height:44px}
   .therapist-gallery .hero-gallery-dots button{height:32px;min-width:28px}
   .therapist-gallery .hero-gallery-count{font-size:10px}
+}
+
+/* The supplied reference comes from a wider phone: preserve the complete
+   photograph (including the leaves at left) and use its more compact review
+   badge. Narrow phones keep the shifted crop above so the face stays clear. */
+@media(min-width:431px) and (max-width:700px){
+  .hero--reference .hero-static-photo>img{inset:auto -6cqw 0 auto;width:100%;opacity:.88;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 4cqw,#000 14cqw);mask-image:linear-gradient(90deg,transparent 0,transparent 4cqw,#000 14cqw)}
+  .hero--reference .hero-social-proof{min-height:10.8cqw;padding:1.1cqw;border-radius:3.2cqw;gap:1cqw}
+  .hero--reference .google-proof-icon{width:7cqw;height:7cqw}
+  .hero--reference .google-proof-icon img{width:4.6cqw;height:4.6cqw}
+  .hero--reference .proof-copy{gap:.65cqw}
+  .hero--reference .proof-rating{gap:1.45cqw}
+  .hero--reference .proof-rating strong{font-size:3cqw}
+  .hero--reference .hero-social-proof .stars{font-size:2.8cqw}
+  .hero--reference .hero-social-proof .proof-label{font-size:2.2cqw}
+  .hero--reference .hero-social-proof>.icon{width:3.4cqw;height:3.4cqw}
 }
 
 @media(prefers-reduced-motion:reduce){
