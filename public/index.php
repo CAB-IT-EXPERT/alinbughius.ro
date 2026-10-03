@@ -47,7 +47,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/footer.css?v=1">
   <link rel="stylesheet" href="/assets/details.css?v=12">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
-  <link rel="stylesheet" href="/assets/hero-reference.css?v=8">
+  <link rel="stylesheet" href="/assets/hero-reference.css?v=9">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
@@ -68,7 +68,7 @@ function icon(string $name, string $class = ''): string {
 <main id="continut">
   <section class="hero hero--reference">
     <div class="hero-visual">
-      <figure class="hero-photo hero-static-photo"><img src="/assets/images/hero-reference-background.webp" alt="Masaj de relaxare într-o atmosferă calmă" width="1024" height="1536" fetchpriority="high"></figure>
+      <figure class="hero-photo hero-static-photo"><img src="/assets/images/hero-reference-background-v2.webp" alt="Masaj de relaxare într-o atmosferă calmă" width="1024" height="1536" fetchpriority="high"></figure>
     </div>
     <div class="container hero-grid">
       <div class="hero-copy">

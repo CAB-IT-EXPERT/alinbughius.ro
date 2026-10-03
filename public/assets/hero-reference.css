@@ -77,51 +77,52 @@
 }
 
 @media(max-width:700px){
+  .home-page .topline .container{height:max(32px,8.1vw)}
   .home-page .header{background:#e3f3ea;container-type:inline-size}
-  .home-page .header-inner{width:90%;height:16.21cqw;min-height:62px;gap:0}
+  .home-page .header-inner{width:90%;height:13cqw;min-height:50px;gap:0}
   .home-page .header .brand{gap:2.9cqw}
-  .home-page .header .brand>img{width:10.16cqw;height:10.16cqw;min-width:39px;min-height:39px}
-  .home-page .header .brand>span{font-size:6.15cqw;letter-spacing:-.13cqw;line-height:1.08;color:#003f34}
-  .home-page .header .brand small{font-size:2.15cqw;letter-spacing:.41cqw;font-weight:600;line-height:1.2;margin-top:1.8cqw}
+  .home-page .header .brand>img{width:9.2cqw;height:9.2cqw;min-width:35px;min-height:35px}
+  .home-page .header .brand>span{font-size:5.1cqw;letter-spacing:-.13cqw;line-height:1.08;color:#003f34}
+  .home-page .header .brand small{font-size:1.8cqw;letter-spacing:.34cqw;font-weight:600;line-height:1.2;margin-top:1.5cqw}
   .home-page .menu-toggle{width:9.77cqw;height:9.77cqw;min-width:44px;min-height:44px;border:1px solid #bbdfcf;background:transparent;padding:2.6cqw;box-shadow:none}
   .home-page .menu-toggle>span{width:4.5cqw;height:1.5px;background:#104a3b}
   .hero--reference{min-height:0;container-type:inline-size}
   .hero--reference .hero-visual{inset:0;width:100%;height:100%}
-  /* Keep the client's face clear of the review card on narrow screens. The
-     image has the same mint background, so the rightward shift stays seamless. */
-  .hero--reference .hero-static-photo>img{inset:auto -15cqw 0 auto;width:96%;height:auto;object-fit:contain;opacity:.9;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw);mask-image:linear-gradient(90deg,transparent 0,transparent 13cqw,#000 30cqw)}
+  /* Preserve the full reference photograph at every mobile width. Its mint
+     background already keeps the copy readable without fading the subjects. */
+  .hero--reference .hero-static-photo>img{inset:-20cqw 0 auto;width:100%;height:auto;object-fit:contain;opacity:1}
   .hero--reference .hero-static-photo::after{display:none}
-  .hero--reference .hero-grid{width:87.5%;min-height:133.79cqw;padding-top:3.2cqw;padding-bottom:5.4cqw}
+  .hero--reference .hero-grid{width:87.5%;min-height:127cqw;padding-top:2.2cqw;padding-bottom:3cqw}
   .hero--reference .hero-copy{width:100%}
   .hero--reference h1{font-size:7.55cqw;line-height:1.01;letter-spacing:-.12cqw;max-width:none}
   .hero--reference .hero-service-title{max-width:none;margin-bottom:2.2cqw;font-size:6.75cqw;line-height:1.03;letter-spacing:-.1cqw}
   .hero--reference .hero-heading-main{max-width:none;white-space:nowrap}
   .hero--reference h1 em{margin-top:.8cqw;font-size:8.15cqw;line-height:1.04;letter-spacing:-.1cqw;white-space:nowrap}
-  .hero--reference .hero-description{max-width:80cqw;margin-top:3.2cqw;font-size:3.7cqw;line-height:1.4;letter-spacing:.015cqw;font-weight:500}
+  .hero--reference .hero-description{max-width:80cqw;margin-top:3.2cqw;font-size:3.125cqw;line-height:1.3;letter-spacing:.015cqw;font-weight:500}
   .hero--reference .hero-description>span{display:block}
-  .hero--reference .hero-location{margin-top:2.6cqw;gap:1.5cqw;font-size:2.95cqw;line-height:1.5;letter-spacing:-.025cqw;white-space:nowrap}
+  .hero--reference .hero-location{margin-top:2cqw;gap:1.5cqw;font-size:2.95cqw;line-height:1.3;letter-spacing:-.025cqw;white-space:nowrap}
   .hero--reference .hero-location>.icon{width:3.1cqw;height:3.4cqw}
   .hero--reference .hero-location>span{margin:0 .5cqw}
-  .hero--reference .hero-price{margin-top:3.5cqw;gap:3.5cqw}
+  .hero--reference .hero-price{margin-top:3cqw;gap:3.5cqw}
   .hero--reference .hero-price>strong{font-size:7.8cqw;letter-spacing:-.2cqw;white-space:nowrap}
   .hero--reference .hero-price strong span{font-size:3.9cqw;margin-left:.25cqw}
   .hero--reference .hero-price>.price-divider{height:6.6cqw}
   .hero--reference .hero-price>span:last-child{font-size:2.8cqw;line-height:1.35}
   .hero--reference .hero-price b{font-size:3.125cqw;font-weight:600}
-  .hero--reference .hero-actions{margin-top:3.8cqw;gap:3.9cqw;flex-wrap:nowrap}
+  .hero--reference .hero-actions{margin-top:2.5cqw;gap:3.9cqw;flex-wrap:nowrap}
   .hero--reference .hero-actions .button{width:45.7cqw;min-height:44px;height:10.45cqw;padding:0 3.6cqw;border-radius:1.95cqw;font-size:3cqw;gap:0;justify-content:space-between;flex-shrink:0;font-weight:500}
   .hero--reference .hero-actions .button>.icon{width:3.4cqw;height:3.4cqw}
   .hero--reference .hero-actions .text-link{min-height:44px;font-size:2.9cqw;gap:1.9cqw;white-space:nowrap;font-weight:600}
   .hero--reference .hero-actions .text-link>.icon{width:3.4cqw;height:3.4cqw}
-  .hero--reference .hero-social-proof{margin-top:18.4cqw;margin-left:-1.37cqw;min-height:13.5cqw;padding:1.6cqw 1.4cqw 1.6cqw 1.6cqw;border-radius:4cqw;gap:1.7cqw;background:linear-gradient(90deg,rgba(237,248,242,.9) 0%,rgba(237,248,242,.82) 76%,rgba(237,248,242,.26) 100%);backdrop-filter:none;-webkit-backdrop-filter:none}
-  .hero--reference .google-proof-icon{width:9.4cqw;height:9.4cqw}
-  .hero--reference .google-proof-icon img{width:6.2cqw;height:6.2cqw}
-  .hero--reference .proof-copy{gap:1cqw}
-  .hero--reference .proof-rating{gap:2.2cqw}
-  .hero--reference .proof-rating strong{font-size:3.55cqw}
-  .hero--reference .hero-social-proof .stars{font-size:3.6cqw;letter-spacing:.13cqw}
-  .hero--reference .hero-social-proof .proof-label{font-size:2.65cqw;line-height:1.2;letter-spacing:-.015cqw}
-  .hero--reference .hero-social-proof>.icon{width:4.4cqw;height:4.4cqw;margin-left:0}
+  .hero--reference .hero-social-proof{margin-top:18.4cqw;margin-left:-1.37cqw;min-height:10.8cqw;padding:1.1cqw;border-radius:3.2cqw;gap:1cqw;background:linear-gradient(90deg,rgba(237,248,242,.9) 0%,rgba(237,248,242,.82) 76%,rgba(237,248,242,.26) 100%);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .hero--reference .google-proof-icon{width:7cqw;height:7cqw}
+  .hero--reference .google-proof-icon img{width:4.6cqw;height:4.6cqw}
+  .hero--reference .proof-copy{gap:.65cqw}
+  .hero--reference .proof-rating{gap:1.45cqw}
+  .hero--reference .proof-rating strong{font-size:3cqw}
+  .hero--reference .hero-social-proof .stars{font-size:2.8cqw;letter-spacing:.13cqw}
+  .hero--reference .hero-social-proof .proof-label{font-size:2.2cqw;line-height:1.2;letter-spacing:-.015cqw}
+  .hero--reference .hero-social-proof>.icon{width:3.4cqw;height:3.4cqw;margin-left:0}
   .hero-contact-actions{display:grid;grid-template-columns:11.5cqw 11.5cqw minmax(0,1fr);width:90cqw;max-width:none;gap:4cqw;align-items:start;margin-top:4.2cqw;margin-left:-1.17cqw}
   .hero-contact-actions>.hero-whatsapp,.hero-contact-actions>.button{grid-column:auto}
   .hero-contact-actions>a{min-width:44px;min-height:44px;gap:1cqw;font-size:2.55cqw;line-height:1.3}
@@ -143,22 +144,6 @@
   .therapist-gallery .hero-gallery-count{font-size:10px}
 }
 
-/* The supplied reference comes from a wider phone: preserve the complete
-   photograph (including the leaves at left) and use its more compact review
-   badge. Narrow phones keep the shifted crop above so the face stays clear. */
-@media(min-width:431px) and (max-width:700px){
-  .hero--reference .hero-static-photo>img{inset:auto -6cqw 0 auto;width:100%;opacity:.88;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 4cqw,#000 14cqw);mask-image:linear-gradient(90deg,transparent 0,transparent 4cqw,#000 14cqw)}
-  .hero--reference .hero-social-proof{min-height:10.8cqw;padding:1.1cqw;border-radius:3.2cqw;gap:1cqw}
-  .hero--reference .google-proof-icon{width:7cqw;height:7cqw}
-  .hero--reference .google-proof-icon img{width:4.6cqw;height:4.6cqw}
-  .hero--reference .proof-copy{gap:.65cqw}
-  .hero--reference .proof-rating{gap:1.45cqw}
-  .hero--reference .proof-rating strong{font-size:3cqw}
-  .hero--reference .hero-social-proof .stars{font-size:2.8cqw}
-  .hero--reference .hero-social-proof .proof-label{font-size:2.2cqw}
-  .hero--reference .hero-social-proof>.icon{width:3.4cqw;height:3.4cqw}
-}
-
 @media(prefers-reduced-motion:reduce){
   .hero--reference *, .hero--reference *::before, .hero--reference *::after{animation:none!important;transition:none!important}
 }
@@ -177,6 +162,7 @@
 }
 
 @media(max-width:700px){
+  .home-page .topline{font-size:clamp(10px,3.125vw,14.4px)}
   .nav-mobile-footer>span{font-size:10.8px}
   .therapist-gallery-intro .eyebrow{font-size:12px}
 }
