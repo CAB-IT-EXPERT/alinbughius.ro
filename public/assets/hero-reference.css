@@ -28,8 +28,8 @@
 .hero--reference .hero-price>span:last-child{color:#124d41;font-size:17px;line-height:1.35}
 .hero--reference .hero-price b{color:#073f34;font-size:20px;font-weight:600}
 .hero--reference .hero-actions{gap:28px;margin-top:25px}
-.hero--reference .hero-actions .button{min-height:62px;padding:17px 24px;border:0;border-radius:12px;background:#b5e3d2;color:#073f34;box-shadow:none;font-size:17px;font-weight:500;gap:26px}
-.hero--reference .hero-actions .text-link{color:#073f34;max-width:none;font-size:16px;gap:12px}
+.hero--reference .hero-actions .button{min-height:62px;padding:17px 24px;border:1px solid #ffffff99;border-radius:12px;background:rgba(181,227,210,.52);color:#073f34;font-size:17px;font-weight:500;gap:26px}
+.hero--reference .hero-actions .text-link{min-height:62px;padding:17px 18px;border:1px solid #ffffff99;border-radius:12px;background:rgba(232,245,238,.5);color:#073f34;max-width:none;font-size:16px;gap:12px}
 .hero--reference .hero-actions .icon{width:22px;height:22px}
 .hero--reference .hero-social-proof{margin-top:32px;padding:11px 18px 11px 11px;border:1px solid #94b7aa80;border-radius:24px;background:#edf8f2d9;box-shadow:0 10px 30px #194d3b12;gap:15px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .hero--reference .google-proof-icon{width:50px;height:50px;flex:none;background:#fff;box-shadow:none}
@@ -46,10 +46,13 @@
 .hero-contact-actions .hero-call>.icon{width:52px;height:52px;padding:14px;border-radius:50%;background:#087ac8;color:#fff;stroke-width:1.8}
 .hero-contact-actions .hero-whatsapp{color:#198c4b}
 .hero-contact-actions .hero-whatsapp>img{width:52px;height:52px}
-.hero-contact-actions>.button{flex:1;min-height:60px;margin-top:3px;border:2px solid #f4faf6;border-radius:13px;background:#134f40;color:#fff;font-size:17px;font-weight:600;gap:15px;white-space:nowrap;box-shadow:0 10px 24px #0b3e3020}
+.hero-contact-actions>.button{flex:1;min-height:60px;margin-top:3px;border:2px solid #f4faf6cc;border-radius:13px;background:rgba(19,79,64,.74);color:#fff;font-size:17px;font-weight:600;gap:15px;white-space:nowrap;text-shadow:0 1px 2px #073f342b}
 .hero-contact-actions>.button>.icon{width:25px;height:25px}
 .hero-contact-actions>.button>.icon:first-child{width:29px;height:29px}
 .hero-contact-actions .button-divider{width:1px;height:30px;background:#dcebe4b8;flex:none}
+/* Frost only the three action surfaces; keep their text, icons and the photo
+   fully opaque. The WebKit prefix provides the same glass treatment on iOS. */
+.hero--reference .hero-actions .button,.hero--reference .hero-actions .text-link,.hero--reference .hero-booking-button{backdrop-filter:blur(10px) saturate(125%);-webkit-backdrop-filter:blur(10px) saturate(125%);box-shadow:inset 0 1px 0 #ffffff66,0 8px 22px #134f4014}
 .hero--reference .button:hover{filter:brightness(1.035)}
 .hero-contact-actions>a:focus-visible,.hero--reference .hero-social-proof:focus-visible{outline-offset:6px}
 .therapist-gallery-section{background:linear-gradient(115deg,#0d352d,#1c5545);padding:64px 0;color:#fff}
@@ -112,7 +115,7 @@
   .hero--reference .hero-actions{margin-top:2.5cqw;gap:3.9cqw;flex-wrap:nowrap}
   .hero--reference .hero-actions .button{width:45.7cqw;min-height:44px;height:10.45cqw;padding:0 3.6cqw;border-radius:1.95cqw;font-size:3cqw;gap:0;justify-content:space-between;flex-shrink:0;font-weight:500}
   .hero--reference .hero-actions .button>.icon{width:3.4cqw;height:3.4cqw}
-  .hero--reference .hero-actions .text-link{flex:1;min-width:0;min-height:44px;height:10.45cqw;justify-content:center;padding:0 1.8cqw;border:1px solid #b5dcccaa;border-radius:1.95cqw;background:#e8f5eef2;box-shadow:0 5px 16px #134f400a;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:2.9cqw;gap:1.9cqw;white-space:nowrap;font-weight:600}
+  .hero--reference .hero-actions .text-link{flex:1;min-width:0;min-height:44px;height:10.45cqw;justify-content:center;padding:0 1.8cqw;border-radius:1.95cqw;font-size:2.9cqw;gap:1.9cqw;white-space:nowrap;font-weight:600}
   .hero--reference .hero-actions .text-link>.icon{width:3.4cqw;height:3.4cqw}
   .hero--reference .hero-social-proof{margin-top:18.4cqw;margin-left:-1.37cqw;min-height:10.8cqw;padding:1.1cqw;border-radius:3.2cqw;gap:1cqw;background:linear-gradient(90deg,rgba(237,248,242,.9) 0%,rgba(237,248,242,.82) 76%,rgba(237,248,242,.26) 100%);backdrop-filter:none;-webkit-backdrop-filter:none}
   .hero--reference .google-proof-icon{width:7cqw;height:7cqw}
