@@ -46,13 +46,13 @@
 .hero-contact-actions .hero-call>.icon{width:52px;height:52px;padding:14px;border-radius:50%;background:#087ac8;color:#fff;stroke-width:1.8}
 .hero-contact-actions .hero-whatsapp{color:#198c4b}
 .hero-contact-actions .hero-whatsapp>img{width:52px;height:52px}
-.hero-contact-actions>.button{flex:1;min-height:60px;margin-top:3px;border:2px solid #f4faf6cc;border-radius:13px;background:rgba(19,79,64,.74);color:#fff;font-size:17px;font-weight:600;gap:15px;white-space:nowrap;text-shadow:0 1px 2px #073f342b}
+.hero-contact-actions>.button{flex:1;min-height:60px;margin-top:3px;border:2px solid #f4faf6;border-radius:13px;background:#134f40;color:#fff;font-size:17px;font-weight:600;gap:15px;white-space:nowrap;box-shadow:0 10px 24px #0b3e3020}
 .hero-contact-actions>.button>.icon{width:25px;height:25px}
 .hero-contact-actions>.button>.icon:first-child{width:29px;height:29px}
 .hero-contact-actions .button-divider{width:1px;height:30px;background:#dcebe4b8;flex:none}
-/* Frost only the three action surfaces; keep their text, icons and the photo
+/* Frost the two upper action surfaces; keep their text, icons and the photo
    fully opaque. The WebKit prefix provides the same glass treatment on iOS. */
-.hero--reference .hero-actions .button,.hero--reference .hero-actions .text-link,.hero--reference .hero-booking-button{backdrop-filter:blur(10px) saturate(125%);-webkit-backdrop-filter:blur(10px) saturate(125%);box-shadow:inset 0 1px 0 #ffffff66,0 8px 22px #134f4014}
+.hero--reference .hero-actions .button,.hero--reference .hero-actions .text-link{backdrop-filter:blur(10px) saturate(125%);-webkit-backdrop-filter:blur(10px) saturate(125%);box-shadow:inset 0 1px 0 #ffffff66,0 8px 22px #134f4014}
 .hero--reference .button:hover{filter:brightness(1.035)}
 .hero-contact-actions>a:focus-visible,.hero--reference .hero-social-proof:focus-visible{outline-offset:6px}
 .therapist-gallery-section{background:linear-gradient(115deg,#0d352d,#1c5545);padding:64px 0;color:#fff}
