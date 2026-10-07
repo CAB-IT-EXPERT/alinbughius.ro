@@ -5,7 +5,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Confidențialitate și cookies · Alin Bughius</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="/assets/logo-mark.svg"><link rel="stylesheet" href="/assets/style.css?v=1">
+  <link rel="icon" href="/assets/logo-mark.svg"><link rel="stylesheet" href="/assets/style.css?v=1"><link rel="stylesheet" href="/assets/botanical-palette.css?v=2">
 </head>
 <body><main class="legal-page">
   <a class="brand" href="/"><img src="/assets/logo-mark.svg" width="44" height="44" alt=""><span>Alin Bughius</span></a>

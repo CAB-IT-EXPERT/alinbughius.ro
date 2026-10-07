@@ -1,0 +1,159 @@
+/* Palette sampled from the approved botanical hero. */
+:root{
+  --ink:#10382d;
+  --green:#0a493a;
+  --teal:#55a83c;
+  --mint:#ddefc9;
+  --pale:#f6f2e4;
+  --muted:#687466;
+  --line:#d9dfca;
+  --botanical-forest:#0a493a;
+  --botanical-deep:#073c31;
+  --botanical-leaf:#55a83c;
+  --botanical-lime:#9cf466;
+  --botanical-cream:#fff7e4;
+  --botanical-ivory:#fbf8ee;
+}
+
+body{background:var(--botanical-ivory);color:var(--ink)}
+p{color:var(--muted)}
+h1 em,h2 em,.eyebrow{color:var(--botanical-leaf)}
+button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline-color:#79d94e}
+::selection{background:#c5f59f;color:#0a382d}
+
+/* Shared controls */
+.button-dark,.submit-button,.mobile-actions .button{
+  background:var(--botanical-forest);
+  color:#fff;
+}
+.button-dark:hover,.submit-button:hover,.mobile-actions .button:hover{background:#11604a}
+.round-button{background:var(--botanical-lime);color:#10382d}
+.round-button:hover{background:#b2fa7e;color:#10382d}
+.text-link:hover{color:var(--botanical-leaf)}
+
+/* Header keeps the warm ivory and hero keeps its approved photography. */
+.home-page .header{background:#f5f0e4;border-bottom-color:#dedfce}
+.home-page .header nav a{color:#173f33}
+.home-page .header nav a:hover{color:var(--botanical-leaf)}
+.home-page .header-book{background:var(--botanical-forest);color:#fff}
+.home-page .header-book:hover{background:#11604a}
+
+/* Hero controls use the same forest, cream and lime as the reference. */
+.hero--reference .topline{background:#0a493af2;border-bottom-color:#ffffff38}
+.hero-details{background:var(--botanical-cream);color:#0b382d}
+.hero-benefit-check{background:var(--botanical-forest)}
+.hero--reference .hero-social-proof{background:#fff;color:#0a3027}
+.hero--reference .hero-booking-button{background:linear-gradient(100deg,#91ef5b,#aff979);color:#0b3027}
+.hero--reference .hero-booking-button:hover{background:linear-gradient(100deg,#a3f56f,#c0ff8d)}
+.hero-contact-actions>a{background:var(--botanical-deep);color:#fff}
+.hero-contact-actions>a:hover{background:#105b47}
+
+/* Photo gallery */
+.therapist-gallery-section{background:radial-gradient(circle at 84% 12%,#1c694d 0,transparent 36%),linear-gradient(125deg,#073c31,#0a493a);color:#fff}
+.therapist-gallery-intro .eyebrow{color:#9cf466}
+.therapist-gallery-intro h2{color:#fff}
+.therapist-gallery-intro h2 em{color:#9cf466}
+.therapist-gallery-intro>p:last-child{color:#d9e7d7}
+.therapist-gallery{box-shadow:0 20px 58px #03271e70}
+.hero-gallery-arrow{background:#fff7e4e8;color:#0a493a;border-color:#fff7e490}
+.hero-gallery-arrow:hover{background:#fff7e4}
+.hero-gallery-dots,.hero-gallery-count{background:#073c31b8}
+
+/* Trust and reviews */
+.trust-strip{background:#edf1df;border-bottom-color:#d8dfc7}
+.trust-item{background:var(--botanical-cream);border-color:#d9dfc6;box-shadow:0 7px 22px #244d2d0f}
+.trust-strip .trust-icon{background:#e4f3d1;border-color:#cfe1b5;color:#4f9d39}
+.trust-item h3{color:#173f33}
+.trust-item p{color:#75806e}
+.reviews-section{background:var(--botanical-ivory)}
+.review{background:#fffdf7;border-color:#dde2d1;box-shadow:0 8px 24px #173d2510}
+.review blockquote{color:#4c6154}
+.review-avatar{background:#e4efd2;color:#477138}
+.google-review-link,.reviews-arrows button{background:#fffaf0;border-color:#d6deca;color:#244c3a}
+.google-review-link:hover,.reviews-arrows button:hover:not(:disabled){background:#edf4df;border-color:#bed09e}
+.reviews-dots button[aria-current=true]::before{background:var(--botanical-leaf)}
+
+/* Services */
+.services-section{background:#edf1df;border-top-color:#dde3cf}
+.service-card{background:#fffaf0;border-color:#d9dfc8;box-shadow:0 9px 26px #24482b10}
+.service-image{background:#dce8ca}
+.service-badge{background:#e7f4d6;color:#397a32}
+.duration{background:#fff7e4e8;color:#173f33}
+.service-tag,.service-more summary{color:#4f9d39}
+.service-more{border-color:#d8dfc8}
+.service-more summary span{background:#e7efd9}
+.pricing-toggle{background:#dfe8ce;border-color:#ccd9b7}
+.pricing-toggle button{color:#56694e}
+.pricing-toggle button.active{background:#fffaf0;color:#0a493a;box-shadow:0 2px 7px #1d3d200f}
+.pricing-toggle button span{background:#ccf2aa;color:#347429}
+.subscription-banner{background:linear-gradient(115deg,#dbecc4,#eef3dc);border-color:#c8d9ad}
+.subscription-number{color:#55a83c}
+.services-footer .button-outline{border-color:#bfcbae;background:#fff9ed}
+.services-footer .button-outline:hover{background:#e7efd6}
+
+/* Editorial sections */
+.reels-section{background:#fbf8ee}
+.reels-bottom{border-color:#d9dfc9}
+.home-experience{background:#fffaf0}
+.home-photo-note{background:#fff7e4e8;color:#244c3a}
+.home-benefits article>.icon{color:#55a83c}
+.about-section{background:#f8f4e8}
+.experience-badge{background:#0a493a;color:#fff}
+.signature{color:#55a83c}
+.diploma-link{background:#fffaf0;border-color:#d9dfca}
+.how-section{background:#edf1df}
+.steps>div{background:#fffaf0;border-color:#d9dfc8;box-shadow:0 8px 24px #24482b0e}
+.steps>div:hover{border-color:#aacc88}
+.steps>div>.icon,.step-number{color:#55a83c}
+.gift-section{background:linear-gradient(110deg,#d8edbd,#f0f1d5)}
+.gift-icon{background:#fff7e4;color:#0a493a}
+.gift-section .button-dark{background:#0a493a;color:#fff}
+.session-guide{background:#fffaf0}
+.guide-grid article{background:#f1f3e4;border-color:#d9dfc8}
+.guide-grid article>span:last-child{color:#55704c;border-color:#d6ddc5}
+.guide-note{background:#fff7e4;border-color:#d7dfc4}
+.guide-note>span{background:#e3f0d2;color:#4d9238}
+.faq-section{background:#f6f2e4}
+.faq-list details{border-color:#d6ddc8}
+.faq-list summary{color:#173f33}
+
+/* Forms and dialogs */
+dialog::backdrop{background:#073c31a3}
+.booking-dialog,.image-dialog{background:#fffaf0;color:#10382d}
+.dialog-header{background:#f2efdf;border-bottom-color:#d9dfca}
+.form-grid input,.form-grid select{background:#fffdf7;border-color:#cfd9bc;color:#173f33}
+.form-grid input:focus,.form-grid select:focus{border-color:#65b34a;box-shadow:0 0 0 3px #9cf4662e}
+.availability-picker{background:linear-gradient(145deg,#fffdf7,#edf3e0);border-color:#ccd9b7}
+.available-days button,.available-times button{background:#fffaf0;border-color:#d3ddbf;color:#244c3a}
+.available-days button[aria-pressed=true],.available-times button[aria-pressed=true]{background:#0a493a;border-color:#0a493a;color:#fff}
+.booking-estimate{background:#e6efd6}
+.success-icon{background:#d8f5bb;color:#347a2c}
+
+/* Footer mirrors the green base and lime accents from the hero. */
+.footer{background:radial-gradient(circle at 88% 4%,#1a644b 0,transparent 35%),linear-gradient(135deg,#073c31,#0a493a);color:#f5f7eb}
+.footer::before{border-color:#9cf46622;box-shadow:0 0 0 70px #9cf4660a,0 0 0 140px #9cf46606}
+.footer-invitation,.footer-bottom{border-color:#dff0d22b}
+.footer-invitation .eyebrow,.footer-main h3{color:#b4f186}
+.footer-invitation .eyebrow>span{background:#9cf466;box-shadow:0 0 0 5px #9cf46617}
+.footer-invitation h2{color:#fff}
+.footer-invitation h2 em{color:#9cf466}
+.footer-booking .button{background:linear-gradient(100deg,#91ef5b,#aff979);color:#0b3027}
+.footer-booking .button:hover{background:linear-gradient(100deg,#a3f56f,#c0ff8d)}
+.footer-booking>span,.footer-brand-column>p,.footer-area,.footer-email,.footer-whatsapp small,.footer-bottom{color:#c3d5c5}
+.footer .brand,.footer-phone,.footer-navigation>a,.footer-navigation>button,.footer-whatsapp strong{color:#fff}
+.footer .brand small,.footer-navigation>a>.icon,.footer-navigation>button>.icon,.footer-phone>.icon,.footer-chat-icon,.footer-whatsapp>.icon{color:#a8dd8c}
+.footer-instagram{color:#e0eadb}
+.footer-whatsapp{background:#ffffff0a;border-color:#dff0d230}
+.footer-whatsapp:hover{background:#ffffff14;border-color:#9cf46666}
+.footer-navigation>a:hover,.footer-navigation>button:hover,.footer-email:hover,.footer-bottom>a:hover{color:#9cf466}
+.footer-credit strong{color:#e3efdf}
+.agency-signature{background:#f7f3e7;border-top-color:#e0e1d2}
+
+@media(max-width:700px){
+  .home-page .header nav,.home-page .header nav.open{background:#fffaf0;border-color:#d9dfca;box-shadow:0 24px 70px #073c3130}
+  .home-page .header nav a,.home-page .header nav .nav-video-link{color:#173f33;border-bottom-color:#e2e6d6}
+  .home-page .menu-toggle[aria-expanded=true]{background:#e8f0dc;border-color:#cbd9b7}
+  .menu-backdrop{background:#073c3159}
+  .mobile-actions{background:#fffaf0f7;border-top-color:#d9dfca;box-shadow:0 -7px 28px #173d2514}
+  .mobile-actions .button{background:linear-gradient(100deg,#8bdd55,#a9ef69);color:#173f33}
+}
