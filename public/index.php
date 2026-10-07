@@ -11,6 +11,7 @@ function icon(string $name, string $class = ''): string {
         'arrow' => '<path d="M5 12h14m-5-5 5 5-5 5"/>',
         'diagonal' => '<path d="M6 18 18 6M6 6h12v12"/>',
         'pin' => '<path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+        'pin-solid' => '<path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 1a9 9 0 0 0-9 9c0 6.5 9 13 9 13s9-6.5 9-13a9 9 0 0 0-9-9Zm0 5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/>',
         'clock' => '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
         'check' => '<path d="m5 12 4 4L19 6"/>',
         'phone' => '<path d="m7 3 3 5-3 2c1.5 3 4 5.5 7 7l2-3 5 3c0 3-2 4-4 4C10 20 4 14 3 7c0-2 1-4 4-4Z"/>',
@@ -47,7 +48,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/footer.css?v=1">
   <link rel="stylesheet" href="/assets/details.css?v=12">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
-  <link rel="stylesheet" href="/assets/hero-reference.css?v=12">
+  <link rel="stylesheet" href="/assets/hero-botanical.css?v=1">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
@@ -55,11 +56,10 @@ function icon(string $name, string $class = ''): string {
 </head>
 <body class="home-page">
 <a class="skip-link" href="#continut">Sari la conținut</a>
-<div class="topline"><div class="container"><span><?= icon('pin') ?> Masaj la domiciliu · București & Ilfov</span><a href="https://www.instagram.com/terapeut.alinbughius" target="_blank" rel="noopener noreferrer"><?= icon('instagram') ?><span>Un pic de inspirație, pe Instagram</span><?= icon('diagonal') ?></a></div></div>
 <header class="header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Alin Bughius — acasă"><img src="/assets/logo-mark.svg" alt="" width="46" height="46"><span>Alin Bughius<small>MASAJ & STARE DE BINE</small></span></a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Deschide meniul"><span></span><span></span></button>
+    <a class="brand" href="/" aria-label="Alin Bughius — acasă"><img src="/assets/logo-botanical.svg" alt="" width="90" height="78"><span>Alin Bughius<small>MASAJ ȘI STARE DE BINE</small></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
     <nav id="main-nav" aria-label="Meniu principal"><p class="nav-mobile-heading">O PAUZĂ BUNĂ ÎNCEPE AICI</p><a href="#servicii"><span class="nav-order" aria-hidden="true">01</span>Servicii & prețuri<?= icon('diagonal', 'nav-arrow') ?></a><a href="#recenzii"><span class="nav-order" aria-hidden="true">02</span>Recenzii<?= icon('diagonal', 'nav-arrow') ?></a><a href="#in-miscare" class="nav-video-link"><span class="nav-order" aria-hidden="true">03</span>Alin, în mișcare<?= icon('diagonal', 'nav-arrow') ?></a><a href="#despre"><span class="nav-order" aria-hidden="true">04</span>Despre mine<?= icon('diagonal', 'nav-arrow') ?></a><a href="#contact"><span class="nav-order" aria-hidden="true">05</span>Contact<?= icon('diagonal', 'nav-arrow') ?></a><div class="nav-mobile-footer"><button class="button button-dark" data-book>Alege momentul tău <?= icon('arrow') ?></button><span><?= icon('pin') ?> Masaj la domiciliu · București & Ilfov</span></div></nav>
     <button class="button button-dark header-book" data-book>Programează-te <?= icon('diagonal') ?></button>
   </div>
@@ -68,20 +68,32 @@ function icon(string $name, string $class = ''): string {
 <main id="continut">
   <section class="hero hero--reference">
     <div class="hero-visual">
-      <figure class="hero-photo hero-static-photo"><img src="/assets/images/hero-reference-background-v2.webp" alt="Masaj de relaxare într-o atmosferă calmă" width="1024" height="1536" fetchpriority="high"></figure>
+      <figure class="hero-photo hero-static-photo"><img src="/assets/images/hero-botanical-reference.webp" alt="Alin Bughius realizează un masaj terapeutic pentru spate" width="1004" height="1567" fetchpriority="high"></figure>
     </div>
+    <div class="topline"><div class="container"><span><?= icon('pin-solid') ?> Masaj la domiciliu • București și Ilfov</span></div></div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1><span class="hero-service-title">Masaj terapeutic<br>la domiciliu</span><span class="hero-heading-main">Acasă e locul în care</span><em>poți să te relaxezi.</em></h1>
-        <p class="hero-description"><span>Lasă tensiunea zilei în urmă. Masaj</span> <span>personalizat, cu Alin Bughius, în</span> <span>confortul casei tale.</span></p>
-        <p class="hero-location"><?= icon('pin') ?> București & Ilfov <span>·</span> Echipament inclus</p>
-        <div class="hero-price"><strong>200 <span>lei</span></strong><span class="price-divider"></span><span><b>60 de minute</b><br>de masaj terapeutic</span></div>
-        <div class="hero-actions"><button class="button button-mint" data-book="terapeutic">Rezervă-ți momentul <?= icon('arrow') ?></button><a class="text-link" href="#servicii">Servicii & prețuri <?= icon('diagonal') ?></a></div>
-        <a href="<?= e($reviewsUrl) ?>" class="hero-social-proof" target="_blank" rel="noopener noreferrer"><span class="google-proof-icon"><img src="/assets/google-g.png" alt="Google" width="25" height="25"></span><span class="proof-copy"><span class="proof-rating"><strong>5 / 5</strong><span class="stars" aria-label="5 stele">★★★★★</span></span><span class="proof-label">Peste 65 de recenzii pe Google</span></span><?= icon('chevron') ?></a>
+        <h1 class="hero-title"><span>Masaj terapeutic</span> <span class="hero-title-accent">și de relaxare</span> <span>la domiciliu</span></h1>
+        <p class="hero-subtitle"><span>Casa ta este locul în care</span> <span>te poți relaxa cu adevărat.</span></p>
+        <p class="hero-description"><span>Lasă grijile zilei în urmă</span> <span>și bucură-te de un masaj</span> <span>personalizat, realizat cu grijă</span> <span>de Alin Bughius, în confortul</span> <span>propriei tale case.</span></p>
+      </div>
+      <div class="hero-details" aria-label="Preț, durată și beneficii">
+        <div class="hero-facts">
+          <div class="hero-fact hero-fact-location"><?= icon('pin-solid') ?><span>București<br>și Ilfov</span></div>
+          <div class="hero-fact hero-fact-price"><strong>200 lei</strong><span>masaj terapeutic</span></div>
+          <div class="hero-fact hero-fact-duration"><?= icon('clock') ?><strong>60 de minute</strong></div>
+        </div>
+        <ul class="hero-benefits">
+          <li><span class="hero-benefit-check"><?= icon('check') ?></span><span>Masă profesională, uleiuri și instrumente profesionale.</span></li>
+          <li><span class="hero-benefit-check"><?= icon('check') ?></span><span><strong>Confort absolut:</strong> Te relaxezi direct în mediul tău familiar.</span></li>
+        </ul>
+      </div>
+      <div class="hero-conversion">
+        <a href="<?= e($reviewsUrl) ?>" class="hero-social-proof" target="_blank" rel="noopener noreferrer"><span class="google-proof-icon"><img src="/assets/google-g.png" alt="Google" width="76" height="76"></span><span class="proof-copy"><span class="proof-rating"><strong>5/5</strong><span class="stars" aria-label="5 stele">★★★★★</span></span><span class="proof-label">Peste 65 de recenzii pe Google</span></span></a>
         <div class="hero-contact-actions" aria-label="Contact și programări">
+          <button class="button hero-booking-button" data-book="terapeutic"><?= icon('calendar') ?><span>Programează-te acum</span><?= icon('arrow') ?></button>
           <a class="hero-call" href="tel:+40773919071"><?= icon('phone') ?><span>Sună</span></a>
           <a class="hero-whatsapp" href="https://wa.me/40773919071" target="_blank" rel="noopener noreferrer"><img src="/assets/whatsapp-logo.svg" alt="" width="90" height="90"><span>WhatsApp</span></a>
-          <button class="button button-dark hero-booking-button" data-book><?= icon('calendar') ?><span class="button-divider" aria-hidden="true"></span><span>Programează un masaj</span><?= icon('arrow') ?></button>
         </div>
       </div>
     </div>

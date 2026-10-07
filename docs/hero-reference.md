@@ -1,6 +1,6 @@
 # Hero: referință vizuală și galerie separată
 
-Actualizare aprobată și publicată pe 29 septembrie 2026.
+Istoric al referințelor vizuale. Versiunea curentă este descrisă în secțiunea din 7 octombrie 2026, la final.
 
 ## Fundal
 
@@ -48,3 +48,37 @@ globală ori deplasare spre dreapta. Poziția verticală scade zona ocupată de
 header în referință, ca frunzele și terapeutul să rămână lângă text. Titlul
 serviciului își păstrează dimensiunea redusă; headerul, spațierile și cardul
 Google revin la proporțiile compacte din referință pe toate telefoanele.
+
+## Referința botanică — 7 octombrie 2026
+
+Noua referință înlocuiește hero-ul verde-mentă, nu galeria cu cele șapte fotografii de sub el.
+Navbarul crem, monograma AB cu frunză, bara de localizare de sub navbar, titlul alb/verde,
+cardul crem și butoanele urmează noua imagine furnizată de client. Rama telefonului și
+interfața iOS din referință nu fac parte din site.
+
+- Referință: `codex-clipboard-e7bbd10c-48aa-4134-9bc5-3b8b5dc100b4.png`.
+- Fotografie suport: `codex-clipboard-e3ba50a6-537f-42a7-9e91-a9ce369cb3eb.png`.
+- Fundal final: `public/assets/images/hero-botanical-reference.webp`, 1004 × 1567 px, 119816 octeți.
+- Stiluri: `public/assets/hero-botanical.css`.
+- Monogramă vectorială: `public/assets/logo-botanical.svg`.
+
+Fundalul fotografic a fost adaptat cu instrumentul integrat ImageGen, folosind ambele imagini.
+Nu a fost folosit modul CLI. Rezultatul a fost convertit în WebP; toate textele și controalele
+sunt HTML funcțional, nu parte din imagine. Fișierele vechi au fost păstrate.
+
+Prompt final transmis instrumentului integrat:
+
+> Use case: precise-object-edit / compositing. Create a production website BACKGROUND ASSET ONLY. Image 1 is the exact approved layout and composition reference to extract; image 2 is the original photo to preserve the therapist's real identity and treatment scene. From image 1 keep ONLY the full-bleed rectangular background of the website area BELOW the cream navbar, from the dark green location ribbon at its top to the green bottom below the contact buttons. Remove the black surroundings, phone frame, rounded device corners, status bar and cream navbar entirely. Within that remaining tall rectangle remove ALL text, location icon, cream information card, Google review capsule, booking button, phone/WhatsApp buttons and logos. Inpaint those areas with the underlying dark green / warm wood / massage photograph / bottom green atmospheric gradient. Output portrait approximately 1024 x 1600. Preserve image 1's exact relative photograph scale and positions: man's dark-haired head at x75%, y24%, white shirt and arms on the right; woman's hair and head at x56%, y49%, her back across the lower right; the whole photographic massage scene visible through upper 60%, softly fading to natural forest green across lower 35%. Left upper half very dark forest green with softly visible room greenery, suitable for white overlaid website text. Keep warm vertical wood slats behind man, foliage wall at upper right. Preserve the bright realistic decorative leaves entering from upper left and upper right, mid left around46%, and both lower edges around78–92%. Keep center bottom clear behind future buttons. Preserve therapist/client pose and identities from originals, correct hands, professional massage, client appropriately covered with towel, no new people. Crucially this is NOT a new mockup: absolutely no text, letters, icons, logos, lines, panels, cards or UI shapes anywhere. No phone frame. No additional blur on therapist. Match the original composition and colors precisely; change only removal of UI and crop away device/cream navbar.
+
+### Adaptare și verificare
+
+Pe telefon, compoziția este verticală, cu butonul de programare deasupra butoanelor
+Sună și WhatsApp. Pe laptop și desktop, textul este în stânga, fotografia în dreapta,
+iar cardul cu preț și beneficii ocupă lățimea conținutului. Ecranele intermediare au
+reguli separate pentru navbar, fotografie și acțiuni.
+
+Verificare în Chrome la 320, 390, 430, 700, 768, 1024, 1280, 1366, 1440 și 1920 px:
+fără scroll orizontal ori controale tăiate. Verificare vizuală a capturilor mobile,
+tabletă, laptop și desktop. Meniul mobil, linkul spre servicii, deschiderea/închiderea
+formularului de programare, destinațiile telefon/WhatsApp și săgeata galeriei au fost
+verificate. Nu a fost trimisă nicio programare de test.
