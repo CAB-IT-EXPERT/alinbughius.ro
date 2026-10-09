@@ -40,7 +40,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,s
 
 /* Hero controls use the same forest, cream and lime as the reference. */
 .hero--reference .topline{background:#0a493af2;border-bottom-color:#ffffff38}
-.hero-details{background:rgba(255,247,228,.82);color:#0b382d}
+.hero-details{background:rgba(255,247,228,.70);color:#0b382d}
 .hero-benefit-check{background:var(--botanical-forest)}
 .hero--reference .hero-social-proof{background:#fff;color:#0a3027}
 .hero--reference .hero-booking-button{background:linear-gradient(100deg,#91ef5b,#aff979);color:#0b3027}
