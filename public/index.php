@@ -33,10 +33,10 @@ function icon(string $name, string $class = ''): string {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alin Bughius · Masaj terapeutic la domiciliu în București & Ilfov</title>
-  <meta name="description" content="Masaj terapeutic la domiciliu, cu Alin Bughius, în București și Ilfov. 200 lei / 60 minute. Vezi toate serviciile, recenziile și abonamentele cu 10% reducere.">
+  <title>Alin Bughiuș · Masaj terapeutic la domiciliu în București & Ilfov</title>
+  <meta name="description" content="Masaj terapeutic la domiciliu, cu Alin Bughiuș, în București și Ilfov. 200 lei / 60 minute. Vezi toate serviciile, recenziile și abonamentele cu 10% reducere.">
   <meta name="theme-color" content="#164d40">
-  <meta property="og:title" content="Alin Bughius · Starea de bine vine acasă">
+  <meta property="og:title" content="Alin Bughiuș · Starea de bine vine acasă">
   <meta property="og:description" content="Masaj terapeutic la domiciliu în București și Ilfov. Descoperă serviciile, prețurile și solicită o programare.">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://alinbughius.ro/">
@@ -48,8 +48,8 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/footer.css?v=1">
   <link rel="stylesheet" href="/assets/details.css?v=12">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
-  <link rel="stylesheet" href="/assets/hero-botanical.css?v=1">
-  <link rel="stylesheet" href="/assets/botanical-palette.css?v=2">
+  <link rel="stylesheet" href="/assets/hero-botanical.css?v=2">
+  <link rel="stylesheet" href="/assets/botanical-palette.css?v=3">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
@@ -59,7 +59,7 @@ function icon(string $name, string $class = ''): string {
 <a class="skip-link" href="#continut">Sari la conținut</a>
 <header class="header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Alin Bughius — acasă"><img src="/assets/logo-botanical.svg" alt="" width="90" height="78"><span>Alin Bughius<small>MASAJ ȘI STARE DE BINE</small></span></a>
+    <a class="brand" href="/" aria-label="Alin Bughiuș — acasă"><img src="/assets/logo-botanical.svg" alt="" width="90" height="78"><span>Alin Bughiuș<small>MASAJ ȘI STARE DE BINE</small></span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
     <nav id="main-nav" aria-label="Meniu principal"><p class="nav-mobile-heading">O PAUZĂ BUNĂ ÎNCEPE AICI</p><a href="#servicii"><span class="nav-order" aria-hidden="true">01</span>Servicii & prețuri<?= icon('diagonal', 'nav-arrow') ?></a><a href="#recenzii"><span class="nav-order" aria-hidden="true">02</span>Recenzii<?= icon('diagonal', 'nav-arrow') ?></a><a href="#in-miscare" class="nav-video-link"><span class="nav-order" aria-hidden="true">03</span>Alin, în mișcare<?= icon('diagonal', 'nav-arrow') ?></a><a href="#despre"><span class="nav-order" aria-hidden="true">04</span>Despre mine<?= icon('diagonal', 'nav-arrow') ?></a><a href="#contact"><span class="nav-order" aria-hidden="true">05</span>Contact<?= icon('diagonal', 'nav-arrow') ?></a><div class="nav-mobile-footer"><button class="button button-dark" data-book>Alege momentul tău <?= icon('arrow') ?></button><span><?= icon('pin') ?> Masaj la domiciliu · București & Ilfov</span></div></nav>
     <button class="button button-dark header-book" data-book>Programează-te <?= icon('diagonal') ?></button>
@@ -69,14 +69,20 @@ function icon(string $name, string $class = ''): string {
 <main id="continut">
   <section class="hero hero--reference">
     <div class="hero-visual">
-      <figure class="hero-photo hero-static-photo"><img src="/assets/images/hero-botanical-reference.webp" alt="Alin Bughius realizează un masaj terapeutic pentru spate" width="1004" height="1567" fetchpriority="high"></figure>
+      <figure class="hero-photo hero-static-photo"><img src="/assets/images/hero-botanical-reference.webp" alt="Alin Bughiuș realizează un masaj terapeutic pentru spate" width="1004" height="1567" fetchpriority="high"></figure>
     </div>
     <div class="topline"><div class="container"><span><?= icon('pin-solid') ?> Masaj la domiciliu • București și Ilfov</span></div></div>
     <div class="container hero-grid">
       <div class="hero-copy">
         <h1 class="hero-title"><span>Masaj terapeutic</span> <span class="hero-title-accent">și de relaxare</span> <span>la domiciliu</span></h1>
-        <p class="hero-subtitle"><span>Casa ta este locul în care</span> <span>te poți relaxa cu adevărat.</span></p>
-        <p class="hero-description"><span>Lasă grijile zilei în urmă</span> <span>și bucură-te de un masaj</span> <span>personalizat, realizat cu grijă</span> <span>de Alin Bughius, în confortul</span> <span>propriei tale case.</span></p>
+        <p class="hero-service-intro"><span>Alege tipul de masaj potrivit</span> <span>nevoilor tale și bucură-te</span> <span>de o <em>stare reală de bine.</em></span></p>
+        <ul class="hero-service-list" aria-label="Servicii de masaj disponibile">
+          <li><span class="hero-service-leaf" aria-hidden="true"></span>Masaj terapeutic + reflexoterapie</li>
+          <li><span class="hero-service-leaf" aria-hidden="true"></span>Deep tissue + mobilizări</li>
+          <li><span class="hero-service-leaf" aria-hidden="true"></span>Drenaj limfatic + anticelulitic</li>
+          <li><span class="hero-service-leaf" aria-hidden="true"></span>Masaj Lomi Lomi + relaxare</li>
+        </ul>
+        <p class="hero-choice">E simplu, <em>tu alegi</em></p>
       </div>
       <div class="hero-details" aria-label="Preț, durată și beneficii">
         <div class="hero-facts">
@@ -101,22 +107,22 @@ function icon(string $name, string $class = ''): string {
   </section>
   <section class="therapist-gallery-section" aria-label="Fotografii cu Alin în timpul ședințelor de masaj">
     <div class="container therapist-gallery-layout">
-      <div class="therapist-gallery-intro"><p class="eyebrow">MASAJ TERAPEUTIC LA DOMICILIU</p><h2>Grijă, în fiecare <em>atingere.</em></h2><p>Alin Bughius, în timpul ședințelor de masaj.</p></div>
-      <div class="hero-photo hero-gallery therapist-gallery" data-hero-gallery role="region" aria-roledescription="carusel" aria-label="Alin Bughius în timpul ședințelor de masaj">
+      <div class="therapist-gallery-intro"><p class="eyebrow">MASAJ TERAPEUTIC LA DOMICILIU</p><h2>Grijă, în fiecare <em>atingere.</em></h2><p>Alin Bughiuș, în timpul ședințelor de masaj.</p></div>
+      <div class="hero-photo hero-gallery therapist-gallery" data-hero-gallery role="region" aria-roledescription="carusel" aria-label="Alin Bughiuș în timpul ședințelor de masaj">
         <div class="hero-gallery-track" data-hero-track>
-          <figure class="hero-gallery-slide hero-gallery-slide--profile is-active" data-hero-slide aria-hidden="false"><img src="/assets/images/alin.jpg" alt="Alin Bughius, terapeutul care vine la tine acasă" width="1086" height="1448" loading="lazy" draggable="false"></figure>
-          <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-1.webp" alt="Ședință de masaj terapeutic realizată de Alin Bughius" width="1086" height="1448" loading="lazy" draggable="false"></figure>
+          <figure class="hero-gallery-slide hero-gallery-slide--profile is-active" data-hero-slide aria-hidden="false"><img src="/assets/images/alin.jpg" alt="Alin Bughiuș, terapeutul care vine la tine acasă" width="1086" height="1448" loading="lazy" draggable="false"></figure>
+          <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-1.webp" alt="Ședință de masaj terapeutic realizată de Alin Bughiuș" width="1086" height="1448" loading="lazy" draggable="false"></figure>
           <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-2.webp" alt="Mobilizare asistată în timpul unei ședințe de masaj" width="1087" height="1447" loading="lazy" draggable="false"></figure>
-          <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-3.webp" alt="Alin Bughius în timpul unui masaj de relaxare" width="1086" height="1448" loading="lazy" draggable="false"></figure>
+          <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-3.webp" alt="Alin Bughiuș în timpul unui masaj de relaxare" width="1086" height="1448" loading="lazy" draggable="false"></figure>
           <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-4.webp" alt="Masaj terapeutic pentru zona cervicală" width="1086" height="1448" loading="lazy" draggable="false"></figure>
-          <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-5.webp" alt="Ședință de reflexoterapie realizată de Alin Bughius" width="1152" height="2048" loading="lazy" draggable="false"></figure>
-          <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-6.webp" alt="Masaj de relaxare la domiciliu realizat de Alin Bughius" width="1152" height="2048" loading="lazy" draggable="false"></figure>
+          <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-5.webp" alt="Ședință de reflexoterapie realizată de Alin Bughiuș" width="1152" height="2048" loading="lazy" draggable="false"></figure>
+          <figure class="hero-gallery-slide" data-hero-slide aria-hidden="true"><img src="/assets/images/hero-masaj-6.webp" alt="Masaj de relaxare la domiciliu realizat de Alin Bughiuș" width="1152" height="2048" loading="lazy" draggable="false"></figure>
         </div>
         <button class="hero-gallery-arrow hero-gallery-prev" type="button" data-hero-prev aria-label="Fotografia precedentă"><?= icon('arrow') ?></button>
         <button class="hero-gallery-arrow hero-gallery-next" type="button" data-hero-next aria-label="Fotografia următoare"><?= icon('arrow') ?></button>
         <div class="hero-gallery-dots" role="group" aria-label="Alege fotografia"><?php for ($photo = 1; $photo <= 7; $photo++): ?><button type="button" data-hero-dot="<?= $photo - 1 ?>" aria-label="Fotografia <?= $photo ?> din 7" aria-current="<?= $photo === 1 ? 'true' : 'false' ?>"><span></span></button><?php endfor; ?></div>
         <span class="hero-gallery-count" aria-hidden="true"><b data-hero-current>01</b><i></i>07</span>
-        <div class="hero-portrait-caption"><span><small>TERAPEUTUL TĂU</small><strong>Alin Bughius</strong><span>Cu grijă pentru oameni, din 2018.</span></span><a class="portrait-video-link" href="#in-miscare"><span>▶</span>Vezi cum lucrez</a></div>
+        <div class="hero-portrait-caption"><span><small>TERAPEUTUL TĂU</small><strong>Alin Bughiuș</strong><span>Cu grijă pentru oameni, din 2018.</span></span><a class="portrait-video-link" href="#in-miscare"><span>▶</span>Vezi cum lucrez</a></div>
         <p class="sr-only" data-hero-status aria-live="polite">Fotografia 1 din 7</p>
       </div>
     </div>
@@ -172,8 +178,8 @@ function icon(string $name, string $class = ''): string {
   <?php require APP_ROOT . '/app/sections/home-experience.php'; ?>
 
   <section class="about-section section" id="despre"><div class="container about-grid">
-    <div class="about-photo"><img src="/assets/images/alin.jpg" alt="Alin Bughius, terapeut maseur, în spațiul de lucru" width="1086" height="1448" loading="lazy"><div class="experience-badge"><span>Din 2018</span><small>cu grijă pentru oameni</small></div></div>
-    <div class="about-copy"><p class="eyebrow">UN OM, ÎNAINTE DE TOATE</p><h2>Salut, sunt Alin.<br><em>Mă bucur să te cunosc.</em></h2><p>Născut pe 7 septembrie 1989 în județul Vaslui, am început călătoria mea profesională în masaj în 2018, după o perioadă de explorare și dezvoltare personală. Am absolvit Școala de Masaj Cristiana, iar de atunci fiecare sesiune de masaj mi-a întărit convingerea că aceasta este calea mea.</p><p>Consider că meseria de maseur este un dar primit de la Dumnezeu, iar prin munca mea mă conectez profund cu energia celor din jur. Îmi place să creez un spațiu de armonie și relaxare, iar fiecare sesiune este un proces unic în care mă las ghidat de flow-ul momentului.</p><div class="signature">Alin Bughius</div><div class="diplomas"><p><?= icon('award') ?> Pregătire pe care poți conta</p><div><?php foreach (['terapeutic' => 'Masaj terapeutic', 'deep-tissue' => 'Deep Tissue', 'lomi-lomi' => 'Lomi-Lomi'] as $slug => $label): ?><a href="/assets/images/diploma-<?= e($slug) ?>.jpg" class="diploma-link" data-lightbox data-caption="<?= e($label) ?>" target="_blank" rel="noopener"><img src="/assets/images/diploma-<?= e($slug) ?>.jpg" alt="Diplomă <?= e($label) ?>" width="180" height="120" loading="lazy"><span><?= e($label) ?> <?= icon('diagonal') ?></span></a><?php endforeach; ?></div></div></div>
+    <div class="about-photo"><img src="/assets/images/alin.jpg" alt="Alin Bughiuș, terapeut maseur, în spațiul de lucru" width="1086" height="1448" loading="lazy"><div class="experience-badge"><span>Din 2018</span><small>cu grijă pentru oameni</small></div></div>
+    <div class="about-copy"><p class="eyebrow">UN OM, ÎNAINTE DE TOATE</p><h2>Salut, sunt Alin.<br><em>Mă bucur să te cunosc.</em></h2><p>Născut pe 7 septembrie 1989 în județul Vaslui, am început călătoria mea profesională în masaj în 2018, după o perioadă de explorare și dezvoltare personală. Am absolvit Școala de Masaj Cristiana, iar de atunci fiecare sesiune de masaj mi-a întărit convingerea că aceasta este calea mea.</p><p>Consider că meseria de maseur este un dar primit de la Dumnezeu, iar prin munca mea mă conectez profund cu energia celor din jur. Îmi place să creez un spațiu de armonie și relaxare, iar fiecare sesiune este un proces unic în care mă las ghidat de flow-ul momentului.</p><div class="signature">Alin Bughiuș</div><div class="diplomas"><p><?= icon('award') ?> Pregătire pe care poți conta</p><div><?php foreach (['terapeutic' => 'Masaj terapeutic', 'deep-tissue' => 'Deep Tissue', 'lomi-lomi' => 'Lomi-Lomi'] as $slug => $label): ?><a href="/assets/images/diploma-<?= e($slug) ?>.jpg" class="diploma-link" data-lightbox data-caption="<?= e($label) ?>" target="_blank" rel="noopener"><img src="/assets/images/diploma-<?= e($slug) ?>.jpg" alt="Diplomă <?= e($label) ?>" width="180" height="120" loading="lazy"><span><?= e($label) ?> <?= icon('diagonal') ?></span></a><?php endforeach; ?></div></div></div>
   </div></section>
 
   <section class="how-section section"><div class="container"><div class="section-heading centered"><p class="eyebrow">SIMPLU, DE LA PRIMUL PAS</p><h2>Tu alegi momentul.<br><em>Eu vin la tine.</em></h2></div><div class="steps"><div><span class="step-number">01</span><?= icon('calendar') ?><h3>Alegi un interval liber</h3><p>Selectezi masajul, una sau mai multe sesiuni consecutive, apoi o zi și o oră disponibile în timp real.</p></div><div><span class="step-number">02</span><?= icon('chat') ?><h3>Primești confirmarea</h3><p>Intervalul este reținut imediat. Primești cererea pe e-mail, apoi confirmarea finală de la Alin.</p></div><div><span class="step-number">03</span><?= icon('home') ?><h3>Te bucuri de pauza ta</h3><p>Vin cu masa de masaj și materialele necesare. Tu pregătești un spațiu liniștit, în care te simți bine.</p></div></div></div></section>
@@ -200,7 +206,7 @@ function icon(string $name, string $class = ''): string {
     </div>
     <div class="footer-main">
       <div class="footer-brand-column">
-        <a class="brand" href="/" aria-label="Alin Bughius — pagina principală"><img src="/assets/logo-mark.svg" alt="" width="53" height="53"><span>Alin Bughius<small>MASAJ & STARE DE BINE</small></span></a>
+        <a class="brand" href="/" aria-label="Alin Bughiuș — pagina principală"><img src="/assets/logo-mark.svg" alt="" width="53" height="53"><span>Alin Bughiuș<small>MASAJ & STARE DE BINE</small></span></a>
         <p>Grijă, atenție și un moment de liniște.<br>Masaj la domiciliu, în ritmul tău.</p>
         <span class="footer-area"><?= icon('pin') ?> București & Ilfov</span>
         <a class="footer-instagram" href="https://www.instagram.com/terapeut.alinbughius" target="_blank" rel="noopener noreferrer" aria-label="Urmărește-l pe Alin pe Instagram"><?= icon('instagram') ?><span>Ne vedem și pe Instagram</span><?= icon('diagonal') ?></a>
@@ -208,13 +214,13 @@ function icon(string $name, string $class = ''): string {
       <nav class="footer-navigation" aria-label="Navigare în subsol"><h3>Descoperă</h3><a href="#servicii">Servicii & prețuri <?= icon('diagonal') ?></a><a href="#despre">Omul din spatele masajului <?= icon('diagonal') ?></a><a href="#recenzii">Poveștile clienților <?= icon('diagonal') ?></a><button data-book>Solicită o programare <?= icon('diagonal') ?></button></nav>
       <div class="footer-contact-column"><h3>Hai să vorbim</h3><a class="footer-phone" href="tel:+40773919071">0773 919 071 <?= icon('diagonal') ?></a><a class="footer-email" href="mailto:contact@alinbughius.ro">contact@alinbughius.ro</a><a class="footer-whatsapp" href="https://wa.me/40773919071" target="_blank" rel="noopener noreferrer"><span class="footer-chat-icon"><?= icon('chat') ?></span><span><strong>Mai simplu, pe WhatsApp</strong><small>Îmi spui ce ai nevoie. Găsim momentul.</small></span><?= icon('arrow') ?></a></div>
     </div>
-    <div class="footer-bottom"><span>© <?= date('Y') ?> Alin Bughius. Toate drepturile rezervate.</span><a href="/confidentialitate.php">Confidențialitate & cookies</a></div>
+    <div class="footer-bottom"><span>© <?= date('Y') ?> Alin Bughiuș. Toate drepturile rezervate.</span><a href="/confidentialitate.php">Confidențialitate & cookies</a></div>
   </div>
   <div class="agency-signature"><a href="https://cab-it.ro/" target="_blank" rel="noopener noreferrer" aria-label="Designed by CAB-IT — cab-it.ro"><span>Designed by</span><img src="/assets/cab-it-symbol.webp" alt="" width="32" height="32" loading="lazy"><strong>cab-it.ro</strong></a></div>
 </footer>
 <div class="mobile-actions"><a class="mobile-call" href="tel:+40773919071"><?= icon('phone') ?><span>Sună</span></a><a class="mobile-whatsapp" href="https://wa.me/40773919071" target="_blank" rel="noopener noreferrer"><img src="/assets/whatsapp-logo.svg" alt="" width="37" height="37"><span>WhatsApp</span></a><button class="button button-dark" data-book>Programează-te <?= icon('calendar') ?></button></div>
 
-<dialog id="booking-dialog" class="booking-dialog" aria-labelledby="booking-title"><div class="dialog-header"><a class="brand mini" href="/"><img src="/assets/logo-mark.svg" alt="" width="38" height="38"><span>Alin Bughius</span></a><button class="close-button" data-close aria-label="Închide formularul">×</button></div><div class="booking-intro"><p class="eyebrow">PROGRAMARE ONLINE, SIMPLĂ ȘI CLARĂ</p><h2 id="booking-title">Alege momentul <em>potrivit.</em></h2><p>Calendarul îți arată numai intervalele libere, actualizate în timp real.</p></div>
+<dialog id="booking-dialog" class="booking-dialog" aria-labelledby="booking-title"><div class="dialog-header"><a class="brand mini" href="/"><img src="/assets/logo-mark.svg" alt="" width="38" height="38"><span>Alin Bughiuș</span></a><button class="close-button" data-close aria-label="Închide formularul">×</button></div><div class="booking-intro"><p class="eyebrow">PROGRAMARE ONLINE, SIMPLĂ ȘI CLARĂ</p><h2 id="booking-title">Alege momentul <em>potrivit.</em></h2><p>Calendarul îți arată numai intervalele libere, actualizate în timp real.</p></div>
   <form id="booking-form" action="/api/booking.php" method="post">
     <input type="hidden" name="csrf" id="csrf"><input type="hidden" name="request_id" id="request-id">
     <div class="honey" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>

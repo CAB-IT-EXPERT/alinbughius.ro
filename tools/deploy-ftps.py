@@ -107,7 +107,7 @@ try:
         upload(PUBLIC + '/.htaccess', (ROOT / 'public/.htaccess').read_bytes())
         with urllib.request.urlopen('https://alinbughius.ro/', timeout=30) as response:
             html = response.read().decode()
-            assert response.status == 200 and 'hero-botanical-reference.webp' in html and 'botanical-palette.css?v=2' in html and 'Programează-te acum' in html and 'measurement.js' in html
+            assert response.status == 200 and 'hero-botanical-reference.webp' in html and 'hero-botanical.css?v=2' in html and 'botanical-palette.css?v=3' in html and 'Masaj terapeutic + reflexoterapie' in html and 'Programează-te acum' in html and 'measurement.js' in html
         print('Published and main page verified: https://alinbughius.ro/')
     elif mode == 'remove-probe':
         state = json.loads(STATE.read_text())

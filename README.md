@@ -1,4 +1,4 @@
-# Alin Bughius — masaj la domiciliu
+# Alin Bughiuș — masaj la domiciliu
 
 Site PHP 8.2+ fără framework, cu design responsive, fotografiile clientului, trei videoclipuri Instagram găzduite local, calendar de programări în timp real și CRM privat.
 
@@ -44,7 +44,7 @@ Animațiile respectă `prefers-reduced-motion`. Videoclipurile pornesc fără su
 
 ## Măsurarea păstrată din site-ul vechi
 
-- Google Ads: `AW-11103141014`.
+- Google Ads: `AW-18478963280`, cu eticheta veche `AW-11103141014` păstrată temporar pentru conversiile existente.
 - Conversie pentru clic pe telefon/WhatsApp: `AW-11103141014/sLiECKP109YZEJb5sa4p`.
 - Nu s-au găsit identificatori GA4, Google Tag Manager sau Meta Pixel în codul propriu al site-ului vechi. Pe găzduire era doar o pagină provizorie.
 - La cererea explicită a utilizatorului, eticheta funcționează standard, fără banner și fără modul permanent denied. Nu fabricăm un acord printr-un apel consent/granted. Această configurație trebuie validată juridic; informarea nu înlocuiește consimțământul cerut de politica Google pentru UE: https://www.google.com/about/company/user-consent-policy/.

@@ -66,9 +66,9 @@ const mails = (await readdir(storage)).filter(name => name.startsWith(record.id)
 assert.equal(mails.length, 3);
 const ownerMail = await readFile(join(storage, `${record.id}-owner.eml`), 'utf8');
 const receiptMail = await readFile(join(storage, `${record.id}-receipt.eml`), 'utf8');
-assert.match(ownerMail, /To: Alin Bughius <bughius_alin@yahoo.com>/);
+assert.match(ownerMail, /To: Alin Bughiuș <bughius_alin@yahoo.com>/);
 assert.match(receiptMail, /To: Client Test Local <client-test@example.com>/);
-assert.match(ownerMail, /From: Alin Bughius <contact@alinbughius.ro>/);
+assert.match(ownerMail, /From: Alin Bughiuș <contact@alinbughius.ro>/);
 assert.ok(!receiptMail.includes(record.manage_token));
 for (const path of ['/config/local.php','/app/catalog.php','/storage/' + record.id + '.json','/vendor/PHPMailer/README.md']) assert.equal((await request(path)).status, 404, `${path} private`);
 assert.equal((await request('/admin/')).status, 200);

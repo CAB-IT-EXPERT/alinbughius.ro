@@ -15,9 +15,11 @@ assert.equal(load('alinbughius.ro', '/confirmare.php').scripts.length, 0);
 assert.equal(load('alinbughius.ro', '/confidentialitate.php').scripts.length, 0);
 const state = load();
 assert.equal(state.scripts.length, 1);
-assert.match(state.scripts[0].src, /id=AW-11103141014$/);
+assert.match(state.scripts[0].src, /id=AW-18478963280$/);
 assert.equal(state.calls.filter(call => call[0] === 'consent').length, 0, 'No fabricated visitor consent');
-const config = state.calls.find(call => call[0] === 'config');
+const configs = state.calls.filter(call => call[0] === 'config');
+assert.equal(configs.map(call => call[1]).join(','), 'AW-18478963280,AW-11103141014');
+const config = configs[0];
 assert.equal(config[2].allow_ad_personalization_signals, false);
 assert.equal(config[2].page_location, 'https://alinbughius.ro/');
 const campaign = load('alinbughius.ro', '/', '?gclid=campaign-test&email=private@example.com&token=secret');
@@ -35,4 +37,4 @@ for (const conversion of conversions) {
   assert.equal(conversion[2].send_to, 'AW-11103141014/sLiECKP109YZEJb5sa4p');
   assert.deepEqual(Object.keys(conversion[2]).sort(), ['send_to', 'transport_type']);
 }
-console.log('PASS: inherited Ads ID, contact conversions, production-only guard, no form data and no fabricated consent. No Google requests sent.');
+console.log('PASS: current and legacy Ads IDs, contact conversions, production-only guard, no form data and no fabricated consent. No Google requests sent.');

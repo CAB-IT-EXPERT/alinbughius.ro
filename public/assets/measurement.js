@@ -24,7 +24,7 @@
     // Do not forward arbitrary query strings, form fields or private links.
     page_location: pageUrl.href,
     page_referrer: '',
-    page_title: 'Alin Bughius · Masaj la domiciliu'
+    page_title: 'Alin Bughiuș · Masaj la domiciliu'
   });
   // Keep the previously installed account active until its campaign is retired.
   gtag('config', legacyAccount, {
@@ -32,7 +32,7 @@
     allow_google_signals: false,
     page_location: pageUrl.href,
     page_referrer: '',
-    page_title: 'Alin Bughius · Masaj la domiciliu'
+    page_title: 'Alin Bughiuș · Masaj la domiciliu'
   });
   const script = document.createElement('script');
   script.async = true;

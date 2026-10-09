@@ -7,7 +7,7 @@ Data analizei: 20 septembrie 2026
 Redesign complet pentru un site mult mai simplu, aerisit și orientat spre programări. În primele 5–10 secunde, vizitatorul trebuie să înțeleagă:
 
 - că serviciul principal este masajul terapeutic la domiciliu în București și Ilfov;
-- cine este Alin Bughius;
+- cine este Alin Bughiuș;
 - ce servicii oferă și cât costă;
 - că există recenzii reale și certificări;
 - cum poate solicita imediat o programare.

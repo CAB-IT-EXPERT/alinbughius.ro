@@ -3,16 +3,16 @@
 <html lang="ro">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Confidențialitate și cookies · Alin Bughius</title>
+  <title>Confidențialitate și cookies · Alin Bughiuș</title>
   <meta name="robots" content="noindex">
-  <link rel="icon" href="/assets/logo-mark.svg"><link rel="stylesheet" href="/assets/style.css?v=1"><link rel="stylesheet" href="/assets/botanical-palette.css?v=2">
+  <link rel="icon" href="/assets/logo-mark.svg"><link rel="stylesheet" href="/assets/style.css?v=1"><link rel="stylesheet" href="/assets/botanical-palette.css?v=3">
 </head>
 <body><main class="legal-page">
-  <a class="brand" href="/"><img src="/assets/logo-mark.svg" width="44" height="44" alt=""><span>Alin Bughius</span></a>
+  <a class="brand" href="/"><img src="/assets/logo-mark.svg" width="44" height="44" alt=""><span>Alin Bughiuș</span></a>
   <h1>Datele tale, tratate cu grijă.</h1>
   <p>Ultima actualizare: 21 septembrie 2026.</p>
   <h2>Cine gestionează solicitările</h2>
-  <p>Alin Bughius gestionează cererile de programare primite prin alinbughius.ro. Pentru întrebări despre datele tale, scrie la <a href="mailto:contact@alinbughius.ro">contact@alinbughius.ro</a> sau sună la <a href="tel:+40773919071">0773 919 071</a>.</p>
+  <p>Alin Bughiuș gestionează cererile de programare primite prin alinbughius.ro. Pentru întrebări despre datele tale, scrie la <a href="mailto:contact@alinbughius.ro">contact@alinbughius.ro</a> sau sună la <a href="tel:+40773919071">0773 919 071</a>.</p>
   <h2>Ce date folosim și pentru ce</h2>
   <p>Când soliciți o programare, prelucrăm numele, adresa de e-mail, telefonul, serviciul ales, zona și data și ora preferate. Le folosim pentru a răspunde solicitării tale, pentru stabilirea și confirmarea programării și pentru comunicările necesare prestării serviciului. Nu solicităm prin formular informații medicale sau adresa exactă.</p>
   <p>Prelucrarea cererii este necesară pentru demersurile făcute la solicitarea ta înainte de prestarea serviciului. Bifarea informării nu reprezintă înscriere la marketing; nu trimitem newslettere prin acest formular.</p>
