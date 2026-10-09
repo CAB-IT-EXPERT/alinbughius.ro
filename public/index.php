@@ -14,6 +14,7 @@ function icon(string $name, string $class = ''): string {
         'pin-solid' => '<path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 1a9 9 0 0 0-9 9c0 6.5 9 13 9 13s9-6.5 9-13a9 9 0 0 0-9-9Zm0 5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/>',
         'clock' => '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
         'check' => '<path d="m5 12 4 4L19 6"/>',
+        'leaf' => '<path fill="currentColor" stroke="none" d="M3 21C1 14 4 6 12 5c5-.5 8-1.5 10-4 0 9-3 17-11 19-3 .7-5 .7-8 1Z"/><path d="M3 21c2-5 6-9 13-13" stroke="#387a32" stroke-width="1.2"/>',
         'phone' => '<path d="m7 3 3 5-3 2c1.5 3 4 5.5 7 7l2-3 5 3c0 3-2 4-4 4C10 20 4 14 3 7c0-2 1-4 4-4Z"/>',
         'instagram' => '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
         'chat' => '<path d="M21 11.5a9 9 0 0 1-13 8L3 21l1.5-5A9 9 0 1 1 21 11.5Z"/><path d="M8 8c1 4 3 6 7 7l1-2-2-1-1 1-2-2 1-1-1-2Z"/>',
@@ -48,7 +49,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/footer.css?v=1">
   <link rel="stylesheet" href="/assets/details.css?v=12">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
-  <link rel="stylesheet" href="/assets/hero-botanical.css?v=2">
+  <link rel="stylesheet" href="/assets/hero-botanical.css?v=3">
   <link rel="stylesheet" href="/assets/botanical-palette.css?v=3">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
@@ -77,12 +78,12 @@ function icon(string $name, string $class = ''): string {
         <h1 class="hero-title"><span>Masaj terapeutic</span> <span class="hero-title-accent">și de relaxare</span> <span>la domiciliu</span></h1>
         <p class="hero-service-intro"><span>Alege tipul de masaj potrivit</span> <span>nevoilor tale și bucură-te</span> <span>de o <em>stare reală de bine.</em></span></p>
         <ul class="hero-service-list" aria-label="Servicii de masaj disponibile">
-          <li><span class="hero-service-leaf" aria-hidden="true"></span>Masaj terapeutic + reflexoterapie</li>
-          <li><span class="hero-service-leaf" aria-hidden="true"></span>Deep tissue + mobilizări</li>
-          <li><span class="hero-service-leaf" aria-hidden="true"></span>Drenaj limfatic + anticelulitic</li>
-          <li><span class="hero-service-leaf" aria-hidden="true"></span>Masaj Lomi Lomi + relaxare</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Masaj terapeutic + reflexoterapie</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Deep tissue + mobilizări</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Drenaj limfatic + anticelulitic</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Masaj Lomi Lomi + relaxare</li>
         </ul>
-        <p class="hero-choice">E simplu, <em>tu alegi</em></p>
+        <p class="hero-choice">E simplu, <em>tu alegi<svg class="hero-choice-underline" viewBox="0 0 100 12" aria-hidden="true"><path d="M2 10Q51-2 98 5"/></svg></em></p>
       </div>
       <div class="hero-details" aria-label="Preț, durată și beneficii">
         <div class="hero-facts">

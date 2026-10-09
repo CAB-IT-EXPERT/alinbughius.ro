@@ -1,4 +1,6 @@
 /* Botanical reference, October 2026. Text and controls remain live HTML. */
+/* Self-hosted Kalam subset for the handwritten phrase; license: fonts/OFL-Kalam.txt. */
+@font-face{font-family:'Hero Kalam';src:url('/assets/fonts/kalam-regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
 .home-page .header{background:#f4f0e4;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
 .home-page .header-inner{height:94px}
 .home-page .header .brand{gap:22px}
@@ -27,15 +29,15 @@
 .hero--reference .hero-subtitle>span{display:block}
 .hero--reference .hero-description{max-width:470px;margin-top:18px;color:#f1f0dd;font-family:var(--sans);font-size:19px;font-weight:400;line-height:1.35;letter-spacing:0}
 .hero--reference .hero-description>span{display:inline}
-.hero-service-intro{max-width:520px;margin-top:20px;color:#fffdf5;font-size:24px;font-weight:500;line-height:1.28;letter-spacing:-.2px}
+.hero-service-intro{max-width:520px;margin-top:20px;color:#f1f0dd;font-size:24px;font-weight:400;line-height:1.28;letter-spacing:0}
 .hero-service-intro>span{display:block}
 .hero-service-intro em{color:#9cf466;font-style:normal}
 .hero-service-list{display:grid;gap:8px;max-width:540px;margin:22px 0 0;padding:0;list-style:none}
-.hero-service-list>li{display:flex;align-items:center;gap:14px;color:#fffdf5;font-size:19px;line-height:1.25}
-.hero-service-leaf{position:relative;display:block;flex:none;width:19px;height:13px;border-radius:100% 0 100% 0;background:#9cf466;transform:rotate(-25deg)}
-.hero-service-leaf::after{content:'';position:absolute;left:3px;top:6px;width:13px;height:1px;background:#1d633f;transform:rotate(-10deg);transform-origin:left center}
-.hero-choice{margin-top:17px;color:#fffdf5;font-family:var(--serif);font-size:29px;font-style:italic;line-height:1.1}
-.hero-choice em{color:#9cf466}
+.hero-service-list>li{display:flex;align-items:center;gap:14px;color:#f1f0dd;font-size:19px;font-weight:400;line-height:1.25}
+.hero-service-leaf{display:block;flex:none;width:23px;height:23px;color:#9cf466}
+.hero-choice{width:fit-content;margin:20px 0 0 25px;color:#fffdf5;font-family:'Hero Kalam',var(--sans);font-size:29px;font-weight:400;font-style:normal;line-height:1.25;white-space:nowrap}
+.hero-choice em{position:relative;display:inline-block;color:#9cf466;font-size:1.12em;font-style:normal}
+.hero-choice-underline{position:absolute;top:calc(100% - 2px);left:4%;width:92%;height:.4em;overflow:visible;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;pointer-events:none}
 
 .hero-details{width:100%;padding:22px 30px 20px;border:1px solid #ffffff9c;border-radius:26px;background:rgba(255,247,226,.82);color:#092c22;box-shadow:0 10px 35px #07291814;backdrop-filter:saturate(1.08) blur(2px);-webkit-backdrop-filter:saturate(1.08) blur(2px)}
 .hero-facts{display:grid;grid-template-columns:1fr 1.14fr 1.25fr;align-items:center}
@@ -156,17 +158,17 @@
   .hero--reference .topline .container>span{gap:2cqw}
   .hero--reference .topline .icon{width:3.5cqw;height:4.3cqw}
   .hero--reference .hero-grid{display:block;width:94%;min-height:0;padding:5.5cqw 0 5.7cqw}
-  .hero--reference .hero-copy{width:100%;min-height:82cqw;padding:0 .9cqw}
+  .hero--reference .hero-copy{width:100%;min-height:74cqw;padding:0 .9cqw}
   .hero--reference h1{font-size:9.5cqw;line-height:.99;letter-spacing:-.12cqw;text-shadow:0 1px 5px #06211822}
   .hero--reference .hero-subtitle{margin-top:2.2cqw;font-size:4.4cqw;line-height:1.17;font-weight:600;letter-spacing:-.03cqw}
   .hero--reference .hero-description{max-width:none;margin-top:2.1cqw;font-size:3.45cqw;line-height:1.25;font-weight:400;letter-spacing:0}
   .hero--reference .hero-description>span{display:block}
-  .hero-service-intro{max-width:none;margin-top:2.2cqw;font-size:3.55cqw;line-height:1.25;letter-spacing:-.02cqw}
-  .hero-service-list{gap:.7cqw;max-width:none;margin-top:2.5cqw}
-  .hero-service-list>li{gap:1.8cqw;font-size:3.05cqw;line-height:1.25;letter-spacing:-.025cqw}
-  .hero-service-leaf{width:3.6cqw;height:2.5cqw}
-  .hero-service-leaf::after{left:.55cqw;top:1.15cqw;width:2.45cqw}
-  .hero-choice{margin-top:2.2cqw;font-size:4.5cqw;line-height:1.05}
+  .hero-service-intro{max-width:none;margin-top:2.2cqw;font-size:3.55cqw;line-height:1.25;letter-spacing:0}
+  .hero-service-list{gap:1.05cqw;max-width:none;margin-top:2cqw}
+  .hero-service-list>li{gap:1.85cqw;font-size:3.05cqw;line-height:1.25;letter-spacing:-.025cqw}
+  .hero-service-leaf{width:3.4cqw;height:3.4cqw}
+  .hero-choice{margin:1.6cqw 0 0 4.1cqw;font-size:3.8cqw;line-height:1.25}
+  .hero-choice em{font-size:1.2em}
   .hero-details{width:100%;padding:2.4cqw 3.6cqw 1.7cqw;border-radius:3.2cqw;box-shadow:none}
   .hero-facts{grid-template-columns:28% 35% 37%;min-height:10.7cqw}
   .hero-fact{min-height:8.8cqw;gap:1.6cqw;font-size:3.1cqw;line-height:1.2}
