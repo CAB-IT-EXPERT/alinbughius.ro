@@ -42,14 +42,15 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,s
 .hero--reference .topline{background:#0a493af2;border-bottom-color:#ffffff38}
 .hero-details{background:rgba(255,247,228,.70);color:#0b382d}
 .hero-benefit-check{background:var(--botanical-forest)}
-.hero--reference .hero-social-proof{background:#fff;color:#0a3027}
+.hero--reference .hero-social-proof{background:transparent;color:#fffdf5;backdrop-filter:none;-webkit-backdrop-filter:none}
+.hero--reference .hero-social-proof .proof-label{color:#fffdf5}
 .hero--reference .hero-booking-button{background:linear-gradient(100deg,#91ef5b,#aff979);color:#0b3027}
 .hero--reference .hero-booking-button:hover{background:linear-gradient(100deg,#a3f56f,#c0ff8d)}
 .hero-contact-actions>a{background:var(--botanical-deep);color:#fff}
 .hero-contact-actions>a:hover{background:#105b47}
 
 /* Photo gallery */
-.therapist-gallery-section{background:radial-gradient(circle at 84% 12%,#1c694d 0,transparent 36%),linear-gradient(125deg,#073c31,#0a493a);color:#fff}
+.therapist-gallery-section{background:var(--botanical-forest);color:#fff}
 .therapist-gallery-intro .eyebrow{color:#9cf466}
 .therapist-gallery-intro h2{color:#fff}
 .therapist-gallery-intro h2 em{color:#9cf466}

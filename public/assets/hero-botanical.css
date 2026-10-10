@@ -10,7 +10,7 @@
 .home-page .header nav a{color:#153e2e}
 .home-page .header-book{background:#103b2c;border-radius:999px}
 
-.hero--reference{isolation:isolate;background:#123b2b;color:#fff;container-type:inline-size}
+.hero--reference{--hero-conversion-gap:24px;--hero-bottom-space:40px;isolation:isolate;background:#123b2b;color:#fff;container-type:inline-size}
 .hero--reference .hero-visual{position:absolute;inset:0 max(0px,calc((100vw - 1440px)/2)) 0 auto;display:block;width:min(740px,70vw);height:100%;padding:0;margin:0;pointer-events:none;animation:none}
 .hero--reference .hero-static-photo{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;background:none;box-shadow:none}
 .hero--reference .hero-static-photo>img{position:absolute;inset:-90px 0 auto;width:100%;height:auto;max-width:none;object-fit:contain;object-position:top;filter:none;opacity:1}
@@ -19,7 +19,7 @@
 .hero--reference .topline .container{width:100%;height:48px;justify-content:center}
 .hero--reference .topline .container>span{gap:13px;white-space:nowrap}
 .hero--reference .topline .icon{width:23px;height:28px}
-.hero--reference .hero-grid{position:relative;z-index:2;display:block;width:min(1200px,calc(100% - 96px));min-height:0;padding:44px 0 40px}
+.hero--reference .hero-grid{position:relative;z-index:2;display:block;width:min(1200px,calc(100% - 96px));min-height:0;padding:44px 0 var(--hero-bottom-space)}
 .hero--reference .hero-copy{width:65%;min-height:510px;padding-bottom:32px}
 .hero--reference .hero-copy>*{animation:none}
 .hero--reference h1{max-width:none;margin:0;color:#fffdf5;font-size:clamp(56px,5.6vw,82px);line-height:1.01;letter-spacing:-1.2px;font-weight:400;text-shadow:0 2px 10px #061e2024}
@@ -56,7 +56,9 @@
 .hero-benefit-check>.icon{width:19px;height:19px;stroke-width:2.2}
 .hero-benefits strong{font-weight:700}
 
-.hero-conversion{display:flex;align-items:center;justify-content:space-between;gap:40px;margin-top:24px}
+.hero-conversion{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:40px;margin-top:var(--hero-conversion-gap)}
+/* Cover the photograph only below the details panel, without recropping it above. */
+.hero-conversion::before{content:'';position:absolute;z-index:-1;pointer-events:none;top:calc(-1 * var(--hero-conversion-gap));bottom:calc(-1 * var(--hero-bottom-space));left:50%;width:100cqw;transform:translateX(-50%);background:var(--botanical-forest,#0a493a)}
 .hero--reference .hero-social-proof{display:flex;align-items:center;flex:none;width:fit-content;gap:18px;margin:0;padding:14px 28px;border:0;border-radius:999px;background:#fff;color:#071f19;box-shadow:none}
 .hero--reference .google-proof-icon{width:62px;height:62px;flex:none;background:none;box-shadow:none}
 .hero--reference .google-proof-icon img{width:62px;height:62px}
@@ -139,6 +141,7 @@
 
 /* Mobile dimensions follow the supplied composition, excluding the phone UI. */
 @media(max-width:700px){
+  .hero--reference{--hero-conversion-gap:2.2cqw;--hero-bottom-space:5.7cqw}
   .home-page .header{container-type:inline-size}
   .home-page .header-inner{width:90%;height:13cqw;min-height:54px;gap:0}
   .home-page .header .brand{gap:4cqw}
@@ -157,7 +160,7 @@
   .hero--reference .topline .container{width:100%;height:7.5cqw;min-height:30px}
   .hero--reference .topline .container>span{gap:2cqw}
   .hero--reference .topline .icon{width:3.5cqw;height:4.3cqw}
-  .hero--reference .hero-grid{display:block;width:94%;min-height:0;padding:5.5cqw 0 5.7cqw}
+  .hero--reference .hero-grid{display:block;width:94%;min-height:0;padding:5.5cqw 0 var(--hero-bottom-space)}
   .hero--reference .hero-copy{width:100%;min-height:74cqw;padding:0 .9cqw}
   .hero--reference h1{font-size:9.5cqw;line-height:.99;letter-spacing:-.12cqw;text-shadow:0 1px 5px #06211822}
   .hero--reference .hero-subtitle{margin-top:2.2cqw;font-size:4.4cqw;line-height:1.17;font-weight:600;letter-spacing:-.03cqw}
@@ -183,7 +186,7 @@
   .hero-benefits>li{gap:1.7cqw;min-height:4.7cqw;font-size:3.02cqw;line-height:1.24;letter-spacing:-.035cqw}
   .hero-benefit-check{width:4.7cqw;height:4.7cqw}
   .hero-benefit-check>.icon{width:3cqw;height:3cqw;stroke-width:2}
-  .hero-conversion{display:block;margin-top:2.2cqw}
+  .hero-conversion{display:block}
   .hero--reference .hero-social-proof{width:max-content;max-width:100%;min-height:11.1cqw;gap:3.3cqw;margin:0 auto;padding:1.1cqw 3.8cqw;border-radius:999px}
   .hero--reference .google-proof-icon,.hero--reference .google-proof-icon img{width:7.9cqw;height:7.9cqw}
   .hero--reference .proof-copy{gap:.6cqw}
