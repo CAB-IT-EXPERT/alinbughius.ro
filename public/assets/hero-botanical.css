@@ -10,7 +10,7 @@
 .home-page .header nav a{color:#153e2e}
 .home-page .header-book{background:#103b2c;border-radius:999px}
 
-.hero--reference{--hero-conversion-gap:24px;--hero-bottom-space:40px;isolation:isolate;background:#123b2b;color:#fff;container-type:inline-size}
+.hero--reference{--hero-conversion-gap:24px;--hero-bottom-space:40px;--hero-color-fade:64px;isolation:isolate;background:#123b2b;color:#fff;container-type:inline-size}
 .hero--reference .hero-visual{position:absolute;inset:0 max(0px,calc((100vw - 1440px)/2)) 0 auto;display:block;width:min(740px,70vw);height:100%;padding:0;margin:0;pointer-events:none;animation:none}
 .hero--reference .hero-static-photo{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;background:none;box-shadow:none}
 .hero--reference .hero-static-photo>img{position:absolute;inset:-90px 0 auto;width:100%;height:auto;max-width:none;object-fit:contain;object-position:top;filter:none;opacity:1}
@@ -57,8 +57,8 @@
 .hero-benefits strong{font-weight:700}
 
 .hero-conversion{position:relative;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:40px;margin-top:var(--hero-conversion-gap)}
-/* Cover the photograph only below the details panel, without recropping it above. */
-.hero-conversion::before{content:'';position:absolute;z-index:-1;pointer-events:none;top:calc(-1 * var(--hero-conversion-gap));bottom:calc(-1 * var(--hero-bottom-space));left:50%;width:100cqw;transform:translateX(-50%);background:var(--botanical-forest,#0a493a)}
+/* Fade the photograph into solid green below the panel, without recropping it above. */
+.hero-conversion::before{content:'';position:absolute;z-index:-1;pointer-events:none;top:calc(-1 * var(--hero-conversion-gap));bottom:calc(-1 * var(--hero-bottom-space));left:50%;width:100cqw;transform:translateX(-50%);background:linear-gradient(to bottom,#0a493a00 0,#0a493ab3 calc(var(--hero-color-fade) * .5),var(--botanical-forest,#0a493a) var(--hero-color-fade))}
 .hero--reference .hero-social-proof{display:flex;align-items:center;flex:none;width:fit-content;gap:18px;margin:0;padding:14px 28px;border:0;border-radius:999px;background:#fff;color:#071f19;box-shadow:none}
 .hero--reference .google-proof-icon{width:62px;height:62px;flex:none;background:none;box-shadow:none}
 .hero--reference .google-proof-icon img{width:62px;height:62px}
@@ -141,7 +141,7 @@
 
 /* Mobile dimensions follow the supplied composition, excluding the phone UI. */
 @media(max-width:700px){
-  .hero--reference{--hero-conversion-gap:2.2cqw;--hero-bottom-space:5.7cqw}
+  .hero--reference{--hero-conversion-gap:2.2cqw;--hero-bottom-space:5.7cqw;--hero-color-fade:clamp(32px,8cqw,56px)}
   .home-page .header{container-type:inline-size}
   .home-page .header-inner{width:90%;height:13cqw;min-height:54px;gap:0}
   .home-page .header .brand{gap:4cqw}
