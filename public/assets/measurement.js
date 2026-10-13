@@ -1,10 +1,13 @@
 (() => {
   'use strict';
-  // Keep local previews and private pages out of the real advertising account.
+  // Keep local previews and private pages out of the real measurement accounts.
   if (location.hostname !== 'alinbughius.ro' || !['/', '/index.php'].includes(location.pathname)) return;
+  if (window.alinMeasurementLoaded) return;
+  window.alinMeasurementLoaded = true;
   window.dataLayer = window.dataLayer || [];
-  const gtag = function () { window.dataLayer.push(arguments); };
+  const gtag = window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
   const account = 'AW-18478963280';
+  const analytics = 'G-E0L7GVF1B2';
   const legacyAccount = 'AW-11103141014';
   const legacyConversion = `${legacyAccount}/sLiECKP109YZEJb5sa4p`;
   const pageUrl = new URL('https://alinbughius.ro/');
@@ -34,6 +37,15 @@
     page_referrer: '',
     page_title: 'Alin Bughiuș · Masaj la domiciliu'
   });
+  // GA4 shares the existing Google tag; do not load another gtag.js script.
+  // Keep page metadata sanitized and existing Ads conversion routing unchanged.
+  gtag('config', analytics, {
+    allow_ad_personalization_signals: false,
+    allow_google_signals: false,
+    page_location: pageUrl.href,
+    page_referrer: '',
+    page_title: 'Alin Bughiuș · Masaj la domiciliu'
+  });
   const script = document.createElement('script');
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${account}`;
@@ -48,5 +60,11 @@
     // Preserve the old site's contact-click conversion, not a new booking event.
     // Navigation continues immediately, even if Google is blocked/unavailable.
     gtag('event', 'conversion', {send_to: legacyConversion, transport_type: 'beacon'});
+    // Separate GA4 event; no additional Google Ads conversion is created.
+    gtag('event', 'contact_click', {
+      send_to: analytics,
+      contact_method: url.protocol === 'tel:' ? 'phone' : 'whatsapp',
+      transport_type: 'beacon'
+    });
   });
 })();

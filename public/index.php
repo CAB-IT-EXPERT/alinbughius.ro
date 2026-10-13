@@ -50,27 +50,28 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/details.css?v=12">
   <link rel="stylesheet" href="/assets/motion.css?v=1">
   <link rel="stylesheet" href="/assets/hero-botanical.css?v=6">
-  <link rel="stylesheet" href="/assets/botanical-palette.css?v=5">
+  <link rel="stylesheet" href="/assets/botanical-palette.css?v=6">
+  <link rel="stylesheet" href="/assets/hero-cream.css?v=1">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
-  <script src="/assets/measurement.js?v=3" defer></script>
+  <script src="/assets/measurement.js?v=4" defer></script>
 </head>
-<body class="home-page">
+<body class="home-page cream-home">
 <a class="skip-link" href="#continut">Sari la conținut</a>
 <header class="header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="Alin Bughiuș — acasă"><img src="/assets/logo-botanical.svg" alt="" width="90" height="78"><span>Alin Bughiuș<small>MASAJ ȘI STARE DE BINE</small></span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
-    <nav id="main-nav" aria-label="Meniu principal"><p class="nav-mobile-heading">O PAUZĂ BUNĂ ÎNCEPE AICI</p><a href="#servicii"><span class="nav-order" aria-hidden="true">01</span>Servicii & prețuri<?= icon('diagonal', 'nav-arrow') ?></a><a href="#recenzii"><span class="nav-order" aria-hidden="true">02</span>Recenzii<?= icon('diagonal', 'nav-arrow') ?></a><a href="#in-miscare" class="nav-video-link"><span class="nav-order" aria-hidden="true">03</span>Alin, în mișcare<?= icon('diagonal', 'nav-arrow') ?></a><a href="#despre"><span class="nav-order" aria-hidden="true">04</span>Despre mine<?= icon('diagonal', 'nav-arrow') ?></a><a href="#contact"><span class="nav-order" aria-hidden="true">05</span>Contact<?= icon('diagonal', 'nav-arrow') ?></a><div class="nav-mobile-footer"><button class="button button-dark" data-book>Alege momentul tău <?= icon('arrow') ?></button><span><?= icon('pin') ?> Masaj la domiciliu · București & Ilfov</span></div></nav>
-    <button class="button button-dark header-book" data-book>Programează-te <?= icon('diagonal') ?></button>
+    <nav id="main-nav" aria-label="Meniu principal"><p class="nav-mobile-heading">O PAUZĂ BUNĂ ÎNCEPE AICI</p><a href="#continut"><span class="nav-order" aria-hidden="true">01</span>Acasă<?= icon('diagonal', 'nav-arrow') ?></a><a href="#despre"><span class="nav-order" aria-hidden="true">02</span>Despre mine<?= icon('diagonal', 'nav-arrow') ?></a><a href="#servicii"><span class="nav-order" aria-hidden="true">03</span>Servicii<?= icon('chevron', 'nav-services-chevron') ?><?= icon('diagonal', 'nav-arrow') ?></a><a href="#recenzii"><span class="nav-order" aria-hidden="true">04</span>Recenzii<?= icon('diagonal', 'nav-arrow') ?></a><a href="#intrebari"><span class="nav-order" aria-hidden="true">05</span>Întrebări<?= icon('diagonal', 'nav-arrow') ?></a><a href="#contact"><span class="nav-order" aria-hidden="true">06</span>Contact<?= icon('diagonal', 'nav-arrow') ?></a><div class="nav-mobile-footer"><button class="button button-dark" data-book>Alege momentul tău <?= icon('arrow') ?></button><span><?= icon('pin') ?> Masaj la domiciliu · București & Ilfov</span></div></nav>
+    <button class="button button-dark header-book" data-book><?= icon('calendar') ?> Programează-te acum</button>
   </div>
 </header>
 <button class="menu-backdrop" type="button" tabindex="-1" aria-hidden="true" aria-label="Închide meniul"></button>
 <main id="continut">
-  <section class="hero hero--reference">
+  <section class="hero hero--reference hero--cream">
     <div class="hero-visual">
-      <figure class="hero-photo hero-static-photo"><img src="/assets/images/hero-botanical-reference.webp" alt="Alin Bughiuș realizează un masaj terapeutic pentru spate" width="1004" height="1567" fetchpriority="high"></figure>
+      <figure class="hero-photo hero-static-photo"><picture><source media="(max-width:1100px)" srcset="/assets/images/hero-cream-mobile.webp" width="1095" height="1437"><img src="/assets/images/hero-cream-desktop.webp" alt="Alin Bughiuș realizează un masaj terapeutic pentru spate" width="1784" height="882" fetchpriority="high"></picture></figure>
     </div>
     <div class="topline"><div class="container"><span><?= icon('pin-solid') ?> Masaj la domiciliu • București și Ilfov</span></div></div>
     <div class="container hero-grid">
@@ -189,7 +190,7 @@ function icon(string $name, string $class = ''): string {
 
   <?php require APP_ROOT . '/app/sections/session-guide.php'; ?>
 
-  <section class="faq-section section"><div class="container faq-grid"><div><p class="eyebrow">CÂTEVA LUCRURI BINE DE ȘTIUT</p><h2>Ai întrebări?<br><em>E firesc.</em></h2><p>Îți răspund cu drag și personal.</p><a class="text-link" href="https://wa.me/40773919071" target="_blank" rel="noopener noreferrer">Scrie-mi pe WhatsApp <?= icon('arrow') ?></a></div><div class="faq-list">
+  <section class="faq-section section" id="intrebari"><div class="container faq-grid"><div><p class="eyebrow">CÂTEVA LUCRURI BINE DE ȘTIUT</p><h2>Ai întrebări?<br><em>E firesc.</em></h2><p>Îți răspund cu drag și personal.</p><a class="text-link" href="https://wa.me/40773919071" target="_blank" rel="noopener noreferrer">Scrie-mi pe WhatsApp <?= icon('arrow') ?></a></div><div class="faq-list">
     <details><summary>Ce trebuie să pregătesc pentru masaj?<span>+</span></summary><p>Un spațiu liniștit în care încape masa de masaj și pot lucra confortabil în jurul ei. Vin cu masa și materialele necesare; stabilim împreună orice alte detalii înainte de ședință.</p></details>
     <details><summary>În ce zone te deplasezi?<span>+</span></summary><p>În București și Ilfov. Pentru sectoarele 2 și 3, deplasarea este inclusă. În sectoarele 1, 4, 5, 6 și în Ilfov se adaugă 30 lei pentru fiecare vizită, inclusiv la abonamente.</p></details>
     <details><summary>Programarea este confirmată imediat?<span>+</span></summary><p>Calendarul afișează doar orele libere. După trimitere, intervalul ales este reținut și primești imediat cererea pe e-mail. Alin verifică detaliile și îți trimite separat confirmarea finală.</p></details>

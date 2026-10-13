@@ -42,11 +42,12 @@ Hero cu fotografia lui Alin, recenzii cu logo-ul Google original, secțiune cu t
 
 Animațiile respectă `prefers-reduced-motion`. Videoclipurile pornesc fără sunet numai când intră în ecran, se opresc în afara ecranului sau când fila este ascunsă, au buton de pauză și nu pornesc automat în modul de economisire a datelor. Niciun player Instagram nu este încărcat în pagină. Recenziile permit drag cu mouse-ul, swipe nativ pe telefon și navigare cu tastatura, săgeți și indicatori.
 
-## Măsurarea păstrată din site-ul vechi
+## Măsurare Google Ads și Analytics
 
 - Google Ads: `AW-18478963280`, cu eticheta veche `AW-11103141014` păstrată temporar pentru conversiile existente.
 - Conversie pentru clic pe telefon/WhatsApp: `AW-11103141014/sLiECKP109YZEJb5sa4p`.
-- Nu s-au găsit identificatori GA4, Google Tag Manager sau Meta Pixel în codul propriu al site-ului vechi. Pe găzduire era doar o pagină provizorie.
+- GA4: `G-E0L7GVF1B2`, adăugat la cererea utilizatorului pe 13 octombrie 2026. Folosește aceeași încărcare `gtag.js` ca Ads, fără page views duplicate. Nu modifică destinația conversiilor Ads existente și nu marchează automat programările drept conversii GA4.
+- Clicurile reale pe telefon și WhatsApp trimit suplimentar evenimentul GA4 `contact_click`, cu `contact_method=phone` sau `whatsapp`. Nu includ numărul, textul mesajului ori date de formular. Nu au fost schimbate evenimentele-cheie/importurile sau strategiile de licitare din contul Google Ads.
 - La cererea explicită a utilizatorului, eticheta funcționează standard, fără banner și fără modul permanent denied. Nu fabricăm un acord printr-un apel consent/granted. Această configurație trebuie validată juridic; informarea nu înlocuiește consimțământul cerut de politica Google pentru UE: https://www.google.com/about/company/user-consent-policy/.
 - Nu trimitem datele formularului sau tokenuri private; conversiile îmbunătățite nu au fost implementate. Eticheta se încarcă doar pe pagina principală a domeniului live, nu pe localhost, API sau confirmarea privată. Personalizarea reclamelor nu este activată de codul nou.
 - Teste fără trafic Google: `node tests/measurement-test.mjs`.

@@ -103,9 +103,28 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,s
 .signature{color:#55a83c}
 .diploma-link{background:#fffaf0;border-color:#d9dfca}
 .how-section{background:#edf1df}
-.steps>div{background:#fffaf0;border-color:#d9dfc8;box-shadow:0 8px 24px #24482b0e}
-.steps>div:hover{border-color:#aacc88}
-.steps>div>.icon,.step-number{color:#55a83c}
+/* Comfortable, equal-height cards for the three booking steps. */
+.how-section .steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.how-section .steps>div{position:relative;min-width:0;padding:30px;border:1px solid #dce2cd;border-radius:22px;background:#fffaf0;box-shadow:0 12px 30px #24482b0a}
+.how-section .steps>div>.icon{position:static;display:block;width:56px;height:56px;margin:0 0 24px;padding:15px;border:1px solid #dce7ce;border-radius:18px;background:#edf4e1;color:#4f8437}
+.how-section .step-number{top:27px;right:29px;font:400 44px/1 var(--serif);letter-spacing:-1px;color:#a8ba92}
+.how-section .steps h3{padding:0;font-size:22px;line-height:1.25;letter-spacing:-.45px;color:#173f33}
+.how-section .steps p{margin:13px 0 0;font-size:15px;line-height:1.8;color:#596b5d}
+@media(max-width:1000px){
+  .how-section .steps{gap:18px}
+  .how-section .steps>div{padding:24px}
+  .how-section .step-number{right:23px;top:23px;font-size:38px}
+  .how-section .steps h3{font-size:20px}
+  .how-section .steps p{font-size:14px}
+}
+@media(max-width:700px){
+  .how-section .steps{grid-template-columns:1fr;gap:18px}
+  .how-section .steps>div{padding:25px;border-radius:20px}
+  .how-section .steps>div>.icon{margin-bottom:19px;width:50px;height:50px;padding:13px;border-radius:16px}
+  .how-section .step-number{top:26px;right:25px}
+  .how-section .steps h3{font-size:21px}
+  .how-section .steps p{font-size:15px;line-height:1.75}
+}
 .gift-section{background:linear-gradient(110deg,#d8edbd,#f0f1d5)}
 .gift-icon{background:#fff7e4;color:#0a493a}
 .gift-section .button-dark{background:#0a493a;color:#fff}

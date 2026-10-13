@@ -10,7 +10,7 @@
 <body><main class="legal-page">
   <a class="brand" href="/"><img src="/assets/logo-mark.svg" width="44" height="44" alt=""><span>Alin Bughiuș</span></a>
   <h1>Datele tale, tratate cu grijă.</h1>
-  <p>Ultima actualizare: 21 septembrie 2026.</p>
+  <p>Ultima actualizare: 13 octombrie 2026.</p>
   <h2>Cine gestionează solicitările</h2>
   <p>Alin Bughiuș gestionează cererile de programare primite prin alinbughius.ro. Pentru întrebări despre datele tale, scrie la <a href="mailto:contact@alinbughius.ro">contact@alinbughius.ro</a> sau sună la <a href="tel:+40773919071">0773 919 071</a>.</p>
   <h2>Ce date folosim și pentru ce</h2>
@@ -22,10 +22,11 @@
   <p>Înregistrările din formular sunt păstrate până la 90 de zile după data programării solicitate sau după data cererii, oricare este mai recentă, pentru gestionarea solicitării. Corespondența necesară prestării serviciului poate fi păstrată separat cât este necesar pentru relația cu clientul sau pentru obligațiile aplicabile. Înregistrările tehnice folosite pentru limitarea mesajelor abuzive folosesc identificatori transformați criptografic și o fereastră de o oră.</p>
   <h2>Controlul asupra datelor tale</h2>
   <p>Poți solicita accesul, corectarea ori ștergerea datelor și, în condițiile aplicabile, restricționarea, opoziția sau portabilitatea acestora. Trimite solicitarea la adresa de contact de mai sus. Poți depune o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal: <a href="https://www.dataprotection.ro/" target="_blank" rel="noopener noreferrer">dataprotection.ro</a>.</p>
-  <h2>Cookie-uri și măsurarea Google Ads</h2>
+  <h2>Cookie-uri, Google Ads și Google Analytics</h2>
   <p>Site-ul folosește un cookie de sesiune strict necesar pentru securitatea formularului și prevenirea trimiterilor repetate. Fonturile, fotografiile și videoclipurile de prezentare sunt servite local, fără un player Instagram încorporat.</p>
-  <p>Pagina principală încarcă eticheta Google Ads AW-11103141014, păstrată din versiunea anterioară a site-ului. Aceasta măsoară vizitele și accesările butoanelor de telefon și WhatsApp în scopul evaluării campaniilor publicitare. Eticheta se încarcă automat, fără un banner de selecție a cookie-urilor.</p>
+  <p>Pagina principală încarcă etichetele Google Ads AW-18478963280 și AW-11103141014, aceasta din urmă păstrată din versiunea anterioară a site-ului. Sunt măsurate vizitele și accesările butoanelor de telefon și WhatsApp în scopul evaluării campaniilor publicitare. Google Analytics 4, identificator G-E0L7GVF1B2, măsoară utilizarea paginii principale. Etichetele se încarcă automat, fără un banner de selecție a cookie-urilor.</p>
   <p>Google poate folosi cookie-uri publicitare (de exemplu din familia _gcl_), identificatori de clic și informații tehnice despre dispozitiv, browser, accesarea paginii și conexiune, pentru atribuirea conversiilor. Nu transmitem intenționat câmpurile formularului, e-mailul sau telefonul clientului către Google. Nu am activat conversii îmbunătățite ori personalizarea publicității. Pagina privată de confirmare și această pagină de informare nu încarcă eticheta Google.</p>
+  <p>Google Analytics poate utiliza cookie-uri din familia _ga pentru statistici privind vizitatorii și sesiunile. Integrarea proprie înregistrează și clicurile pe telefon și WhatsApp, fără numărul de telefon, textul mesajului sau datele introduse în formularul de programare. Formularul funcționează și atunci când etichetele Google sunt blocate.</p>
   <p>Serviciul este furnizat de Google. Consultă <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Politica de confidențialitate Google</a> și <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener noreferrer">informațiile Google despre cookie-uri</a>. Poți bloca sau șterge cookie-urile din setările browserului; acest lucru poate limita măsurarea publicitară. Formularul de programare nu depinde de Google Ads.</p>
   <h2>Linkuri externe</h2>
   <p>Linkurile către Instagram, Google și WhatsApp te duc pe servicii externe, care aplică propriile politici de confidențialitate după accesare.</p>

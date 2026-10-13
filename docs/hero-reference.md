@@ -1,6 +1,6 @@
 # Hero: referință vizuală și galerie separată
 
-Istoric al referințelor vizuale. Versiunea curentă este descrisă în secțiunea din 7 octombrie 2026, la final.
+Istoric al referințelor vizuale. Versiunea curentă este descrisă în secțiunea din 13 octombrie 2026, la final.
 
 ## Fundal
 
@@ -82,3 +82,43 @@ fără scroll orizontal ori controale tăiate. Verificare vizuală a capturilor 
 tabletă, laptop și desktop. Meniul mobil, linkul spre servicii, deschiderea/închiderea
 formularului de programare, destinațiile telefon/WhatsApp și săgeata galeriei au fost
 verificate. Nu a fost trimisă nicio programare de test.
+
+## Varianta crem — 13 octombrie 2026
+
+Referințe aprobate: `codex-clipboard-4bd6da36-e01d-4dd5-897c-47eddd316cf0.png`
+(desktop) și `codex-clipboard-04d6dc44-4508-46d2-b7ca-792c77f7c404.png` (mobil).
+Clarificările ulterioare cer crem numai deasupra galeriei, inclusiv în zona
+recenziilor și a butoanelor. Galeria verde și cele șapte fotografii rămân.
+
+- Mobil/tabletă: `public/assets/images/hero-cream-mobile.webp`, 1095 × 1437 px, 59.336 octeți.
+- Laptop/desktop: `public/assets/images/hero-cream-desktop.webp`, 1784 × 882 px, 83.390 octeți.
+- Stiluri izolate: `public/assets/hero-cream.css`.
+- Panoul de preț/durată păstrează `rgba(255,247,228,.70)` și `saturate(1.08) blur(2px)`.
+- Imaginea potrivită este selectată prin `<picture>`, cu schimbarea compoziției la 1100 px.
+- Textele, recenziile, navigația și butoanele sunt HTML, nu imprimate în fotografie.
+- Separat, la cererea utilizatorului, cele trei carduri cu pașii programării au
+  primit spațiere, borduri, colțuri rotunjite și pictograme pe fundal discret;
+  conținutul lor a rămas neschimbat.
+
+Fundalurile au fost prelucrate în **modul editare, cu instrumentul integrat ImageGen**,
+nu prin CLI. Au fost eliminate elementele UI din referințe, apoi rezultatele au fost
+convertite în WebP (calitate 88). Asseturile anterioare rămân în proiect.
+
+### Prompt final pentru mobil
+
+> Use case: precise-object-edit. Asset type: real website mobile hero background. Edit target: supplied cream massage website mockup. Remove ALL interface, all letters and text, ALL buttons, icons, logos, review stars, rating, price card and its borders/background, slogan plaque, navigation and the dark location strip. Return ONLY the clean photographic/background layer. Crop away the top header and location strip (the first 190 pixels of the 1024x1536 reference), keeping the entire remaining composition from y=190 to bottom. Aim for a 1024x1344 portrait canvas. Lock the therapist and client exactly as shown: same real faces, hair, anatomy, white shirt, hands pressing the upper back, client resting on the towel, same scale and positions relative to the remaining crop. Do not move or enlarge the people. Reconstruct the cream wall behind text on the left and the towel/softly defocused leaves behind the removed card. Keep the cream #f6f0e4 mood, wooden slats at upper right, soft green foliage and bright natural light. Retain clean light cream negative space on the left and in the lower quarter for live HTML text/controls. Bottom should end as plain warm cream, not green. No text, numbers, icons, rectangles, cards, branding, watermarks or interface. This is a professional nonsexual therapeutic massage scene.
+
+### Prompt final pentru desktop
+
+> Use case: precise-object-edit. Asset type: desktop website hero photographic background, not a mockup. Edit target: supplied wide cream massage website design. Remove ALL text, navigation, logos, icons, rating/stars, slogan plaque, price/benefits panel and every button. Return ONLY the clean background photograph and cream negative space. Crop away the top 115 pixels containing the navbar and location strip, keeping the remaining full-width scene. Output a wide landscape image about 1672x826, aspect ratio approximately 2:1. CRITICAL: preserve the therapist and client exactly as in the reference: faces, identity, hair, white clothing, anatomy, bent posture, hands pressing the upper back, client resting on towel, original scale and exact placement on the right. Keep the therapist's head near the top at 68% of canvas width, client head at roughly 54% width and 55% height. Do not make the therapist smaller or center the scene. Keep warm cream negative space on the left, wooden slats and plant wall on the right, subtle plants along the sides. Reconstruct only the underlying cream wall, towel and softly defocused leaves in the areas formerly covered by interface elements. The lower quarter should softly fade into warm cream #f6f0e4, leaving clean space for real HTML controls. NO text, letters, numbers, logos, icons, UI, cards, rectangles, borders or watermark anywhere. Natural photorealistic professional therapeutic massage scene, nonsexual.
+
+### Verificare reproductibilă
+
+`node tests/hero-cream-test.mjs http://127.0.0.1:8077/ --screenshots`
+
+Verifică 15 lățimi între 320 și 1920 px, selectarea imaginilor responsive,
+transparența exactă a panoului, lipsa depășirilor și a suprapunerilor cu textul,
+dimensiunile butoanelor și cardurile pașilor. Verifică meniul, ancora FAQ,
+deschiderea/închiderea programării și galeria, fără a trimite formulare sau a
+iniția apeluri. Traficul Google este blocat în test pentru a nu polua rapoartele.
+Capturile pentru mobil, tabletă și desktop se salvează în `.runtime/`.
