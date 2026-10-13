@@ -107,7 +107,7 @@ try:
         upload(PUBLIC + '/.htaccess', (ROOT / 'public/.htaccess').read_bytes())
         with urllib.request.urlopen('https://alinbughius.ro/', timeout=30) as response:
             html = response.read().decode()
-            required = ['hero-cream-mobile.webp', 'hero-cream-desktop.webp', 'hero-cream.css?v=1',
+            required = ['hero-cream-mobile.webp', 'hero-cream-desktop.webp', 'hero-cream.css?v=2',
                         'hero-botanical.css?v=6', 'botanical-palette.css?v=6',
                         'Masaj terapeutic + reflexoterapie', 'Programează-te acum', 'measurement.js?v=4']
             assert response.status == 200 and all(value in html for value in required)

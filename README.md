@@ -52,6 +52,7 @@ Animațiile respectă `prefers-reduced-motion`. Videoclipurile pornesc fără su
 - La cererea explicită a utilizatorului, eticheta funcționează standard, fără banner și fără modul permanent denied. Nu fabricăm un acord printr-un apel consent/granted. Această configurație trebuie validată juridic; informarea nu înlocuiește consimțământul cerut de politica Google pentru UE: https://www.google.com/about/company/user-consent-policy/.
 - Nu trimitem datele formularului sau tokenuri private; conversiile îmbunătățite nu au fost implementate. Eticheta se încarcă doar pe pagina principală a domeniului live, nu pe localhost, API sau confirmarea privată. Personalizarea reclamelor nu este activată de codul nou.
 - Teste fără trafic Google: `node tests/measurement-test.mjs`.
+- Verificare GA4 în browser pe 13 octombrie: tagul real pregătește `page_view` și ambele variante `contact_click` către proprietatea furnizată. Cererile de colectare au fost interceptate înainte de trimitere, astfel încât testul nu generează conversii în cont. Primirea datelor în rapoartele contului nu a fost verificată.
 
 ## Publicare efectuată — 20 septembrie 2026
 

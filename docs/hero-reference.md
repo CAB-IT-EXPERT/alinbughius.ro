@@ -122,3 +122,16 @@ dimensiunile butoanelor și cardurile pașilor. Verifică meniul, ancora FAQ,
 deschiderea/închiderea programării și galeria, fără a trimite formulare sau a
 iniția apeluri. Traficul Google este blocat în test pentru a nu polua rapoartele.
 Capturile pentru mobil, tabletă și desktop se salvează în `.runtime/`.
+
+### Hero complet în primul ecran pe laptop
+
+La cererea suplimentară din 13 octombrie, ferestrele de laptop (lățime peste
+1100 px, înălțime până la 950 px) au o compoziție adaptată înălțimii disponibile
+prin `svh`, incluzând navbarul și bara de localizare. Textul și spațierile se
+adaptează fără scalarea globală a paginii; fotografia își păstrează proporțiile,
+iar panoul rămâne la aceeași transparență. Sub 580 px înălțime, scrollul este
+păstrat pentru a nu micșora excesiv conținutul. Varianta de telefon este neschimbată.
+
+Testul verifică suplimentar că hero-ul și toate cele trei butoane încap în primul
+ecran la 1280×600, 1280×720, 1366×650, 1366×768, 1440×800, 1536×864, 1903×907
+(dimensiunea capturii utilizatorului) și 1920×900 px, fără suprapuneri cu panoul.

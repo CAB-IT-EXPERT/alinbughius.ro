@@ -78,6 +78,24 @@ try {
     }
     console.log(`PASS: ${width}px, correct image, panel transparency, no overflow/overlap, step cards`);
   }
+  for (const [width,height] of [[1280,600],[1280,720],[1366,650],[1366,768],[1440,800],[1536,864],[1903,907],[1920,900]]) {
+    await page.setViewportSize({width,height});
+    await page.evaluate(async()=>{scrollTo(0,0);await new Promise(requestAnimationFrame);await document.querySelector('.hero-static-photo img').decode();});
+    const fit = await page.evaluate(()=>{
+      const panel = document.querySelector('.hero-details').getBoundingClientRect();
+      const overlap = [...document.querySelectorAll('.hero-title,.hero-service-intro,.hero-service-list li,.hero-choice')].some(item=>{
+        const range = document.createRange();range.selectNodeContents(item);
+        return [...range.getClientRects()].some(r=>r.width&&r.height&&r.left<panel.right&&r.right>panel.left&&r.top<panel.bottom&&r.bottom>panel.top);
+      });
+      return {bottom:document.querySelector('.hero').getBoundingClientRect().bottom,overlap,overflow:document.documentElement.scrollWidth-innerWidth,controls:[...document.querySelectorAll('.hero-contact-actions>*')].map(item=>item.getBoundingClientRect().bottom)};
+    });
+    assert.ok(fit.bottom <= height+1, `Whole hero must fit ${width}x${height}: bottom=${fit.bottom}`);
+    assert.ok(fit.controls.every(bottom=>bottom <= height-10), 'Buttons need breathing room inside first view');
+    assert.equal(fit.overlap, false, `Laptop copy overlaps panel at ${width}x${height}`);
+    assert.equal(fit.overflow, 0);
+    if (capture) await page.screenshot({path:`.runtime/cream-laptop-${width}x${height}.png`,animations:'disabled'});
+    console.log(`PASS: complete hero inside first view at ${width}x${height}`);
+  }
   await page.setViewportSize({width:390,height:900});
   await page.locator('.hero-booking-button').click();
   assert.equal(await page.locator('#booking-dialog').evaluate(el=>el.open), true);
