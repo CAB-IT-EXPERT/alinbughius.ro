@@ -13,7 +13,13 @@ try {
   await page.route(/https:\/\/[^/]*(googletagmanager|google-analytics|googleadservices|doubleclick)\./, route => route.abort());
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.goto(origin, {waitUntil:'networkidle'});
+  const response = await page.goto(origin, {waitUntil:'networkidle'});
+  const csp = response.headers()['content-security-policy'];
+  assert.match(csp, /connect-src[^;]*https:\/\/\*\.google-analytics\.com/);
+  assert.match(csp, /img-src[^;]*https:\/\/\*\.google-analytics\.com/);
+  assert.doesNotMatch(csp, /unsafe-inline|unsafe-eval/);
+  const privateResponse = await page.request.get(new URL('/confidentialitate.php', origin).href);
+  assert.doesNotMatch(privateResponse.headers()['content-security-policy'], /google|doubleclick/);
   await page.evaluate(() => document.fonts.ready);
   if (capture) await mkdir('.runtime', {recursive:true});
   for (const width of [320,375,390,430,700,701,768,1024,1100,1101,1280,1366,1440,1672,1920]) {

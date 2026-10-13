@@ -69,11 +69,13 @@ function securityHeaders(): void {
     header('Referrer-Policy: strict-origin-when-cross-origin');
     header('X-Frame-Options: SAMEORIGIN');
     header('Permissions-Policy: camera=(), microphone=(), geolocation=()');
-    // Only the public landing page can load the inherited Google Ads tag.
+    // Only the public landing page can load the Google Ads and GA4 tags.
     // Private booking/confirmation pages never permit third-party scripts.
     $ads = defined('PUBLIC_ADS_MEASUREMENT') && PUBLIC_ADS_MEASUREMENT;
     $googleScripts = $ads ? ' https://www.googletagmanager.com https://www.googleadservices.com https://www.google.com' : '';
     $googleRequests = $ads ? ' https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://www.google.ro https://ad.doubleclick.net' : '';
+    // GA4 uses regional collectors; allow its HTTPS domain without weakening scripts.
+    if ($ads) $googleRequests .= ' https://*.google-analytics.com';
     $frames = $ads ? 'https://www.googletagmanager.com' : "'none'";
     header("Content-Security-Policy: default-src 'self'; img-src 'self' data:$googleRequests; style-src 'self'; font-src 'self'; script-src 'self'$googleScripts; connect-src 'self'$googleRequests; frame-src $frames; form-action 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'");
 }
