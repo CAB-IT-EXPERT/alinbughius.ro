@@ -138,7 +138,7 @@ ecran la 1280×600, 1280×720, 1366×650, 1366×768, 1440×800, 1536×864, 1903�
 
 ### Ajustări de lizibilitate — 23 octombrie 2026
 
-- Numai cele patru servicii din hero sunt mărite cu 25% la toate breakpoint-urile. Descrierea „Alege tipul de masaj…” și titlul își păstrează dimensiunile.
+- Cele patru servicii din hero sunt mărite cu 25% la toate breakpoint-urile. Descrierea „Alege tipul de masaj…” este mărită separat cu 20%, iar titlul își păstrează dimensiunea.
 - Pe telefon (maximum 700 px), fiecare rând primește opt umbre albe de maximum 1 px, fără blur, pentru un contur fin de jur împrejurul literelor. Nu există panou sau fundal transparent în spatele textelor; desktopul nu are această umbră.
 - Subtitlul logo-ului devine „MASAJ & STARE DE BINE”, iar ultimul beneficiu devine „Masaj și stare de bine fără să pleci de acasă.”, integral evidențiat ca în referință.
 - Panoul de preț este retras o coloană spre dreapta pe desktop pentru a evita suprapunerile cu lista mărită. Transparența sa de 70%, fotografia, trackingul și restul paginii rămân neschimbate.

@@ -25,7 +25,7 @@ async function checkServiceTypography(page, width, height) {
   const clamp = (min,value,max) => Math.min(max,Math.max(min,value));
   const originalList = width <= 1100 ? Math.max(10.5,.0275*width) : height <= 950 ? clamp(14,.021*height,19) : clamp(17,.0135*width,23);
   const originalIntro = width <= 1100 ? Math.max(12,.0312*width) : height <= 950 ? clamp(16,.0245*height,22) : clamp(19,.016*width,27);
-  assert.ok(Math.abs(type.introSize-originalIntro)<.02, 'Description size must stay unchanged');
+  assert.ok(Math.abs(type.introSize-originalIntro*1.2)<.02, 'Description must be exactly 20% larger');
   assert.equal(type.introShadow,'none','No shadow on the description');
   assert.equal(type.panelCount,0,'No translucent copy panel');
   assert.equal(type.listBackground,'rgba(0, 0, 0, 0)');
