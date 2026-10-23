@@ -51,7 +51,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/motion.css?v=1">
   <link rel="stylesheet" href="/assets/hero-botanical.css?v=6">
   <link rel="stylesheet" href="/assets/botanical-palette.css?v=6">
-  <link rel="stylesheet" href="/assets/hero-cream.css?v=2">
+  <link rel="stylesheet" href="/assets/hero-cream.css?v=3">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
@@ -61,7 +61,7 @@ function icon(string $name, string $class = ''): string {
 <a class="skip-link" href="#continut">Sari la conținut</a>
 <header class="header">
   <div class="container header-inner">
-    <a class="brand" href="/" aria-label="Alin Bughiuș — acasă"><img src="/assets/logo-botanical.svg" alt="" width="90" height="78"><span>Alin Bughiuș<small>MASAJ ȘI STARE DE BINE</small></span></a>
+    <a class="brand" href="/" aria-label="Alin Bughiuș — acasă"><img src="/assets/logo-botanical.svg" alt="" width="90" height="78"><span>Alin Bughiuș<small>MASAJ &amp; STARE DE BINE</small></span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Deschide meniul"><span></span><span></span><span></span></button>
     <nav id="main-nav" aria-label="Meniu principal"><p class="nav-mobile-heading">O PAUZĂ BUNĂ ÎNCEPE AICI</p><a href="#continut"><span class="nav-order" aria-hidden="true">01</span>Acasă<?= icon('diagonal', 'nav-arrow') ?></a><a href="#despre"><span class="nav-order" aria-hidden="true">02</span>Despre mine<?= icon('diagonal', 'nav-arrow') ?></a><a href="#servicii"><span class="nav-order" aria-hidden="true">03</span>Servicii<?= icon('chevron', 'nav-services-chevron') ?><?= icon('diagonal', 'nav-arrow') ?></a><a href="#recenzii"><span class="nav-order" aria-hidden="true">04</span>Recenzii<?= icon('diagonal', 'nav-arrow') ?></a><a href="#intrebari"><span class="nav-order" aria-hidden="true">05</span>Întrebări<?= icon('diagonal', 'nav-arrow') ?></a><a href="#contact"><span class="nav-order" aria-hidden="true">06</span>Contact<?= icon('diagonal', 'nav-arrow') ?></a><div class="nav-mobile-footer"><button class="button button-dark" data-book>Alege momentul tău <?= icon('arrow') ?></button><span><?= icon('pin') ?> Masaj la domiciliu · București & Ilfov</span></div></nav>
     <button class="button button-dark header-book" data-book><?= icon('calendar') ?> Programează-te acum</button>
@@ -94,7 +94,7 @@ function icon(string $name, string $class = ''): string {
         </div>
         <ul class="hero-benefits">
           <li><span class="hero-benefit-check"><?= icon('check') ?></span><span>Masă profesională, uleiuri și instrumente profesionale.</span></li>
-          <li><span class="hero-benefit-check"><?= icon('check') ?></span><span><strong>Confort absolut:</strong> Te relaxezi direct în mediul tău familiar.</span></li>
+          <li><span class="hero-benefit-check"><?= icon('check') ?></span><span><strong>Masaj și stare de bine fără să pleci de acasă.</strong></span></li>
         </ul>
       </div>
       <div class="hero-conversion">

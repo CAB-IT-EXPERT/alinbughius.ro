@@ -8,6 +8,38 @@ const origin = process.argv[2] || 'http://127.0.0.1:8077/';
 const capture = process.argv.includes('--screenshots');
 const executablePath = process.env.CHROME_PATH || (process.platform === 'win32' ? 'C:/Program Files/Google/Chrome/Application/chrome.exe' : undefined);
 const browser = await chromium.launch({headless:true, executablePath});
+async function checkServiceTypography(page, width, height) {
+  const type = await page.evaluate(() => {
+    const list = document.querySelector('.hero-service-list');
+    const intro = getComputedStyle(document.querySelector('.hero-service-intro'));
+    return {
+      introSize:parseFloat(intro.fontSize),introShadow:intro.textShadow,
+      panelCount:document.querySelectorAll('.hero-service-copy').length,
+      listBackground:getComputedStyle(list).backgroundColor,
+      services:[...list.children].map(el=>{
+        const style=getComputedStyle(el);
+        return {size:parseFloat(style.fontSize),shadow:style.textShadow,background:style.backgroundColor};
+      })
+    };
+  });
+  const clamp = (min,value,max) => Math.min(max,Math.max(min,value));
+  const originalList = width <= 1100 ? Math.max(10.5,.0275*width) : height <= 950 ? clamp(14,.021*height,19) : clamp(17,.0135*width,23);
+  const originalIntro = width <= 1100 ? Math.max(12,.0312*width) : height <= 950 ? clamp(16,.0245*height,22) : clamp(19,.016*width,27);
+  assert.ok(Math.abs(type.introSize-originalIntro)<.02, 'Description size must stay unchanged');
+  assert.equal(type.introShadow,'none','No shadow on the description');
+  assert.equal(type.panelCount,0,'No translucent copy panel');
+  assert.equal(type.listBackground,'rgba(0, 0, 0, 0)');
+  assert.equal(type.services.length,4);
+  for (const service of type.services) {
+    assert.ok(Math.abs(service.size-originalList*1.25)<.02, `Services must be 25% larger at ${width}x${height}`);
+    assert.equal(service.background,'rgba(0, 0, 0, 0)');
+    if (width <= 700) {
+      const shadows = [...service.shadow.matchAll(/rgb\(255, 255, 255\) (-?[\d.]+)px (-?[\d.]+)px ([\d.]+)px/g)];
+      assert.equal(shadows.length,8,'White halo surrounds every glyph on mobile');
+      assert.ok(shadows.every(([,x,y,blur])=>Math.abs(+x)<=1&&Math.abs(+y)<=1&&+blur===0),'Halo must remain tight, without a broad blur');
+    } else assert.equal(service.shadow,'none','Phone-only shadow');
+  }
+}
 try {
   const page = await browser.newPage({viewport:{width:390,height:900}, reducedMotion:'reduce'});
   await page.route(/https:\/\/[^/]*(googletagmanager|google-analytics|googleadservices|doubleclick)\./, route => route.abort());
@@ -21,6 +53,8 @@ try {
   const privateResponse = await page.request.get(new URL('/confidentialitate.php', origin).href);
   assert.doesNotMatch(privateResponse.headers()['content-security-policy'], /google|doubleclick/);
   await page.evaluate(() => document.fonts.ready);
+  assert.equal(await page.locator('.header .brand small').textContent(),'MASAJ & STARE DE BINE');
+  assert.equal(await page.locator('.hero-benefits li:last-child strong').textContent(),'Masaj și stare de bine fără să pleci de acasă.');
   if (capture) await mkdir('.runtime', {recursive:true});
   for (const width of [320,375,390,430,700,701,768,1024,1100,1101,1280,1366,1440,1672,1920]) {
     await page.setViewportSize({width,height:1000});
@@ -36,7 +70,7 @@ try {
         const r = el(selector).getBoundingClientRect();
         return {x:r.x,y:r.y,width:r.width,height:r.height,bottom:r.bottom};
       };
-      const clipped = [...document.querySelectorAll('.hero-title span,.hero-fact,.hero-benefits li,.hero-contact-actions>*,.steps>div')]
+      const clipped = [...document.querySelectorAll('.hero-title span,.hero-service-list li,.hero-fact,.hero-benefits li,.hero-contact-actions>*,.steps>div')]
         .filter(item => item.scrollWidth > item.clientWidth + 2).map(item => item.className);
       const textTouchesPanel = [...document.querySelectorAll('.hero-title,.hero-service-intro,.hero-service-list li,.hero-choice')].some(item => {
         const range = document.createRange();
@@ -71,6 +105,7 @@ try {
     assert.ok(layout.controlHeights.every(height => height >= 44), `Small contact control at ${width}`);
     assert.ok(parseFloat(layout.cardPadding) >= 24 && parseFloat(layout.cardRadius) >= 20);
     if (width > 700) assert.ok(Math.max(...layout.cards.map(c=>c.height)) - Math.min(...layout.cards.map(c=>c.height)) < 1, 'Equal-height step cards');
+    await checkServiceTypography(page,width,1000);
     if (capture && [390,768,1366,1672].includes(width)) {
       await page.setViewportSize({width,height:Math.max(1000,Math.ceil(layout.hero.bottom + 90))});
       await page.screenshot({path:`.runtime/cream-hero-${width}.png`,clip:{x:0,y:0,width,height:Math.ceil(layout.hero.bottom + 90)},animations:'disabled'});
@@ -93,6 +128,7 @@ try {
     assert.ok(fit.controls.every(bottom=>bottom <= height-10), 'Buttons need breathing room inside first view');
     assert.equal(fit.overlap, false, `Laptop copy overlaps panel at ${width}x${height}`);
     assert.equal(fit.overflow, 0);
+    await checkServiceTypography(page,width,height);
     if (capture) await page.screenshot({path:`.runtime/cream-laptop-${width}x${height}.png`,animations:'disabled'});
     console.log(`PASS: complete hero inside first view at ${width}x${height}`);
   }
