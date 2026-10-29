@@ -24,6 +24,9 @@ function icon(string $name, string $class = ''): string {
         'award' => '<circle cx="12" cy="8" r="5"/><path d="m8 12-2 9 6-3 6 3-2-9"/>',
         'mail' => '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 6 9 7 9-7"/>',
         'heart' => '<path d="M20 5c-3-3-7-1-8 2-1-3-5-5-8-2s-1 7 8 14c9-7 11-11 8-14Z"/>',
+        'lotus' => '<path d="M12 20c-5-1-8-4-8-8 4 0 6 2 8 5 2-3 4-5 8-5 0 4-3 7-8 8Z"/><path d="M12 17c-3-3-4-7 0-12 4 5 3 9 0 12Z"/><path d="M8 16C5 14 3 11 4 7c4 1 6 4 6 8m6 1c3-2 5-5 4-9-4 1-6 4-6 8"/>',
+        'stones' => '<ellipse cx="12" cy="18" rx="7" ry="3"/><ellipse cx="12" cy="12" rx="5" ry="3"/><ellipse cx="12" cy="7" rx="3" ry="2"/>',
+        'leaf-outline' => '<path d="M20 4C11 4 5 8 5 15c0 3 2 5 5 5 7 0 10-7 10-16Z"/><path d="M4 21c3-6 7-9 12-12"/>',
         'gift' => '<path d="M3 9h18v4H3zM5 13v8h14v-8M12 9v12"/><path d="M12 9S4 9 5 5c1-4 7 0 7 4Zm0 0s8 0 7-4c-1-4-7 0-7 4Z"/>',
     ];
     return '<svg class="icon ' . e($class) . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . ($paths[$name] ?? $paths['arrow']) . '</svg>';
@@ -52,12 +55,13 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/hero-botanical.css?v=6">
   <link rel="stylesheet" href="/assets/botanical-palette.css?v=6">
   <link rel="stylesheet" href="/assets/hero-cream.css?v=4">
+  <link rel="stylesheet" href="/assets/hero-spa-update.css?v=1">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
   <script src="/assets/measurement.js?v=4" defer></script>
 </head>
-<body class="home-page cream-home">
+<body class="home-page cream-home spa-home">
 <a class="skip-link" href="#continut">Sari la conținut</a>
 <header class="header">
   <div class="container header-inner">
@@ -69,20 +73,35 @@ function icon(string $name, string $class = ''): string {
 </header>
 <button class="menu-backdrop" type="button" tabindex="-1" aria-hidden="true" aria-label="Închide meniul"></button>
 <main id="continut">
-  <section class="hero hero--reference hero--cream">
+  <section class="hero hero--reference hero--cream hero--spa">
     <div class="hero-visual">
-      <figure class="hero-photo hero-static-photo"><picture><source media="(max-width:1100px)" srcset="/assets/images/hero-cream-mobile.webp" width="1095" height="1437"><img src="/assets/images/hero-cream-desktop.webp" alt="Alin Bughiuș realizează un masaj terapeutic pentru spate" width="1784" height="882" fetchpriority="high"></picture></figure>
+      <figure class="hero-photo hero-static-photo"><picture><source media="(max-width:700px)" srcset="/assets/images/hero-spa-mobile-v2.webp" width="853" height="1844"><img src="/assets/images/hero-spa-desktop-v2.webp" alt="Atmosferă relaxantă cu plante, prosoape, pietre de masaj și lumânare" width="1774" height="887" fetchpriority="high"></picture></figure>
     </div>
     <div class="topline"><div class="container"><span><?= icon('pin-solid') ?> Masaj la domiciliu • București și Ilfov</span></div></div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1 class="hero-title"><span>Masaj terapeutic</span> <span class="hero-title-accent">și de relaxare</span> <span>la domiciliu</span></h1>
+        <p class="hero-mobile-eyebrow">RELAXARE <i>•</i> ECHILIBRU <i>•</i> SĂNĂTATE</p>
+        <h1 class="hero-title"><span>Masaj terapeutic<?= icon('leaf-outline', 'hero-title-leaf') ?></span> <span class="hero-title-accent">și de relaxare</span> <span>la domiciliu</span></h1>
         <p class="hero-service-intro"><span>Alege tipul de masaj potrivit</span> <span>nevoilor tale și bucură-te</span> <span>de o <em>stare reală de bine.</em></span></p>
-        <ul class="hero-service-list" aria-label="Servicii de masaj disponibile">
+        <ul class="hero-mobile-benefits" aria-label="Beneficiile masajului">
+          <li><span><?= icon('lotus') ?></span><strong>Reduci<br>stresul</strong></li>
+          <li><span><?= icon('stones') ?></span><strong>Ameliorezi<br>tensiunile</strong></li>
+          <li><span><?= icon('leaf-outline') ?></span><strong>Îți recapeți<br>energia</strong></li>
+          <li><span><?= icon('heart') ?></span><strong>Te simți<br>ca nou(ă)</strong></li>
+        </ul>
+        <ul class="hero-service-list hero-service-list--desktop" aria-label="Servicii de masaj disponibile">
           <li><?= icon('leaf', 'hero-service-leaf') ?>Masaj terapeutic + reflexoterapie</li>
           <li><?= icon('leaf', 'hero-service-leaf') ?>Deep tissue + mobilizări</li>
           <li><?= icon('leaf', 'hero-service-leaf') ?>Drenaj limfatic + anticelulitic</li>
           <li><?= icon('leaf', 'hero-service-leaf') ?>Masaj Lomi Lomi + relaxare</li>
+        </ul>
+        <ul class="hero-service-list hero-service-list--mobile" aria-label="Servicii de masaj disponibile">
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Masaj terapeutic</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Reflexoterapie</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Deep tissue</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Drenaj limfatic</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Masaj anticelulitic</li>
+          <li><?= icon('leaf', 'hero-service-leaf') ?>Masaj Lomi Lomi</li>
         </ul>
         <p class="hero-choice">E simplu, <em>tu alegi<svg class="hero-choice-underline" viewBox="0 0 100 12" aria-hidden="true"><path d="M2 10Q51-2 98 5"/></svg></em></p>
       </div>

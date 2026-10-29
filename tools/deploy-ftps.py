@@ -107,9 +107,10 @@ try:
         upload(PUBLIC + '/.htaccess', (ROOT / 'public/.htaccess').read_bytes())
         with urllib.request.urlopen('https://alinbughius.ro/', timeout=30) as response:
             html = response.read().decode()
-            required = ['hero-cream-mobile.webp', 'hero-cream-desktop.webp', 'hero-cream.css?v=4',
+            required = ['hero-spa-mobile-v2.webp', 'hero-spa-desktop-v2.webp', 'hero-cream.css?v=4',
+                        'hero-spa-update.css?v=1',
                         'hero-botanical.css?v=6', 'botanical-palette.css?v=6',
-                        'Masaj terapeutic + reflexoterapie', 'Programează-te acum', 'measurement.js?v=4']
+                        'RELAXARE', 'Masaj anticelulitic', 'Programează-te acum', 'measurement.js?v=4']
             assert response.status == 200 and all(value in html for value in required)
         print('Published and main page verified: https://alinbughius.ro/')
     elif mode == 'remove-probe':

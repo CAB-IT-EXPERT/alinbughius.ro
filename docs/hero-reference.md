@@ -143,3 +143,20 @@ ecran la 1280×600, 1280×720, 1366×650, 1366×768, 1440×800, 1536×864, 1903�
 - Subtitlul logo-ului devine „MASAJ & STARE DE BINE”, iar ultimul beneficiu devine „Masaj și stare de bine fără să pleci de acasă.”, integral evidențiat ca în referință.
 - Panoul de preț este retras o coloană spre dreapta pe desktop pentru a evita suprapunerile cu lista mărită. Transparența sa de 70%, fotografia, trackingul și restul paginii rămân neschimbate.
 - Testul responsive verifică și aceste restricții, inclusiv potrivirea completă a hero-ului în primul ecran pe laptop.
+
+## Actualizare spa și controale permanente — 29 octombrie 2026
+
+Hero-ul de telefon urmează noua referință: titlu editorial, mesajul „RELAXARE · ECHILIBRU · SĂNĂTATE”, patru beneficii cu pictograme, șase servicii distincte, panoul cu preț și recenzia Google. Rândul de contact din interiorul hero-ului este ascuns pe telefon. Telefonul și WhatsApp sunt butoane circulare permanente în stânga, fără buton de închidere, iar programarea este un singur buton dreptunghiular permanent în dreapta-jos. Pe laptop rămân structura, textele și controalele anterioare; numai fotografia de fundal devine continuarea panoramică a noii scene.
+
+Active generate cu ImageGen în modul built-in edit, salvate în proiect:
+
+- `public/assets/images/hero-spa-mobile-v2.webp` — 853×1844 px.
+- `public/assets/images/hero-spa-desktop-v2.webp` — 1774×887 px.
+
+Prompt mobil (referință: macheta portret furnizată de utilizator):
+
+> Use case: precise-object-edit. Asset type: clean photographic website hero background for a mobile massage service landing page. Remove every interface and graphic overlay from the reference mockup and reconstruct the hidden photographic background naturally. Remove the logo/header, location bar, all Romanian text, title, typography, benefit icons, service list, price panel, Google review, buttons, borders, decorative lines, and all symbols. The result must contain only a polished photorealistic spa scene. Scene: warm light cream wall with subtle botanical shadows; leafy green indoor plant along the right edge; one lit ivory candle, three smooth dark massage stones, a neatly rolled warm beige towel on a slim wooden tray, and fresh green leaves in the lower-right. Preserve generous cream negative space across the left two-thirds and upper-middle. No people, text, logo, icons, UI, panels or watermark.
+
+Prompt desktop (referință: fundalul mobil curat generat anterior):
+
+> Use case: precise-object-edit. Asset type: panoramic photographic website hero background for laptop and desktop. Recompose and extend the supplied clean portrait spa photograph into an extra-wide landscape continuation. Keep the same cream wall, green leaves, plant shadows, ivory candle, dark massage stones, beige rolled towel, wooden tray, lighting and materials. Preserve large low-contrast cream negative space across the left half and center-left for live HTML text. Keep the plant and spa still life in the far and lower-right. No seams, mirroring artifacts, people, text, logos, icons, UI, buttons, panels or watermark.

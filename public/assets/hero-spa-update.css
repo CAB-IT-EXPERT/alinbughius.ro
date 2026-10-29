@@ -1,0 +1,72 @@
+/* Spa hero update, 29 October 2026. All copy and controls remain live HTML. */
+.hero-mobile-eyebrow,.hero-mobile-benefits,.hero-service-list--mobile,.hero-title-leaf{display:none}
+.hero--spa .hero-static-photo img{inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero--spa .hero-static-photo::after{display:none}
+
+@media(max-width:700px){
+  .hero--spa{--cream-bar:max(30px,7.3cqw);background:#f8f1e5}
+  .hero--spa .hero-visual{inset:var(--cream-bar) 0 0;width:100%;height:auto}
+  .hero--spa .hero-static-photo img{inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
+  .hero--spa .hero-grid{display:block;width:91.4%;padding:5.1cqw 0 4.2cqw}
+  .hero--spa .hero-copy{width:100%;padding:0 1.8cqw 2.4cqw}
+
+  .hero--spa .hero-mobile-eyebrow{display:flex;align-items:center;gap:2.5cqw;margin:0 0 5.2cqw;color:#173c34;font-size:2.55cqw;font-weight:600;letter-spacing:.42cqw;line-height:1;white-space:nowrap}
+  .hero--spa .hero-mobile-eyebrow::after{content:'';display:block;position:absolute;top:3.9cqw;left:0;width:27cqw;height:1px;background:#65a846}
+  .hero--spa .hero-mobile-eyebrow i{font-style:normal;color:#315c4d}
+
+  .hero--spa h1{position:relative;font-size:9.15cqw;line-height:.94;letter-spacing:-.12cqw}
+  .hero--spa h1>span{display:block;white-space:nowrap}
+  .hero--spa h1>.hero-title-accent{color:#5d9d3f;font-style:italic}
+  .hero--spa h1>span:last-child{display:flex;align-items:center;gap:2.7cqw;margin-top:2.3cqw;font-family:var(--sans);font-size:4.15cqw;font-weight:500;letter-spacing:1.05cqw;line-height:1;text-transform:uppercase}
+  .hero--spa h1>span:last-child::after{content:'';display:block;width:22cqw;height:1px;background:#173c34}
+  .hero--spa .hero-title-leaf{display:block;position:absolute;top:-2.4cqw;left:52cqw;width:12.5cqw;height:7.5cqw;color:#63a743;transform:rotate(-9deg);stroke-width:1.1}
+
+  .hero--spa .hero-service-intro{max-width:none;margin-top:4.2cqw;font-size:max(14.4px,3.744cqw);line-height:1.22}
+  .hero--spa .hero-service-intro>span{display:inline}
+  .hero--spa .hero-service-intro em{color:#4f9137;font-weight:700}
+
+  .hero--spa .hero-mobile-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:4.8cqw 0 3.8cqw;padding:0;list-style:none}
+  .hero--spa .hero-mobile-benefits li{position:relative;display:grid;justify-items:center;align-content:start;gap:1.4cqw;min-width:0;text-align:center;color:#0b3025}
+  .hero--spa .hero-mobile-benefits li+li::before{content:'';position:absolute;left:0;top:4cqw;width:1px;height:15cqw;background:#bbc7ad}
+  .hero--spa .hero-mobile-benefits li>span{display:grid;place-items:center;width:12.8cqw;height:12.8cqw;border-radius:50%;background:#e4efd2}
+  .hero--spa .hero-mobile-benefits .icon{width:7.6cqw;height:7.6cqw;stroke-width:1.45}
+  .hero--spa .hero-mobile-benefits strong{font-size:2.7cqw;line-height:1.08;font-weight:700}
+
+  .hero--spa .hero-service-list--desktop{display:none}
+  .hero--spa .hero-service-list--mobile{display:grid;width:57%;gap:.75cqw;margin-top:0}
+  .hero--spa .hero-service-list--mobile>li{position:relative;gap:2cqw;padding:.35cqw 0 .75cqw;font-size:max(14px,4.05cqw);line-height:1.1;letter-spacing:-.03cqw;text-shadow:1px 0 #fff,-1px 0 #fff,0 1px #fff,0 -1px #fff,.7px .7px #fff,-.7px .7px #fff,.7px -.7px #fff,-.7px -.7px #fff}
+  .hero--spa .hero-service-list--mobile>li::after{content:'';position:absolute;left:8.2cqw;right:0;bottom:0;height:1px;background:#cad3c3b3}
+  .hero--spa .hero-service-list--mobile>li:last-child::after{display:none}
+  .hero--spa .hero-service-list--mobile .hero-service-leaf{width:5.5cqw;height:5.5cqw}
+  .hero--spa .hero-choice{display:none}
+
+  .hero--spa .hero-details{margin-top:3.3cqw;background:rgba(255,248,233,.76)}
+  .hero--spa .hero-conversion{margin-top:2.6cqw}
+  .hero--spa .hero-contact-actions{display:none}
+  .hero--spa .hero-social-proof{min-height:8.5cqw}
+
+  /* Permanent mobile controls: no close button and no bottom bar. */
+  .home-page.has-reference-hero>.mobile-actions,.home-page.has-reference-hero:not(.hero-passed)>.mobile-actions{display:block;visibility:visible;pointer-events:none;position:static;padding:0;border:0;background:none;box-shadow:none;transform:none}
+  .home-page.has-reference-hero>.mobile-actions>a,.home-page.has-reference-hero>.mobile-actions>button{position:fixed;z-index:22;pointer-events:auto;box-shadow:0 7px 22px #0b302540}
+  .home-page.has-reference-hero>.mobile-actions>a{display:grid;place-items:center;left:14px;width:56px;min-width:56px;height:56px;border:2px solid #fff;border-radius:50%;font-size:0}
+  .home-page.has-reference-hero>.mobile-actions>a>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .home-page.has-reference-hero>.mobile-actions .mobile-call{bottom:calc(162px + env(safe-area-inset-bottom));background:#1976cf;color:#fff}
+  .home-page.has-reference-hero>.mobile-actions .mobile-call .icon{width:31px;height:31px;padding:0;background:none;box-shadow:none}
+  .home-page.has-reference-hero>.mobile-actions .mobile-whatsapp{bottom:calc(94px + env(safe-area-inset-bottom));background:#25d366}
+  .home-page.has-reference-hero>.mobile-actions .mobile-whatsapp img{width:37px;height:37px;filter:brightness(0) invert(1)}
+  .home-page.has-reference-hero>.mobile-actions .button{right:14px;bottom:calc(18px + env(safe-area-inset-bottom));width:min(230px,calc(100vw - 98px));min-height:58px;padding:12px 18px;border:2px solid #fff;border-radius:12px;background:linear-gradient(100deg,#8bdc57,#a9ec72);color:#143b2e;font-size:16px;font-weight:700;gap:12px;white-space:nowrap}
+  .home-page.has-reference-hero>.mobile-actions .button .icon{width:23px;height:23px}
+  body.home-page.has-reference-hero.menu-open>.mobile-actions{visibility:hidden;pointer-events:none}
+}
+
+@media(max-width:360px){
+  .hero--spa .hero-mobile-benefits strong{font-size:2.85cqw}
+  .home-page.has-reference-hero>.mobile-actions>a{left:10px;width:52px;min-width:52px;height:52px}
+  .home-page.has-reference-hero>.mobile-actions .mobile-whatsapp{bottom:calc(90px + env(safe-area-inset-bottom))}
+  .home-page.has-reference-hero>.mobile-actions .mobile-call{bottom:calc(152px + env(safe-area-inset-bottom))}
+  .home-page.has-reference-hero>.mobile-actions .button{right:10px;width:calc(100vw - 84px);font-size:15px}
+}
+
+@media print{
+  .mobile-actions{display:none!important}
+}

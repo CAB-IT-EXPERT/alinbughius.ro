@@ -9,8 +9,8 @@ const capture = process.argv.includes('--screenshots');
 const executablePath = process.env.CHROME_PATH || (process.platform === 'win32' ? 'C:/Program Files/Google/Chrome/Application/chrome.exe' : undefined);
 const browser = await chromium.launch({headless:true, executablePath});
 async function checkServiceTypography(page, width, height) {
-  const type = await page.evaluate(() => {
-    const list = document.querySelector('.hero-service-list');
+  const type = await page.evaluate(width => {
+    const list = document.querySelector(width <= 700 ? '.hero-service-list--mobile' : '.hero-service-list--desktop');
     const intro = getComputedStyle(document.querySelector('.hero-service-intro'));
     return {
       introSize:parseFloat(intro.fontSize),introShadow:intro.textShadow,
@@ -21,7 +21,7 @@ async function checkServiceTypography(page, width, height) {
         return {size:parseFloat(style.fontSize),shadow:style.textShadow,background:style.backgroundColor};
       })
     };
-  });
+  }, width);
   const clamp = (min,value,max) => Math.min(max,Math.max(min,value));
   const originalList = width <= 1100 ? Math.max(10.5,.0275*width) : height <= 950 ? clamp(14,.021*height,19) : clamp(17,.0135*width,23);
   const originalIntro = width <= 1100 ? Math.max(12,.0312*width) : height <= 950 ? clamp(16,.0245*height,22) : clamp(19,.016*width,27);
@@ -29,9 +29,10 @@ async function checkServiceTypography(page, width, height) {
   assert.equal(type.introShadow,'none','No shadow on the description');
   assert.equal(type.panelCount,0,'No translucent copy panel');
   assert.equal(type.listBackground,'rgba(0, 0, 0, 0)');
-  assert.equal(type.services.length,4);
+  assert.equal(type.services.length,width <= 700 ? 6 : 4);
   for (const service of type.services) {
-    assert.ok(Math.abs(service.size-originalList*1.25)<.02, `Services must be 25% larger at ${width}x${height}`);
+    const expectedSize = width <= 700 ? Math.max(14,.0405*width) : originalList*1.25;
+    assert.ok(Math.abs(service.size-expectedSize)<.02, `Service size mismatch at ${width}x${height}`);
     assert.equal(service.background,'rgba(0, 0, 0, 0)');
     if (width <= 700) {
       const shadows = [...service.shadow.matchAll(/rgb\(255, 255, 255\) (-?[\d.]+)px (-?[\d.]+)px ([\d.]+)px/g)];
@@ -90,19 +91,33 @@ try {
         proof:bounds('.hero-social-proof'),booking:bounds('.hero-booking-button'),
         cardPadding:style('.steps>div').paddingLeft,cardRadius:style('.steps>div').borderTopLeftRadius,
         cards:[...document.querySelectorAll('.steps>div')].map(item=>({height:item.getBoundingClientRect().height})),
-        controlHeights:[...document.querySelectorAll('.hero-contact-actions>*')].map(item=>item.getBoundingClientRect().height)
+        heroControls:[...document.querySelectorAll('.hero-contact-actions>*')].map(item=>({height:item.getBoundingClientRect().height,display:getComputedStyle(item).display})),
+        mobileActionsBackground:style('.mobile-actions').backgroundColor,
+        fixedControls:[...document.querySelectorAll('.mobile-actions>*')].map(item=>({tag:item.tagName,height:item.getBoundingClientRect().height,width:item.getBoundingClientRect().width,position:getComputedStyle(item).position,visibility:getComputedStyle(item).visibility,borderRadius:getComputedStyle(item).borderRadius}))
       };
     });
     assert.equal(layout.overflow, 0, `Page overflow at ${width}`);
     assert.deepEqual(layout.clipped, [], `Clipped content at ${width}`);
     assert.equal(layout.textTouchesPanel, false, `Copy overlaps price panel at ${width}`);
-    assert.match(layout.photo, width <= 1100 ? /hero-cream-mobile.webp$/ : /hero-cream-desktop.webp$/);
-    assert.equal(layout.panelBackground, 'rgba(255, 247, 228, 0.7)', 'Preserve approved transparency');
+    assert.match(layout.photo, width <= 700 ? /hero-spa-mobile-v2.webp$/ : /hero-spa-desktop-v2.webp$/);
+    assert.equal(layout.panelBackground, width <= 700 ? 'rgba(255, 248, 233, 0.76)' : 'rgba(255, 247, 228, 0.7)', 'Preserve responsive panel transparency');
     assert.equal(layout.panelBlur, 'saturate(1.08) blur(2px)');
-    assert.equal(layout.heroBackground, 'rgb(246, 240, 228)');
+    assert.equal(layout.heroBackground, width <= 700 ? 'rgb(248, 241, 229)' : 'rgb(246, 240, 228)');
     assert.equal(layout.galleryBackground, 'rgb(10, 73, 58)', 'Gallery must remain green');
     assert.equal(layout.proofBackground, 'rgba(0, 0, 0, 0)');
-    assert.ok(layout.controlHeights.every(height => height >= 44), `Small contact control at ${width}`);
+    if (width <= 700) {
+      assert.ok(layout.heroControls.every(control => control.height === 0), 'Hero contact row is removed on mobile');
+      assert.ok(layout.fixedControls.every(control => control.position === 'fixed' && control.visibility === 'visible' && control.height >= 52), 'Permanent mobile controls');
+      assert.equal(layout.mobileActionsBackground,'rgba(0, 0, 0, 0)','No fixed bottom bar');
+      assert.equal(layout.fixedControls.length,3,'Phone, WhatsApp and booking only');
+      assert.ok(layout.fixedControls.slice(0,2).every(control=>control.tag==='A'&&Math.abs(control.width-control.height)<1),'Round contact buttons');
+      assert.ok(layout.fixedControls[2].tag==='BUTTON'&&layout.fixedControls[2].width>layout.fixedControls[2].height*3,'Rectangular booking button');
+      assert.equal(await page.locator('.hero-mobile-benefits>li').count(),4);
+      assert.equal(await page.locator('.hero-service-list--mobile>li').count(),6);
+    } else {
+      assert.ok(layout.heroControls.every(control => control.height >= 44), `Small contact control at ${width}`);
+      assert.ok(layout.fixedControls.every(control => control.visibility === 'hidden' || control.height === 0), 'No floating controls on laptop');
+    }
     assert.ok(parseFloat(layout.cardPadding) >= 24 && parseFloat(layout.cardRadius) >= 20);
     if (width > 700) assert.ok(Math.max(...layout.cards.map(c=>c.height)) - Math.min(...layout.cards.map(c=>c.height)) < 1, 'Equal-height step cards');
     await checkServiceTypography(page,width,1000);
@@ -133,18 +148,19 @@ try {
     console.log(`PASS: complete hero inside first view at ${width}x${height}`);
   }
   await page.setViewportSize({width:390,height:900});
-  await page.locator('.hero-booking-button').click();
+  await page.locator('.mobile-actions button[data-book]').click();
   assert.equal(await page.locator('#booking-dialog').evaluate(el=>el.open), true);
   await page.locator('#booking-dialog .close-button').click();
   await page.evaluate(()=>scrollTo(0,0));
   await page.locator('.menu-toggle').click();
   assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'true');
+  assert.equal(await page.locator('.mobile-actions').evaluate(el=>getComputedStyle(el).visibility), 'hidden');
   await page.locator('#main-nav a[href="#intrebari"]').click();
   assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');
   assert.equal(await page.evaluate(()=>location.hash), '#intrebari');
   assert.equal(await page.locator('#intrebari').count(), 1);
-  assert.equal(await page.locator('.hero-call').getAttribute('href'), 'tel:+40773919071');
-  assert.equal(await page.locator('.hero-whatsapp').getAttribute('href'), 'https://wa.me/40773919071');
+  assert.equal(await page.locator('.mobile-call').getAttribute('href'), 'tel:+40773919071');
+  assert.equal(await page.locator('.mobile-whatsapp').getAttribute('href'), 'https://wa.me/40773919071');
   assert.equal(await page.locator('[data-hero-slide]').count(), 7);
   await page.locator('[data-hero-next]').click();
   assert.equal(await page.locator('[data-hero-current]').textContent(), '02');
