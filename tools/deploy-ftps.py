@@ -108,7 +108,7 @@ try:
         with urllib.request.urlopen('https://alinbughius.ro/', timeout=30) as response:
             html = response.read().decode()
             required = ['hero-spa-mobile-v2.webp', 'hero-spa-desktop-v2.webp', 'hero-cream.css?v=4',
-                        'hero-spa-update.css?v=2',
+                        'hero-spa-update.css?v=3',
                         'hero-botanical.css?v=6', 'botanical-palette.css?v=6',
                         'RELAXARE', 'Masaj anticelulitic', 'Programează-te acum', 'measurement.js?v=4']
             assert response.status == 200 and all(value in html for value in required)

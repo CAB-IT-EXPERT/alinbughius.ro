@@ -1,5 +1,5 @@
 /* Spa hero update, 29 October 2026. All copy and controls remain live HTML. */
-.hero-mobile-eyebrow,.hero-mobile-benefits,.hero-service-list--mobile,.hero-title-leaf{display:none}
+.hero-mobile-eyebrow,.hero-mobile-benefits,.hero-service-list--mobile{display:none}
 .hero--spa .hero-static-photo img{inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .hero--spa .hero-static-photo::after{display:none}
 
@@ -19,7 +19,6 @@
   .hero--spa h1>.hero-title-accent{color:#5d9d3f;font-style:italic}
   .hero--spa h1>span:last-child{display:flex;align-items:center;gap:2.7cqw;margin-top:2.3cqw;font-family:var(--sans);font-size:4.15cqw;font-weight:500;letter-spacing:1.05cqw;line-height:1;text-transform:uppercase}
   .hero--spa h1>span:last-child::after{content:'';display:block;width:22cqw;height:1px;background:#173c34}
-  .hero--spa .hero-title-leaf{display:block;position:absolute;top:-2.4cqw;left:52cqw;width:12.5cqw;height:7.5cqw;color:#63a743;transform:rotate(-9deg);stroke-width:1.1}
 
   .hero--spa .hero-service-intro{max-width:none;margin-top:4.2cqw;font-size:max(14.4px,3.744cqw);line-height:1.22}
   .hero--spa .hero-service-intro>span{display:inline}

@@ -55,7 +55,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/hero-botanical.css?v=6">
   <link rel="stylesheet" href="/assets/botanical-palette.css?v=6">
   <link rel="stylesheet" href="/assets/hero-cream.css?v=4">
-  <link rel="stylesheet" href="/assets/hero-spa-update.css?v=2">
+  <link rel="stylesheet" href="/assets/hero-spa-update.css?v=3">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
@@ -81,7 +81,7 @@ function icon(string $name, string $class = ''): string {
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="hero-mobile-eyebrow">RELAXARE <i>•</i> ECHILIBRU <i>•</i> SĂNĂTATE</p>
-        <h1 class="hero-title"><span>Masaj terapeutic<?= icon('leaf-outline', 'hero-title-leaf') ?></span> <span class="hero-title-accent">și de relaxare</span> <span>la domiciliu</span></h1>
+        <h1 class="hero-title"><span>Masaj terapeutic</span> <span class="hero-title-accent">și de relaxare</span> <span>la domiciliu</span></h1>
         <p class="hero-service-intro"><span>Alege tipul de masaj potrivit</span> <span>nevoilor tale și bucură-te</span> <span>de o <em>stare reală de bine.</em></span></p>
         <ul class="hero-mobile-benefits" aria-label="Beneficiile masajului">
           <li><span><?= icon('lotus') ?></span><strong>Reduci<br>stresul</strong></li>
