@@ -50,9 +50,9 @@
   .home-page.has-reference-hero>.mobile-actions>a,.home-page.has-reference-hero>.mobile-actions>button{position:fixed;z-index:22;pointer-events:auto;box-shadow:0 7px 22px #0b302540}
   .home-page.has-reference-hero>.mobile-actions>a{display:grid;place-items:center;left:14px;width:56px;min-width:56px;height:56px;border:2px solid #fff;border-radius:50%;font-size:0}
   .home-page.has-reference-hero>.mobile-actions>a>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .home-page.has-reference-hero>.mobile-actions .mobile-call{bottom:calc(162px + env(safe-area-inset-bottom));background:#1976cf;color:#fff}
+  .home-page.has-reference-hero>.mobile-actions .mobile-call{bottom:calc(86px + env(safe-area-inset-bottom));background:#1976cf;color:#fff}
   .home-page.has-reference-hero>.mobile-actions .mobile-call .icon{width:31px;height:31px;padding:0;background:none;box-shadow:none}
-  .home-page.has-reference-hero>.mobile-actions .mobile-whatsapp{bottom:calc(94px + env(safe-area-inset-bottom));background:#25d366}
+  .home-page.has-reference-hero>.mobile-actions .mobile-whatsapp{bottom:calc(18px + env(safe-area-inset-bottom));background:#25d366}
   .home-page.has-reference-hero>.mobile-actions .mobile-whatsapp img{width:37px;height:37px;filter:brightness(0) invert(1)}
   .home-page.has-reference-hero>.mobile-actions .button{right:14px;bottom:calc(18px + env(safe-area-inset-bottom));width:min(230px,calc(100vw - 98px));min-height:58px;padding:12px 18px;border:2px solid #fff;border-radius:12px;background:linear-gradient(100deg,#8bdc57,#a9ec72);color:#143b2e;font-size:16px;font-weight:700;gap:12px;white-space:nowrap}
   .home-page.has-reference-hero>.mobile-actions .button .icon{width:23px;height:23px}
@@ -62,8 +62,8 @@
 @media(max-width:360px){
   .hero--spa .hero-mobile-benefits strong{font-size:2.85cqw}
   .home-page.has-reference-hero>.mobile-actions>a{left:10px;width:52px;min-width:52px;height:52px}
-  .home-page.has-reference-hero>.mobile-actions .mobile-whatsapp{bottom:calc(90px + env(safe-area-inset-bottom))}
-  .home-page.has-reference-hero>.mobile-actions .mobile-call{bottom:calc(152px + env(safe-area-inset-bottom))}
+  .home-page.has-reference-hero>.mobile-actions .mobile-whatsapp{bottom:calc(18px + env(safe-area-inset-bottom))}
+  .home-page.has-reference-hero>.mobile-actions .mobile-call{bottom:calc(80px + env(safe-area-inset-bottom))}
   .home-page.has-reference-hero>.mobile-actions .button{right:10px;width:calc(100vw - 84px);font-size:15px}
 }
 
