@@ -160,3 +160,11 @@ Prompt mobil (referință: macheta portret furnizată de utilizator):
 Prompt desktop (referință: fundalul mobil curat generat anterior):
 
 > Use case: precise-object-edit. Asset type: panoramic photographic website hero background for laptop and desktop. Recompose and extend the supplied clean portrait spa photograph into an extra-wide landscape continuation. Keep the same cream wall, green leaves, plant shadows, ivory candle, dark massage stones, beige rolled towel, wooden tray, lighting and materials. Preserve large low-contrast cream negative space across the left half and center-left for live HTML text. Keep the plant and spa still life in the far and lower-right. No seams, mirroring artifacts, people, text, logos, icons, UI, buttons, panels or watermark.
+
+## Panou de preț și recenzii — 5 noiembrie 2026
+
+Cele două beneficii devin „Masă de masaj profesională și uleiuri de calitate.” și „Relaxare, echilibru și stare de bine la tine acasă.”, ultimul integral îngroșat. Panoul păstrează fundalul cu alfa 0,76 pe telefon și 0,70 pe tabletă/desktop, împreună cu blurul de 2 px.
+
+În afara panoului, recenziile sunt aliniate la stânga și afișează „Peste 75 de recenzii pe Google”, conform numărului furnizat de client. Butonul mic din dreapta, „Vezi recenziile clienților”, deschide secțiunea `#recenzii`; scorul Google păstrează linkul extern existent. Pe laptop, acest rând stă alături de controalele de contact, iar hero-ul încape în primul ecran.
+
+Îmbinarea crem–verde folosește un arc SVG decorativ, urmat de titlul galeriei centrat între două linii. Verificat în browser la lățimi 320–1920 px, inclusiv telefon, tabletă și opt dimensiuni de laptop, fără overflow și cu destinația butonului funcțională.

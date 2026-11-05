@@ -55,7 +55,7 @@ try {
   assert.doesNotMatch(privateResponse.headers()['content-security-policy'], /google|doubleclick/);
   await page.evaluate(() => document.fonts.ready);
   assert.equal(await page.locator('.header .brand small').textContent(),'MASAJ & STARE DE BINE');
-  assert.equal(await page.locator('.hero-benefits li:last-child strong').textContent(),'Masaj și stare de bine fără să pleci de acasă.');
+  assert.equal(await page.locator('.hero-benefits li:last-child strong').textContent(),'Relaxare, echilibru și stare de bine la tine acasă.');
   if (capture) await mkdir('.runtime', {recursive:true});
   for (const width of [320,375,390,430,700,701,768,1024,1100,1101,1280,1366,1440,1672,1920]) {
     await page.setViewportSize({width,height:1000});

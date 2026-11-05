@@ -18,6 +18,7 @@ function icon(string $name, string $class = ''): string {
         'phone' => '<path d="m7 3 3 5-3 2c1.5 3 4 5.5 7 7l2-3 5 3c0 3-2 4-4 4C10 20 4 14 3 7c0-2 1-4 4-4Z"/>',
         'instagram' => '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
         'chat' => '<path d="M21 11.5a9 9 0 0 1-13 8L3 21l1.5-5A9 9 0 1 1 21 11.5Z"/><path d="M8 8c1 4 3 6 7 7l1-2-2-1-1 1-2-2 1-1-1-2Z"/>',
+        'review' => '<path d="M21 11a9 9 0 0 1-13 8L3 21l1.5-5A9 9 0 1 1 21 11Z"/><path d="m12 6 1.5 3 3.3.5-2.4 2.3.6 3.2-3-1.5L9 15l.6-3.2L7.2 9.5l3.3-.5Z" fill="currentColor" stroke="none"/>',
         'calendar' => '<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 5h2m4 0h2"/>',
         'chevron' => '<path d="m9 5 7 7-7 7"/>',
         'home' => '<path d="m3 10 9-7 9 7M5 9v12h14V9m-10 12v-8h6v8"/>',
@@ -55,7 +56,7 @@ function icon(string $name, string $class = ''): string {
   <link rel="stylesheet" href="/assets/hero-botanical.css?v=6">
   <link rel="stylesheet" href="/assets/botanical-palette.css?v=6">
   <link rel="stylesheet" href="/assets/hero-cream.css?v=4">
-  <link rel="stylesheet" href="/assets/hero-spa-update.css?v=3">
+  <link rel="stylesheet" href="/assets/hero-spa-update.css?v=4">
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
@@ -112,12 +113,15 @@ function icon(string $name, string $class = ''): string {
           <div class="hero-fact hero-fact-duration"><?= icon('clock') ?><strong>60 de minute</strong></div>
         </div>
         <ul class="hero-benefits">
-          <li><span class="hero-benefit-check"><?= icon('check') ?></span><span>Masă profesională, uleiuri și instrumente profesionale.</span></li>
-          <li><span class="hero-benefit-check"><?= icon('check') ?></span><span><strong>Masaj și stare de bine fără să pleci de acasă.</strong></span></li>
+          <li><span class="hero-benefit-check"><?= icon('check') ?></span><span>Masă de masaj profesională și uleiuri de calitate.</span></li>
+          <li><span class="hero-benefit-check"><?= icon('check') ?></span><span><strong>Relaxare, echilibru și stare de bine la tine acasă.</strong></span></li>
         </ul>
       </div>
       <div class="hero-conversion">
-        <a href="<?= e($reviewsUrl) ?>" class="hero-social-proof" target="_blank" rel="noopener noreferrer"><span class="google-proof-icon"><img src="/assets/google-g.png" alt="Google" width="76" height="76"></span><span class="proof-copy"><span class="proof-rating"><strong>5/5</strong><span class="stars" aria-label="5 stele">★★★★★</span></span><span class="proof-label">Peste 65 de recenzii pe Google</span></span></a>
+        <div class="hero-review-row">
+          <a href="<?= e($reviewsUrl) ?>" class="hero-social-proof" target="_blank" rel="noopener noreferrer"><span class="google-proof-icon"><img src="/assets/google-g.png" alt="Google" width="76" height="76"></span><span class="proof-copy"><span class="proof-rating"><strong>5/5</strong><span class="stars" aria-label="5 stele">★★★★★</span></span><span class="proof-label">Peste <strong>75</strong> de recenzii pe Google</span></span></a>
+          <a class="hero-reviews-button" href="#recenzii"><?= icon('review') ?><span>Vezi recenziile<br>clienților</span><?= icon('chevron') ?></a>
+        </div>
         <div class="hero-contact-actions" aria-label="Contact și programări">
           <button class="button hero-booking-button" data-book="terapeutic"><?= icon('calendar') ?><span>Programează-te acum</span><?= icon('arrow') ?></button>
           <a class="hero-call" href="tel:+40773919071"><?= icon('phone') ?><span>Sună</span></a>
@@ -127,8 +131,10 @@ function icon(string $name, string $class = ''): string {
     </div>
   </section>
   <section class="therapist-gallery-section" aria-label="Fotografii cu Alin în timpul ședințelor de masaj">
+    <svg class="hero-gallery-curve" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1000Q500 200 0 0Z"/></svg>
     <div class="container therapist-gallery-layout">
-      <div class="therapist-gallery-intro"><p class="eyebrow">MASAJ TERAPEUTIC LA DOMICILIU</p><h2>Grijă, în fiecare <em>atingere.</em></h2><p>Alin Bughiuș, în timpul ședințelor de masaj.</p></div>
+      <p class="eyebrow therapist-gallery-heading">MASAJ TERAPEUTIC LA DOMICILIU</p>
+      <div class="therapist-gallery-intro"><h2>Grijă, în fiecare <em>atingere.</em></h2><p>Alin Bughiuș, în timpul ședințelor de masaj.</p></div>
       <div class="hero-photo hero-gallery therapist-gallery" data-hero-gallery role="region" aria-roledescription="carusel" aria-label="Alin Bughiuș în timpul ședințelor de masaj">
         <div class="hero-gallery-track" data-hero-track>
           <figure class="hero-gallery-slide hero-gallery-slide--profile is-active" data-hero-slide aria-hidden="false"><img src="/assets/images/alin.jpg" alt="Alin Bughiuș, terapeutul care vine la tine acasă" width="1086" height="1448" loading="lazy" draggable="false"></figure>
