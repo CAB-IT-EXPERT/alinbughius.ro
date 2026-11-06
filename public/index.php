@@ -120,7 +120,7 @@ function icon(string $name, string $class = ''): string {
       <div class="hero-conversion">
         <div class="hero-review-row">
           <a href="<?= e($reviewsUrl) ?>" class="hero-social-proof" target="_blank" rel="noopener noreferrer"><span class="google-proof-icon"><img src="/assets/google-g.png" alt="Google" width="76" height="76"></span><span class="proof-copy"><span class="proof-rating"><strong>5/5</strong><span class="stars" aria-label="5 stele">★★★★★</span></span><span class="proof-label">Peste <strong>75</strong> de recenzii pe Google</span></span></a>
-          <a class="hero-reviews-button" href="#recenzii"><?= icon('review') ?><span>Vezi recenziile<br>clienților</span><?= icon('chevron') ?></a>
+          <a class="hero-reviews-button" href="<?= e($reviewsUrl) ?>" target="_blank" rel="noopener noreferrer"><?= icon('review') ?><span>Vezi recenziile<br>clienților</span><?= icon('chevron') ?></a>
         </div>
         <div class="hero-contact-actions" aria-label="Contact și programări">
           <button class="button hero-booking-button" data-book="terapeutic"><?= icon('calendar') ?><span>Programează-te acum</span><?= icon('arrow') ?></button>

@@ -168,3 +168,7 @@ Cele două beneficii devin „Masă de masaj profesională și uleiuri de calita
 În afara panoului, recenziile sunt aliniate la stânga și afișează „Peste 75 de recenzii pe Google”, conform numărului furnizat de client. Butonul mic din dreapta, „Vezi recenziile clienților”, deschide secțiunea `#recenzii`; scorul Google păstrează linkul extern existent. Pe laptop, acest rând stă alături de controalele de contact, iar hero-ul încape în primul ecran.
 
 Îmbinarea crem–verde folosește un arc SVG decorativ, urmat de titlul galeriei centrat între două linii. Verificat în browser la lățimi 320–1920 px, inclusiv telefon, tabletă și opt dimensiuni de laptop, fără overflow și cu destinația butonului funcțională.
+
+### Destinația butonului de recenzii — 6 noiembrie 2026
+
+La cererea clientului, „Vezi recenziile clienților” deschide acum linkul Google Maps existent în `$reviewsUrl`, într-o filă nouă, cu `noopener noreferrer`. Linkul a fost verificat și conduce la profilul „AlinBughius.ro Masaj la domiciliu, Bucuresti & Ilfov”. Aspectul butonului rămâne neschimbat.
