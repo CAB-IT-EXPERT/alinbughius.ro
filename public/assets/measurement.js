@@ -10,6 +10,7 @@
   const analytics = 'G-E0L7GVF1B2';
   const legacyAccount = 'AW-11103141014';
   const legacyConversion = `${legacyAccount}/sLiECKP109YZEJb5sa4p`;
+  const phoneConversion = `${account}/4uWiCIHdobcdENC0uutE`;
   const pageUrl = new URL('https://alinbughius.ro/');
   // Preserve campaign attribution, but never forward arbitrary query fields.
   const incoming = new URL(location.href);
@@ -57,13 +58,27 @@
     if (!link) return;
     const url = new URL(link.href, location.origin);
     if (url.protocol !== 'tel:' && !(url.protocol === 'https:' && url.hostname === 'wa.me')) return;
+    const contactMethod = url.protocol === 'tel:' ? 'phone' : 'whatsapp';
     // Preserve the old site's contact-click conversion, not a new booking event.
     // Navigation continues immediately, even if Google is blocked/unavailable.
     gtag('event', 'conversion', {send_to: legacyConversion, transport_type: 'beacon'});
-    // Separate GA4 event; no additional Google Ads conversion is created.
+    // The active Ads account measures only genuine phone-button clicks as calls.
+    if (contactMethod === 'phone') {
+      gtag('event', 'conversion', {
+        send_to: phoneConversion,
+        value: 1.0,
+        currency: 'RON',
+        transport_type: 'beacon'
+      });
+    }
+    // Keep the combined event for continuity and add a readable event per channel.
     gtag('event', 'contact_click', {
       send_to: analytics,
-      contact_method: url.protocol === 'tel:' ? 'phone' : 'whatsapp',
+      contact_method: contactMethod,
+      transport_type: 'beacon'
+    });
+    gtag('event', `${contactMethod}_click`, {
+      send_to: analytics,
       transport_type: 'beacon'
     });
   });

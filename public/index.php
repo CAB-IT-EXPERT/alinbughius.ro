@@ -60,7 +60,7 @@ function icon(string $name, string $class = ''): string {
   <script src="/assets/site.js?v=7" defer></script>
   <script src="/assets/video.js?v=1" defer></script>
   <script src="/assets/carousel.js?v=3" defer></script>
-  <script src="/assets/measurement.js?v=4" defer></script>
+  <script src="/assets/measurement.js?v=5" defer></script>
 </head>
 <body class="home-page cream-home spa-home">
 <a class="skip-link" href="#continut">Sari la conținut</a>
